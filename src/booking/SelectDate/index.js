@@ -6,7 +6,7 @@ import * as moment from 'moment'
 import withReducer from 'store/withReducer';
 import reducer from 'store/reducers';
 import * as Actions from 'store/actions'
-import { getAvailableHours, getCustomers } from 'src/api'
+import { getAvailableHours, getCustomers } from '../../api'
 import { useTranslation } from 'react-i18next';
 import CalenderHeaderTitle from './CalenderHeader';
 import DateItem from './DateItem';

@@ -1,15 +1,16 @@
 import {combineReducers} from 'redux';
-import booking from './booking.reducer'
+import fuse from './fuse';
+import quickPanel from 'app/fuse-layouts/shared-components/quickPanel/store/reducers';
+import global from './global'
+import auth from './user';
 
-const globalReducers = combineReducers({
-    company,
-    calendar,
-    services,
-    employees,
-    sidepanel,
-    customers,
-    venue,
-    booking
-});
+const createReducer = (asyncReducers) =>
+    combineReducers({
+        auth,
+        fuse,
+        quickPanel,
+        global,
+        ...asyncReducers
+    });
 
-export default globalReducers;
+export default createReducer;

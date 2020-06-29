@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './style.scss';
 import * as Actions from 'store/actions';
-import { getEmployeesForService } from 'src/api'
+import { getEmployeesForService } from '../../api'
 import { useDispatch, useSelector } from 'react-redux';
 import withReducer from 'store/withReducer';
 import reducer from 'store/reducers';

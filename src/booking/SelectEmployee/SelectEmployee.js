@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import withReducer from 'store/withReducer';
 import reducer from 'store/reducers';
 import { useTranslation } from 'react-i18next';
-import { getAvailableHours } from 'src/api'
+import { getAvailableHours } from '../../api'
 import moment from 'moment'
 import './style.scss';
 import SubHeader from '../SubHeader'

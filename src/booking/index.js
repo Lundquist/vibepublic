@@ -5,9 +5,9 @@ import BookingServices from './BookingServices'
 import './style.scss';
 import withReducer from 'store/withReducer';
 import SubHeader from './SubHeader'
-import reducer from 'store/reducers';
+import reducer from '../store/reducers';
 import { useDispatch, useSelector } from 'react-redux';
-import * as Actions from 'store/actions';
+import * as Actions from '../store/actions';
 
 function BookingContent(props) {
     const dispatch = useDispatch();
