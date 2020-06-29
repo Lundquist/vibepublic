@@ -1,0 +1,17 @@
+#headerContainer {
+    .headerImage {
+        background: url("http://imgs.steps.dragoart.com/how-to-draw-a-pony-step-7_1_000000053055_5.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 300px;
+        display: flex;
+
+    }
+    #headerTextContainer {
+        margin-top: 10px;
+        font-size: 30px;
+        font-weight: bolder;
+        font-family: 'Roboto', sans-serif;
+    }
+}

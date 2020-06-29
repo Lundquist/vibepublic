@@ -1,0 +1,51 @@
+@import "./colors.scss";
+#selectDateAndTimeContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #fafafa;
+    margin-left: 20%;
+
+    #dateAndTimeHeader {
+        font-weight: bolder;
+        font-size: 2rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .__app__calender {
+        max-width: 755px;
+        padding: 24px;
+        background: #fff;
+        min-height: 100vh;
+        width: 100%;
+        header {
+            margin-bottom: 16px;
+            > .flex {
+                color: $primary_color;
+                cursor: pointer;
+            }
+            .material-icons {
+                font-size: 30px;
+            }
+        }
+        .__main_calender > div {
+            flex: 1;
+        }
+        .__calander_booking_header {
+            box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.03);
+        }
+        @media (max-width: 500px) {
+            font-size: 13px;
+            header {
+                margin-bottom: 8px;
+            }
+            padding: 8px;
+        }
+        @media (max-width: 400px) {
+            padding: 4px;
+        }
+        @media screen {
+        }
+    }
+}

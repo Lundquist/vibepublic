@@ -1,0 +1,44 @@
+.employeesContainer{
+    display: grid;
+    max-width: 800px;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+
+
+    
+.selectEmployeesButton{
+    padding: 1rem;
+    text-align: center; 
+    font-size: large;
+    font-weight: normal;
+    border: solid;
+    border-color: #DEE3E7;
+    border-width: 1px;
+    border-radius: 10%;
+    height: auto;
+    width: 150px;
+
+}
+
+.userImage{
+    background: url("/assets/images/avatars/profile.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: bisque;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+
+
+}
+
+@media (min-width: 600px) {
+    .employeesContainer { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 900px) {
+    .employeesContainer { grid-template-columns: repeat(8, 1fr); }
+}
+}
+

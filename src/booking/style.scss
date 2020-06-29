@@ -1,0 +1,22 @@
+#bookingPage {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 100px 0px 100px;
+
+    #bookingContent {
+        display: flex;
+        flex-direction: row;
+
+        #serviceContainer {
+            display: flex;
+            flex-direction: row;
+            flex: 3;
+
+        }
+        #bookingInformation {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+        }
+    }
+}

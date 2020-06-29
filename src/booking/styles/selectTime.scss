@@ -1,0 +1,22 @@
+.selectTimeContainer{
+    display: grid;
+    max-width: 800px;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    margin-left: 10%;
+
+}
+
+.selectTimeButton{
+    padding: 1rem;
+    height: 4rem;
+    text-align: center;  
+}
+
+@media (min-width: 600px) {
+    .selectTimeContainer { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 900px) {
+    .selectTimeContainer { grid-template-columns: repeat(8, 1fr); }
+}

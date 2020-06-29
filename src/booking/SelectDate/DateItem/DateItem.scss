@@ -1,0 +1,46 @@
+@import '../colors.scss';
+
+.__date__item{
+    text-align: center;
+    border: 1px solid rgba($color: $accent_color, $alpha: 0.1);
+    border-right: none;
+    border-top: none;
+    font-size: 14px;
+    cursor: pointer;
+    &:last-child{
+        border-right: 1px solid rgba($color: $accent_color, $alpha: 0.2);
+    }
+    .__booking__time{
+        border: 1px solid;
+        background: rgba($color: $primary_color, $alpha: 0.16);
+        color: $primary_color;
+        font-weight: bold;
+        border-radius: 6px;
+        padding: 10px 0;
+        margin: 8px;
+    }
+    @media (max-width: 500px) {
+        .__booking__time{
+            font-size: 13px;
+            padding: 6px 0;
+            font-weight: 500;
+            border-radius: 4px;
+            margin: 6px;
+        }
+    }
+    @media (max-width: 400px) {
+        .__booking__time{
+            font-size: 12px;
+            padding: 4px 0;
+            font-weight: 400;
+        }
+    }
+    @media (max-width: 340px) {
+        .__booking__time{
+            font-size: 11px;
+            padding: 4px 0;
+            font-weight: 400;
+            margin: 4px;
+        }
+    }
+}

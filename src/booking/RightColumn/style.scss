@@ -1,0 +1,61 @@
+#rightColumnContainer {
+    font-family: "Roboto", sans-serif;
+    margin-left: 20%;
+    
+    #serviceHeader {
+        font-weight: bolder;
+        font-size: 20px;
+        padding-left: 10px;
+        margin-top: 10px;
+    }
+    .rightSection {
+        height: 250px;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        margin: 20px;
+        border: 1px solid #d3d3d3;
+        border-radius: 5px;
+        flex: 1;
+        background-color: white;
+        width: 200px;
+        #top {
+            flex: 3;
+            border-bottom: 1px solid #d3d3d3;
+        }
+        #bottom {
+            flex: 1;
+            width: 100%;
+        }
+        .infoRow {
+            bottom: 10px;
+            margin: 2px;
+
+        }
+        #nameContainer {
+            margin-top: 25px;
+            color: gray;
+        }
+        #priceRow{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            color: black;
+            font-weight: bold;
+        }
+    }
+
+    #locationInformation {
+        padding-left: 10px;
+    }
+    #bookingInformation {
+        display: flex;
+        align-items: center;
+        color: #636363;
+        margin-top: 20px;
+    }
+
+    #companyInformation {
+        padding-left: 15px;
+    }
+}

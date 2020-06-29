@@ -1,0 +1,15 @@
+#goBackDiv{
+    background: url("/assets/images/icons/keyboard_backspace-24px.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    margin-right: 10px;
+
+    #noBorder{
+        border-width: 0px;
+    }
+
+}

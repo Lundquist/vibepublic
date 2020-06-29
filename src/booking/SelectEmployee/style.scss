@@ -1,0 +1,70 @@
+.employeesContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    margin-left: 20%;
+
+    .employeeHeader{
+        font-weight: bolder;
+        font-size: 2rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+    }
+    .selectEmployeesButton {
+        cursor: pointer;
+        padding: 1rem;
+        margin-left: 6rem;
+        text-align: center;
+        font-size: large;
+        font-weight: normal;
+        height: auto;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #d3d3d3;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+
+    }
+    .selectEmployeesButton:hover {
+        background-color: #F5F5F5;
+      }
+
+    #employeeContent{
+        background-color: white;
+        border-color: #dee3e7;
+        border-bottom-width: 1px;
+        border-right-width: 1px;
+        border-style: solid;
+        border-radius: 5px;
+
+    }
+    .userImage {
+        background: url("/assets/images/avatars/profile.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: bisque;
+        height: 50px;
+        width: 50px;
+    }
+
+    #employeeName{
+        margin-left: 1rem;
+        font-weight: bolder;
+    }
+    @media (min-width: 600px) {
+        .employeesContainer {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    @media (min-width: 900px) {
+        .employeesContainer {
+            grid-template-columns: repeat(8, 1fr);
+        }
+    }
+}
