@@ -1,5 +1,6 @@
 import axios from 'axios';
-import config from 'app/config'
+import config from '../../../config'
+import store from '../../../store'
 
 export const EMPLOYEES_FOR_SERVICE = '[SERVICE] EMPLOYEES_FOR_SERVICE';
 export const SET_SELECTED_SERVICE = '[SERVICE] SET_SELECTED_SERVICE';

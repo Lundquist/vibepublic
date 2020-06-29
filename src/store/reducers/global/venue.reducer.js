@@ -1,4 +1,4 @@
-import * as Actions from 'app/store/actions';
+import * as Actions from '../../actions';
 
 const initialState = {
     coverImage: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpixnio.com%2Ffree-images%2F2017%2F09%2F23%2F2017-09-23-14-24-17.jpg&f=1&nofb=1',

@@ -1,6 +1,6 @@
 import axios from 'axios';
-import config from 'app/config'
-import { getCompanyReservations, getEvents, toggleBookingPanel, addReservation, showMessage } from 'app/store/actions';
+import config from '../../../../config'
+import { getCompanyReservations, getEvents, addReservation } from '../../../actions';
 
 import { ADD_RESERVATION } from '../company.actions';
 export const RESET_BOOKING_PANEL = '[BOOKING]  RESET_BOOKING_PANEL';
@@ -59,7 +59,6 @@ export function setBookingPanel(data) {
         } else {
             dispatch(resetBookingPanel())
         }
-        dispatch(toggleBookingPanel());
 
     }
 }
@@ -142,7 +141,6 @@ export function submitReservation(newReservation) {
                     type: RESET_BOOKING_PANEL
                 })
                 dispatch(getCompanyReservations())
-                dispatch(showMessage({message: "✔ Your booking has been successfully saved"}));
 
             }else{
                 console.log("submitReservation ERROR: " + JSON.stringify(response))

@@ -1,6 +1,6 @@
 import axios from 'axios';
-import config from 'app/config'
-import store from 'app/store'
+import config from '../../../config'
+import store from '../../../store'
 
 store.subscribe(companyId)
 

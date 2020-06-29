@@ -1,5 +1,4 @@
-import * as Actions from 'app/store/actions';
-import { SET_CUSTOMER } from 'app/store/actions';
+import * as Actions from '../../actions';
 
 const initialState = {
     customers: [],

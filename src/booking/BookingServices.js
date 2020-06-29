@@ -5,10 +5,10 @@ import SelectService from './SelectService'
 import CustomerInformation from './CustomerInformation'
 import PaymentPage from './PaymentPage'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import * as Actions from 'store/actions';
+import * as Actions from '../store/actions';
 import { useSelector } from 'react-redux';
-import withReducer from 'store/withReducer';
-import reducer from 'store/reducers';
+import withReducer from '../store/withReducer';
+import reducer from '../store/reducers';
 import * as moment from 'moment'
 import { useTranslation } from 'react-i18next';
 import SelectDate from './SelectDate'

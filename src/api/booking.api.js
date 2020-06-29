@@ -1,7 +1,7 @@
 import config from '../config'
 import axios from 'axios';
-import * as Actions from 'app/store/actions';
-import store from 'app/store'
+import * as Actions from '../store/actions';
+import store from '../store'
 
 store.subscribe(companyId)
 

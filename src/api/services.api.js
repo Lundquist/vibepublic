@@ -1,8 +1,7 @@
-import * as Actions from 'app/store/actions';
+import * as Actions from '../store/actions';
 import axios from 'axios';
 import config from '../config'
-import store from 'app/store'
-import { showMessage } from 'app/store/actions';
+import store from '../store'
 
 store.subscribe(companyId)
 
@@ -19,50 +18,8 @@ export function getServices() {
         });
 }
 
-export const addService = (newService) => {
-    const request = axios.post(`${config.serverUrl}/service`, {
-        service: newService,
-        companyId: companyId()
-    });
 
-    return (dispatch) => {
-        request.then((response) => {
-            if (response.data.Rows !== undefined) {
-                dispatch(showMessage({ message: "✔ You service has been saved" }));
-                newService.id = response.data.Rows.insertId
-                dispatch({
-                    type: Actions.ADD_SERVICE,
-                    payload: newService
-                })
-            }
-        });
-    }
-}
 
-export const saveService = (service) => {
-    const request = axios.put(`${config.serverUrl}/service`,
-        {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            },
-            service: service,
-            companyId: companyId()
-        })
-    return (dispatch) => {
-        request.then((response) => {
-            if (!response.Error) {
-                dispatch(showMessage({ message: "✔ You service has been saved" }));
-                dispatch(getServices())
-                dispatch({
-                    type: Actions.SAVE_SERVICE,
-                    payload: service
-                })
-
-            }
-
-        });
-    }
-}
 
 export const saveServiceImage = (service) => {
     const request = axios.put(`${config.serverUrl}/serviceImage`, {

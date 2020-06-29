@@ -1,6 +1,5 @@
 import config from '../config'
 import axios from 'axios';
-import * as Actions from 'app/store/actions';
 
 /**
  * 

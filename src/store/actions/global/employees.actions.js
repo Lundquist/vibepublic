@@ -1,5 +1,5 @@
 import axios from 'axios';
-import config from 'app/config'
+import config from '../../../config'
 
 export const SET_SELECTED_EMPLOYEE = '[EMPLOYEES] SET_SELECTED_EMPLOYEE';
 export const SET_FILTERED_EMPLOYEES = '[EMPLOYEES] FILTERED_EMPLOYEES';

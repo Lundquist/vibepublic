@@ -1,8 +1,8 @@
 import axios from 'axios';
-import config from 'app/config'
-import * as api from 'app/api'
-import * as Actions from 'app/store/actions'
-import store from 'app/store'
+import config from '../../../config'
+import * as api from '../../../api'
+import * as Actions from '../../../store/actions'
+import store from '../../../store'
 import i18n from 'i18n';
 
 export const SET_COMPANY_SETTINGS = '[GLOBAL] GET_COMPANY_SETTINGS';
