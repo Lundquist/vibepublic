@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { createCustomer, saveCustomer } from 'app/api'
-import * as Actions from 'app/store/actions';
+import { createCustomer, saveCustomer } from 'src/api'
+import * as Actions from 'store/actions';
 import { useForm } from 'react-hook-form'
 import SubHeader from '../SubHeader'
+
 function CustomerInfo(props) {
     const dispatch = useDispatch();
     const { register, handleSubmit, errors } = useForm()

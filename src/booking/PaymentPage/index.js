@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import withReducer from 'app/store/withReducer';
-import reducer from 'app/store/reducers';
-import { addReservation } from 'app/api'
+import withReducer from 'store/withReducer';
+import reducer from 'store/reducers';
+import { addReservation } from 'src/api'
 import { useForm } from 'react-hook-form'
 import moment from 'moment';
 

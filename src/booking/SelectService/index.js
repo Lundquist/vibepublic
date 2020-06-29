@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './style.scss';
-import * as Actions from 'app/store/actions';
-import { getEmployeesForService } from 'app/api'
+import * as Actions from 'store/actions';
+import { getEmployeesForService } from 'src/api'
 import { useDispatch, useSelector } from 'react-redux';
-import withReducer from 'app/store/withReducer';
-import reducer from 'app/store/reducers';
-import { Collapse } from 'react-collapse';
+import withReducer from 'store/withReducer';
+import reducer from 'store/reducers';
 import { withTranslation } from 'react-i18next';
 import defaultImage from './assets/add-photo.svg'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';

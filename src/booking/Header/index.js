@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
-import withReducer from 'app/store/withReducer';
-import reducer from 'app/store/reducers';
+import withReducer from 'store/withReducer';
+import reducer from 'store/reducers';
 import { useSelector } from 'react-redux';
 
 function BookingInfo() {

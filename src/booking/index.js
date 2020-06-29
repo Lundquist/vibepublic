@@ -3,11 +3,11 @@ import BookingHeader from './Header'
 import RightColumn from './RightColumn'
 import BookingServices from './BookingServices'
 import './style.scss';
-import withReducer from 'app/store/withReducer';
+import withReducer from 'store/withReducer';
 import SubHeader from './SubHeader'
-import reducer from 'app/store/reducers';
+import reducer from 'store/reducers';
 import { useDispatch, useSelector } from 'react-redux';
-import * as Actions from 'app/store/actions';
+import * as Actions from 'store/actions';
 
 function BookingContent(props) {
     const dispatch = useDispatch();

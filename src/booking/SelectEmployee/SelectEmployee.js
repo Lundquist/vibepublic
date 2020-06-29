@@ -1,10 +1,10 @@
 import React from 'react';
-import * as Actions from 'app/store/actions';
+import * as Actions from 'store/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import withReducer from 'app/store/withReducer';
-import reducer from 'app/store/reducers';
+import withReducer from 'store/withReducer';
+import reducer from 'store/reducers';
 import { useTranslation } from 'react-i18next';
-import { getAvailableHours } from 'app/api'
+import { getAvailableHours } from 'src/api'
 import moment from 'moment'
 import './style.scss';
 import SubHeader from '../SubHeader'

@@ -3,10 +3,10 @@ import './Calender.scss';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import * as moment from 'moment'
-import withReducer from 'app/store/withReducer';
-import reducer from 'app/store/reducers';
-import * as Actions from 'app/store/actions'
-import { getAvailableHours, getCustomers } from 'app/api'
+import withReducer from 'store/withReducer';
+import reducer from 'store/reducers';
+import * as Actions from 'store/actions'
+import { getAvailableHours, getCustomers } from 'src/api'
 import { useTranslation } from 'react-i18next';
 import CalenderHeaderTitle from './CalenderHeader';
 import DateItem from './DateItem';
