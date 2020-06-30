@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './style.scss';
 import withReducer from '../../store/withReducer';
 import reducer from '../../store/reducers';
 import * as Actions from '../../store/actions'
 import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+//import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 
 function SubHeader(props) {
     const dispatch = useDispatch();
     const { currentPage } = useSelector(({ global }) => global.booking);
-    const { t } = useTranslation();
+   // const { t } = useTranslation();
 
     const goBack = () => {
 

@@ -18,7 +18,7 @@ export const ADD_RESERVATION = '[GLOBAL] ADD_RESERVATION';
 export const INITIALIZE_COMPANY = '[GLOBAL] INITIALIZE_COMPANY';
 
 store.subscribe(companyId)
-const server = config.serverUrl
+//const server = config.serverUrl
 
 function companyId() {
     return store.getState().global.company.information.id

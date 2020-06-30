@@ -1,7 +1,3 @@
-import axios from 'axios';
-import config from '../../../config'
-import store from '../../../store'
-
 export const EMPLOYEES_FOR_SERVICE = '[SERVICE] EMPLOYEES_FOR_SERVICE';
 export const SET_SELECTED_SERVICE = '[SERVICE] SET_SELECTED_SERVICE';
 export const ADD_SERVICE = '[SERVICE] ADD_SERVICE';

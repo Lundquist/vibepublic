@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import BookingHeader from './Header'
 import RightColumn from './RightColumn'
 import BookingServices from './BookingServices'
 import './style.scss';
 import withReducer from '../store/withReducer';
-import SubHeader from './SubHeader'
 import reducer from '../store/reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Actions from '../store/actions';

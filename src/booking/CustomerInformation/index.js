@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCustomer, saveCustomer } from '../../api'

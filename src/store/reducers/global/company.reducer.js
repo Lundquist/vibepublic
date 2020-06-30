@@ -1,6 +1,6 @@
 import * as Actions from '../../actions';
-import moment from 'moment'
-import i18n from 'i18n';
+//import moment from 'moment'
+//import i18n from 'i18n';
 
 const initialState = {
     information: {

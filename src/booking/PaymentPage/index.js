@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import withReducer from '../../store/withReducer';
 import reducer from '../../store/reducers';
 import { addReservation } from '../../api'
-import { useForm } from 'react-hook-form'
 import moment from 'moment';
 
 function PaymentPage(props) {
@@ -14,6 +13,7 @@ function PaymentPage(props) {
     const { selectedService } = useSelector(({ global }) => global.services);
     const { selectedCustomer } = useSelector(({ global }) => global.customers);
 
+    /*
     const stripe = window.Stripe("pk_test_wguKhnBNi9r1x4gDqXkgITv200M57KPGJm");
 
     async function handleStripe(e) {
@@ -43,8 +43,8 @@ function PaymentPage(props) {
  * note: note about the reservation
  * price: price of the service
 
-        */
-    }
+       
+    } */
 
     const submit = () => {
 

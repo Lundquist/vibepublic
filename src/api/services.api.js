@@ -2,13 +2,12 @@ import * as Actions from '../store/actions';
 import axios from 'axios';
 import config from '../config'
 import store from '../store'
-
+console.log("hrhrhrhrhr " + store)
 store.subscribe(companyId)
 
 function companyId() {
     return store.getState().global.company.information.id
 }
-
 
 export function getServices() {
     const request = axios.get(`${config.serverUrl}/service?companyId=${companyId()}`);
@@ -17,9 +16,6 @@ export function getServices() {
             dispatch(Actions.getServices(response.data.Rows))
         });
 }
-
-
-
 
 export const saveServiceImage = (service) => {
     const request = axios.put(`${config.serverUrl}/serviceImage`, {

@@ -1,8 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Booking from './booking'
+
 function App() {
+  console.log("iapsfudh")
+
   return (
     <div className="App">
       <Booking />

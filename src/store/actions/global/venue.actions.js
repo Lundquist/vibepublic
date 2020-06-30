@@ -1,9 +1,8 @@
-import axios from 'axios';
-import config from '../../../config'
+//import config from '../../../config'
 
 export const REMOVE_GALLERY_IMAGE = '[VENUE] REMOVE GALLERY IMAGE';
 
-const server = config.serverUrl
+//const server = config.serverUrl
 
 export function saveCompanyInfo(payload) {
     /*return (dispatch) =>
