@@ -17,11 +17,12 @@ export const SET_OPENING_HOURS = '[GLOBAL] SET_OPENING_HOURS';
 export const ADD_RESERVATION = '[GLOBAL] ADD_RESERVATION';
 export const INITIALIZE_COMPANY = '[GLOBAL] INITIALIZE_COMPANY';
 
-store.subscribe(companyId)
+//store.subscribe(companyId)
 //const server = config.serverUrl
 
 function companyId() {
-    return store.getState().global.company.information.id
+    return 1;
+   // return store.getState().global.company.information.id
 }
 
 export function createNewCompany(email) {

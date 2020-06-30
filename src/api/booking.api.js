@@ -3,10 +3,11 @@ import axios from 'axios';
 import * as Actions from '../store/actions';
 import store from '../store'
 
-store.subscribe(companyId)
+//store.subscribe(companyId)
 
 function companyId() {
-    return store.getState().global.company.information.id
+    return 1;
+    //return store.getState().global.company.information.id
 }
 
 export function getAvailableHours(employeeId, selectedDate, serviceTime) {

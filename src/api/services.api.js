@@ -3,10 +3,11 @@ import axios from 'axios';
 import config from '../config'
 import store from '../store'
 console.log("hrhrhrhrhr " + store)
-store.subscribe(companyId)
+//store.subscribe(companyId)
 
 function companyId() {
-    return store.getState().global.company.information.id
+    return 1;
+   // return store.getState().global.company.information.id
 }
 
 export function getServices() {

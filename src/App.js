@@ -1,14 +1,15 @@
 import React from 'react';
+import store from './store';
+import Provider from 'react-redux/es/components/Provider';
 import './App.css';
 import Booking from './booking'
 
-function App() {
-  console.log("iapsfudh")
-
+const App = (props) => {
+  console.log("appyMcApp " + JSON.stringify(store))
   return (
-    <div className="App">
-      <Booking />
-    </div>
+      <Provider store={store}>
+        <Booking />
+      </Provider>
   );
 }
 

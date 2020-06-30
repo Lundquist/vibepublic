@@ -4,11 +4,12 @@ import axios from 'axios';
 import config from '../config'
 import store from '../store'
 
-store.subscribe(companyId)
+//store.subscribe(companyId)
 const server = config.serverUrl
 
 function companyId() {
-    return store.getState().global.company.information.id
+    return 1;
+   // return store.getState().global.company.information.id
 }
 
 export function saveCompanyInfo(body) {
