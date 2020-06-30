@@ -1,5 +1,5 @@
 import axios from 'axios';
-import config from '../../../config';
+import config from '../../../config'
 
 export const GET_EVENTS = '[CALENDAR APP] GET EVENTS';
 export const OPEN_NEW_EVENT_DIALOG = '[CALENDAR APP] OPEN NEW EVENT DIALOG';

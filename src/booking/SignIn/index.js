@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import withReducer from 'store/withReducer';
-import reducer from 'store/reducers';
+import withReducer from '../../store/withReducer';
+import reducer from '../../store/reducers';
 
 import './style.scss';
 

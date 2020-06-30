@@ -1,8 +1,8 @@
 import React from 'react';
-import * as Actions from 'store/actions';
+import * as Actions from '../../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import withReducer from 'store/withReducer';
-import reducer from 'store/reducers';
+import withReducer from '../../store/withReducer';
+import reducer from '../../store/reducers';
 import { useTranslation } from 'react-i18next';
 import { getAvailableHours } from '../../api'
 import moment from 'moment'

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import config from '../../../config'
+import config from '../config'
 
 export const GET_COMPANY = '[BOOKING APP] GET_COMPANY';
 export const GET_SERVICES = '[BOOKING APP] GET_SERVICES';
