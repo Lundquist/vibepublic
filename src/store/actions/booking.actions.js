@@ -82,6 +82,6 @@ export function setCurrentCompany(companyId) {
                     payload: response.data.Rows[0]
                 })
             }
-        }
+        })
     }
 }
