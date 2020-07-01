@@ -60,14 +60,14 @@ export function createNewCompany(email) {
     });
 }
 
-export function setCurrentCompany(companyId = 1) {
+export function setCurrentCompany(companyId) {
     const URL = `${config.serverUrl}/company?companyId=${companyId}`;
     const request = axios.get(URL, {
         headers: {
             'Content-Type': 'application/json',
         }
     });
-console.log("setCurrentCompany " + companyId)
+
     return (dispatch) => {
         request.then((response) => {
             if (!response.data.Error) {
