@@ -6,7 +6,9 @@ import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import rootReducer from './store/reducers'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+<App />, document.getElementById('root')
+);
 
 
 // If you want your app to work offline and load faster, you can change

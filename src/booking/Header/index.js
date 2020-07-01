@@ -18,4 +18,4 @@ function BookingInfo() {
     )
 }
 
-export default withReducer('bookingApp', reducer)(BookingInfo);
+export default withReducer('calendarApp', reducer)(BookingInfo);

@@ -2,9 +2,11 @@ import * as Actions from '../store/actions';
 import axios from 'axios';
 import config from '../config'
 import store from '../store'
-console.log("hrhrhrhrhr " + store)
-//store.subscribe(companyId)
+import createReducer from '../store/reducers/';
 
+console.log("hrhrhrhrhr " + store)
+
+//store.subscribe(companyId)
 function companyId() {
     return 1;
    // return store.getState().global.company.information.id

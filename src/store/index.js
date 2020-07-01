@@ -22,7 +22,7 @@ const enhancer = composeEnhancers(
 );
 
 const store = createStore(createReducer(), enhancer);
-
+console.log("create a store! " + JSON.stringify(store))
 store.asyncReducers = {};
 
 export const injectReducer = (key, reducer) => {
