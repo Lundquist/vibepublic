@@ -19,24 +19,20 @@ function BookingContent(props) {
     if (!initialized)
         dispatch(Actions.setCurrentCompany(companyId))
 
-        const mouseDownHandler = ( event ) => {
-            event.stopPropagation();
-            console.log("mouseDownHandler " + event.button)
-            if( event.button === 1 ) {
-              // do something on middle mouse button click
-            }
-          }
+    const mouseDownHandler = (event) => {
+        event.stopPropagation();
+        console.log("mouseDownHandler " + event.button)
+        if (event.button === 1) {
+            // do something on middle mouse button click
+        }
+    }
 
     return (
-        <div id="bookingPage" onClick={(e) => mouseDownHandler(e)}>
+        <div className="bookingPage" onClick={(e) => mouseDownHandler(e)}>
             <BookingHeader />
-            <div id="bookingContent">
-                <div id="serviceContainer">
-                    <BookingServices />
-                </div>
-                <div id="bookingInformation">
-                    <RightColumn />
-                </div>
+            <div className='__flex-strech __container __bookings-content'>
+                <div className='__f1'><BookingServices /></div>
+                <RightColumn />
             </div>
         </div>
     )

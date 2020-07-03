@@ -68,9 +68,8 @@ function BookingServices(props) {
     }
 
     return (
-        <div className="bookingContainer">
+        <div>
             <ReactCSSTransitionGroup
-                id="transitionContainer"
                 transitionName="page"
                 transitionEnterTimeout={300}
                 transitionLeaveTimeout={300}

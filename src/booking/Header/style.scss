@@ -4,14 +4,11 @@
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
-        height: 300px;
-        display: flex;
-
+        height: 220px;
     }
-    #headerTextContainer {
-        margin-top: 10px;
-        font-size: 30px;
+    .__title {
         font-weight: bolder;
-        font-family: 'Roboto', sans-serif;
+        font-size: 1.7em;
+        margin: 0.5em 6%;
     }
 }

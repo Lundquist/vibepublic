@@ -1,144 +1,51 @@
-#selectServiceContainer {
-    display: flex;
-    flex-direction: row;
-
-    .serviceHeader {
-        font-weight: bolder;
-        font-size: 20px;
-        padding-left: 10px;
-        font-family: 'Roboto', sans-serif;
+.__bookings-page{
+    .__services{
+        margin: 0 72px;
     }
-
-    .container{
-        background-color: white;
-        margin-top: 20px;
-        padding: 10px;
-        border-bottom: solid;
-        border-color: #dee3e7;
-        border-bottom-width: 1px;
-        border-right-width: 1px;
-        width: 500px;
-
-    }
-
-    .selectCategory{
-        margin-left: 20px;
-    }
-    .categoryContainer {
-        cursor: pointer;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;;
-        margin: 10px;
-        border-bottom: solid;
-        border-color: #dee3e7;
-        border-bottom-width: 1px;
-        background-color: white;
-        padding: 15px;
-        height:48px !important;
-        font-family: 'Roboto', sans-serif;
-        font-size: 16px;
-        font-weight: bolder;
-
-    }
-    .categoryContainer:hover {
-        background-color: #EEEEEE;
-      }
-
-    .selected {
-        background-color: #D6D6D6;
-    }
-    .serviceDiv:hover {
-        background-color: #F5F5F5;
-      }
-    .servicesContainer {
-        display: flex;
-        flex-direction: column;
-        margin-left: 5%;
-        border-style: solid;
-        border-radius: 5px;
-        #serviceDivContainer {
-            display: flex;
-            flex: 1;
-            flex-direction: row;
-            background-color: white;
-
-            cursor: pointer;
-            margin: 10px;
-            .serviceDiv {
-                display: flex;
-                flex: 1;
-                flex-direction: row;
-                padding: 1rem;
-                text-align: center;
-                font-family: 'Roboto', sans-serif;
-                font-weight: bold;
-                font-size: 16px;
-                text-align: start;
-                min-width: 300px;
-                max-height: 60px;
-                border-radius: 5px;
-                margin-bottom: 3px;
-
-                #serviceImage{
-                    margin: 5px;
-                }
-                #infoDiv {
-                    display: flex;
-                    flex: 1;
-                    flex-direction: row;
-                    color: gray;
-                    font-size: small;
-                    justify-content: space-around;
-                    min-height: 50px;
-                    border-bottom: 1px solid #d3d3d3;
-                }
-                #timeDiv {
-                    display: flex;
-                    flex-direction: column;
-                    flex: 1;
-                    color: gray;
-                }
-                #nameDiv {
-                    display: flex;
-                    flex-direction: column;
-                    flex:5;
-                    color: black;
-                    margin-left: 5%;
-                }
-                #priceDiv {
-                    display: flex;
-                    flex: 1;
-                    color: black;
-                    flex-direction: column;
-                    position: relative;
-                    right: 0px;
-                }
-                #infoImage {
-                    margin-left: 15px;
-                    display: flex;
-                    width: 20px;
-                    height: 20px;
-                    color: gray;
-                }
+    .__service{
+        padding: 12px 0 20px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        .__small{
+            margin-top: 6px;
+        }
+        .__image-preview{
+            position: relative;
+            margin-right: 6px;
+            svg{
+                width: 42px;
+                height: 42px;
             }
-
+            img{
+                width: 42px;
+            }
+        }   
+        .__title{
+            margin: 1px 0 auto 0;
+        }
+        .__infoImage{
+            width: 28px;
+        }
+        .__footer{
+            svg, img{
+                margin-left: 8px;
+                width: 20px;
+            }
         }
     }
-
-    .ReactCollapse--collapse {
-        transition: height 500ms;
-    }
-
-    @media (min-width: 600px) {
-        .categoryContainer {
-            grid-template-columns: repeat(4, 1fr);
+    .categoryContainer{
+        padding: 8px 16px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        background: rgba($color: #777777, $alpha: 0.06);
+        margin-bottom: 16px;
+        cursor: pointer;
+        &.selected{
+            background: rgba($color: #777777, $alpha: 0.2);
         }
-    }
-
-    @media (min-width: 900px) {
-        .categoryContainer {
-            grid-template-columns: repeat(8, 1fr);
+    }   
+    @media (max-width: 800px) {
+        display: block;
+        .__services{
+            margin: 32px 0;
         }
     }
 }

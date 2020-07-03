@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import './style.scss';
 import * as Actions from '../../store/actions';
 import { getEmployeesForService } from '../../api'
@@ -10,6 +10,8 @@ import defaultImage from './assets/add-photo.svg'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+import PhotoSizeSelectActual from '@material-ui/icons/PhotoSizeSelectActual'
+
 function iconStyles() {
     return {
         infoIcon: {
@@ -50,9 +52,9 @@ function SelectService(props) {
 
     const renderUnassignedServices = () => {
         return (
-            <div key={0} className={0 === selectedCategory ? "categoryContainer selected" : "categoryContainer"} onClick={() => toggleContainer(0)}>
-                 <div>
-                 {t("common.unassigned")}
+            <div key={0} className={`categoryContainer __flex __sb ${0 === selectedCategory ? "selected" : ""}`} onClick={() => toggleContainer(0)}>
+                <div>
+                    {t("common.unassigned")}
                 </div>
                 <div>
                     <KeyboardArrowRightIcon />
@@ -63,7 +65,7 @@ function SelectService(props) {
 
     const renderCategories = (category) => {
         return (
-            <div key={category.id} className={category.id === selectedCategory ? "categoryContainer selected" : "categoryContainer"} onClick={() => toggleContainer(category.id)}>
+            <div key={category.id} className={`categoryContainer __flex __sb ${category.id === selectedCategory ? "selected" : ""}`} onClick={() => toggleContainer(category.id)}>
                 <div>
                     {category.name}
                 </div>
@@ -81,32 +83,25 @@ function SelectService(props) {
                 var buffer = new Buffer(service.image);
                 $imagePreview = (<img className="userImage" src={buffer} />);
             } else {
-                $imagePreview = (<img className="userImage" src={defaultImage} />);
+                $imagePreview = (<PhotoSizeSelectActual />);
             }
 
             return (
-                <div id="serviceDivContainer" key={service.id}>
-                    <div className="serviceDiv" onClick={() => setService(service)}>
-                        <div id="serviceImage">
-                            {$imagePreview}
+                <div className="__flex __service" onClick={() => setService(service)} key={service.id}>
+                    <div className='__flex-strech __f1'>
+                        <div className='__image-preview'><div></div>{$imagePreview}</div>
+                        <div className='__title'>
+                            {service.name}
+                            <div className='__small'>
+                                {service.time} min
+                            </div>
                         </div>
-                        <div id="infoDiv">
-                            <div id="nameDiv">
-                                {service.name}
-                                <div id="timeDiv">
-                                    {service.time} min
-                            </div>
-                            </div>
-                            <div id="priceDiv">
-                                € {service.price}
-                            </div>
-                            {service.description !== null ? <div id="infoImage" onClick={(e) => showInfo(e, service)}>
-                                <InfoOutlinedIcon className={classes.infoIcon} />
-                            </div> : <div id="infoImage" />}
-                        </div>
-
                     </div>
-
+                    <div className='__flex __footer'>
+                        € {service.price}
+                        {service.description !== null ? <InfoOutlinedIcon onClick={(e) => showInfo(e, service)} />
+                            : <div className="__infoImage" />}
+                    </div>
                 </div>
             )
         }
@@ -116,21 +111,20 @@ function SelectService(props) {
     //            
 
     return (
-        <div id="selectServiceContainer">
-            <div className="selectCategory">
-                <div className="serviceHeader">Category</div>
-                <div className="container">
+        <div className='__flex-strech __bookings-page'>
+            <div className='__f1'>
+                <h3>Category</h3>
+                <div className="__card __f1">
                     {categories.map(renderCategories)}
                     {renderUnassignedServices()}
                 </div>
             </div>
-            <div className="servicesContainer">
-                <div className="serviceHeader">Service</div>
-                <div className="container">
+            <div className='__f1 __services'>
+                <h3>Service</h3>
+                <div className="__card">
                     {services.map(renderServices)}
                 </div>
             </div>
-
         </div>
     )
 

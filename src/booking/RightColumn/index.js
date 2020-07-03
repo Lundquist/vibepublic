@@ -14,29 +14,27 @@ function RightColumn() {
     const { information } = useSelector(({ global }) => global.company);
 
     return (
-        <div id="rightColumnContainer">
-            <div id="serviceHeader">Summary</div>
-            <div className="rightSection" id="bookingInformation">
-                <div id="top">
+        <div className='__summery'>
+            <h2>Summery</h2>
+            <div className="__card2">
+                <div className='__service__details'>
                     <div className="infoRow" id="nameContainer">{selectedService.id !== 0 ? selectedService.name : "No service selected yet"}</div>
                     <div className="infoRow">{selectedEmployee.firstName} {selectedEmployee.lastName}</div>
                     <div className="infoRow">{moment(selectedTime) <= moment() ? null : moment(selectedTime).format('YYYY-MM-DD HH:mm')}</div>
                 </div>
-                <div id="bottom">
-                    <div className="infoRow" id="priceRow">
+                    <b className="__flex __sb">
                         <div>
                             Price:
                         </div>
                         <div>
                             € {selectedService.id !== 0 ? selectedService.price : 0}
                         </div>
-                    </div>
-                </div>
+                    </b>
             </div>
 
-            <div className="rightSection" id="companyInformation">
-                <div className="infoRow" id="nameContainer">{information.name}</div>
-                <div id="locationInformation">
+            <div className="__card2 __contact__information">
+                <h3>{information.name}</h3>
+                <div>
                     <div className="infoRow">{information.address}</div>
                     <div className="infoRow">{information.phone}</div>
                     <div className="infoRow">{information.email}</div>
