@@ -1,70 +1,40 @@
-.employeesContainer {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    grid-gap: 1rem;
-    grid-template-columns: repeat(3, 1fr);
-    margin-left: 20%;
-
-    .employeeHeader{
-        font-weight: bolder;
-        font-size: 2rem;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
+.selectEmployeesButton{
+    margin-bottom: 36px;
+    cursor: pointer;
+    overflow: hidden;
+    img{
+        width: 56px;
+        height: 56px;
+        margin-right: 10px;
     }
-    .selectEmployeesButton {
-        cursor: pointer;
-        padding: 1rem;
-        margin-left: 6rem;
-        text-align: center;
-        font-size: large;
-        font-weight: normal;
-        height: auto;
-        margin-bottom: 10px;
-        border-bottom: 1px solid #d3d3d3;
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-
+    >div{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 20px 0;
+        width: 300px;
     }
-    .selectEmployeesButton:hover {
-        background-color: #F5F5F5;
-      }
-
-    #employeeContent{
-        background-color: white;
-        border-color: #dee3e7;
-        border-bottom-width: 1px;
-        border-right-width: 1px;
-        border-style: solid;
-        border-radius: 5px;
-
+}
+.employeesContainer{
+    margin-left: 32px;
+    .material-icons{
+        margin: 16px 32px 0 0;
     }
-    .userImage {
-        background: url("/assets/images/avatars/profile.jpg");
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-color: bisque;
-        height: 50px;
-        width: 50px;
-    }
-
-    #employeeName{
-        margin-left: 1rem;
-        font-weight: bolder;
-    }
-    @media (min-width: 600px) {
-        .employeesContainer {
-            grid-template-columns: repeat(4, 1fr);
+    @media (max-width: 800px) {
+        margin: 0 -64px 0 -42px;
+        .material-icons{
+            margin-right: 16px;
+        }
+        h2{
+            margin-bottom: 24px;
         }
     }
-
-    @media (min-width: 900px) {
-        .employeesContainer {
-            grid-template-columns: repeat(8, 1fr);
+    @media (max-width: 600px) {
+        margin: 0;
+        .selectEmployeesButton >div{
+            flex: 1;
+            width: 100%;
+        }
+        .material-icons{
+            display: none;
         }
     }
 }

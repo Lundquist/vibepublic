@@ -24,7 +24,7 @@ function SelectEmployee(props) {
   }
 
 
-  
+
 
   const renderEmployees = (employee) => {
     let $imagePreview = null;
@@ -37,20 +37,18 @@ function SelectEmployee(props) {
     }
 
     return (
-      <div className="selectEmployeesButton" key={employee.id} onClick={() => setEmployee(employee)}>
+      <div className="selectEmployeesButton __flex" key={employee.id} onClick={() => setEmployee(employee)}>
         {$imagePreview}
-        <div id="employeeName">
-          {employee.firstName} {employee.lastName}
-        </div>
-
+        <div>{employee.firstName} {employee.lastName}</div>
       </div>
     )
   }
 
   return (
-    <div className="employeesContainer">
-      <div className="employeeHeader"> <SubHeader /> Select employee</div>
-      <div id="employeeContent">
+    <div className="employeesContainer __flex-strech">
+      <i className='material-icons'>arrow_back</i>
+      <div>
+        <h2><SubHeader /> Select employee</h2>
         {employees.map(renderEmployees)}
       </div>
     </div>
