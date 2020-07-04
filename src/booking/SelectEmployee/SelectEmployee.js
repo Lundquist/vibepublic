@@ -23,6 +23,7 @@ function SelectEmployee(props) {
 
   }
 
+  const goBack = () => dispatch(Actions.goBack(currentPage)); // to tell the store to go back.
 
 
 
@@ -46,7 +47,7 @@ function SelectEmployee(props) {
 
   return (
     <div className="employeesContainer __pagewrapper">
-      <h2 className='__header'><i className='material-icons'>arrow_back</i><SubHeader /> Select employee</h2>
+      <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> Select employee</h2>
       {employees.map(renderEmployees)}
     </div>
   )

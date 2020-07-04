@@ -20,6 +20,8 @@ function SelectDate(props) {
     const { selectedService } = useSelector(({ global }) => global.services);
     const [bookings, setBookings] = useState([]);
     const [currentDate, setCurrentDate] = useState(moment());
+    
+    const goBack = () => dispatch(Actions.goBack(currentPage)); // to tell the store to go back.
 
     useEffect(() => {
         sortBookings()
@@ -76,8 +78,7 @@ function SelectDate(props) {
     return (
         <div id="selectDateAndTimeContainer">
             <div className='__header'>
-        <i className='material-icons'>arrow_back</i>
-        <h2 className='__header'><i className='material-icons'>arrow_back</i><SubHeader /> Select time</h2>
+        <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> Select time</h2>
       </div>
             <div id="dateAndTimContainer">
                 <div className='__app__calender __col'>

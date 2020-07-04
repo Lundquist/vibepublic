@@ -32,10 +32,10 @@ function CustomerInfo(props) {
         dispatch(Actions.goForward(currentPage))
 
     }
-
+    const goBack = () => dispatch(Actions.goBack(currentPage)); // to tell the store to go back.
     return (
         <div className="__payment-Page-Container">
-            <h2 className='__header'><i className='material-icons'>arrow_back</i><SubHeader /> Select Details</h2>
+            <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> Select Details</h2>
             <form onSubmit={handleSubmit(onSubmit)} className='__card2'>
                 {/* <select name={"payment"} ref={register({ required: true })}>
                     <option value="0">Pay at site</option>
