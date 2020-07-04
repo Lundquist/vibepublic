@@ -1,5 +1,6 @@
 .__summery{
-    min-width: 177px;
+    max-width: 190px;
+    min-width: 190px;
     .__service__details{
         border-bottom: 1px solid #d3d3d3;
         min-height: 140px;
@@ -11,5 +12,30 @@
     .__contact__information{
         margin: 26px 0;
         min-height: 300px;
+    }
+    h3{
+        margin: 0 0 10px 0;
+        color: #000;
+    }
+    .__time{
+        margin: 4px 0 8px 0;
+    }
+    img{
+        width: 32px;
+    }
+    .__date{
+        margin: 8px 0 2px 0 !important;
+        font-weight: 500;
+    }
+    button{
+        border-radius: 16px;
+        padding: 5px 24px;
+        font-size: 0.7em;
+        margin: 16px auto 0 auto;
+        display: block;
+        background: #7BED8D;
+    }
+    @media (max-width: 800px) {
+        max-width: 100%;
     }
 }

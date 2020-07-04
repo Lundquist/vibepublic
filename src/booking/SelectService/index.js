@@ -113,14 +113,14 @@ function SelectService(props) {
     return (
         <div className='__flex-strech __bookings-page'>
             <div className='__f1'>
-                <h3>Category</h3>
+                <h2>Category</h2>
                 <div className="__card __f1">
                     {categories.map(renderCategories)}
                     {renderUnassignedServices()}
                 </div>
             </div>
             <div className='__f1 __services'>
-                <h3>Service</h3>
+                <h2>Service</h2>
                 <div className="__card">
                     {services.map(renderServices)}
                 </div>
