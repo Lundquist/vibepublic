@@ -20,7 +20,7 @@ function SelectDate(props) {
     const { selectedService } = useSelector(({ global }) => global.services);
     const [bookings, setBookings] = useState([]);
     const [currentDate, setCurrentDate] = useState(moment());
-    
+
     const goBack = () => dispatch(Actions.goBack(currentPage)); // to tell the store to go back.
 
     useEffect(() => {
@@ -59,17 +59,8 @@ function SelectDate(props) {
     const getBookingTimes = (date) => {
         const bookingTimes = [];
         availableHours.forEach(bookingItem => {
-            const bookingParts = bookingItem.split(' ');
-            const bookingDateParts = bookingParts[0].split('-');
-
-            const year = date.format('YYYY')
-            let month = date.format('MM')
-
-            let day = date.format('DD');
-            day.length < 2 && (day = `0${day}`);
-
-            if (bookingDateParts[0] === year && bookingDateParts[1] === month && bookingDateParts[2] === day) {
-                bookingTimes.push(bookingParts[1]);
+            if (moment(date).format('YYYY-MM-DD') === moment(bookingItem).format('YYYY-MM-DD')) {
+                bookingTimes.push(moment(bookingItem).format('HH:mm'));
             }
         });
         return bookingTimes
@@ -78,8 +69,8 @@ function SelectDate(props) {
     return (
         <div id="selectDateAndTimeContainer">
             <div className='__header'>
-        <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> Select time</h2>
-      </div>
+                <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> Select time</h2>
+            </div>
             <div id="dateAndTimContainer">
                 <div className='__app__calender __col'>
                     <header className='__flex __sb'>
@@ -106,4 +97,3 @@ function SelectDate(props) {
 }
 
 export default withReducer('calendarApp', reducer)(SelectDate);
-
