@@ -80,8 +80,10 @@ function SelectService(props) {
         if (service.category == selectedCategory) {
             let $imagePreview = null;
             if (service.image) {
+                console.log(service.image)
                 var buffer = new Buffer(service.image);
-                $imagePreview = (<img className="userImage" src={buffer} />);
+                // $imagePreview = (<img className="userImage" src={buffer} />);
+                $imagePreview = (<img className="userImage" src="https://ca.slack-edge.com/TSVP4QZM3-USJ915H35-6d0088e7a834-512" />)
             } else {
                 $imagePreview = (<PhotoSizeSelectActual />);
             }

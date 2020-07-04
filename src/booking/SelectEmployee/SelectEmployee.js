@@ -33,7 +33,7 @@ function SelectEmployee(props) {
       var buffer = new Buffer(employee.userImage);
       $imagePreview = (<img className="userImage" src={buffer} />);
     } else {
-      $imagePreview = (<img className="userImage" />);
+      $imagePreview = (<img className="userImage" src='https://ca.slack-edge.com/TSVP4QZM3-USJ915H35-6d0088e7a834-512' />);
     }
 
     return (
