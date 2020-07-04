@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createCustomer, saveCustomer } from '../../api'
 import * as Actions from '../../store/actions';
 import { useForm } from 'react-hook-form'
-import SubHeader from '../SubHeader'
+import SubHeader from '../SubHeader';
+import Select from '../../ui/Select/Select';
 
 function CustomerInfo(props) {
     const dispatch = useDispatch();
@@ -33,35 +34,35 @@ function CustomerInfo(props) {
     }
 
     return (
-        <div className="paymentPageContainer">
-            <div className="paymentHeader">
-                <SubHeader /> Details </div>
-            <div className="customerInformationContainer">
-                <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="__payment-Page-Container">
+            <h2>
+                <SubHeader /> Details </h2>
+            <form onSubmit={handleSubmit(onSubmit)} className='__card2'>
+                {/* <select name={"payment"} ref={register({ required: true })}>
+                    <option value="0">Pay at site</option>
+                    <option value="1">Pay now</option>
+                </select> */}
+                <Select onSelect={(htmlElm) => console.log(htmlElm.value)} >
+                    <option value="0">Pay at site</option>
+                    <option value="1">Pay now</option>
+                </Select>
+                <input name="firstName" placeholder="First Name" ref={register({ required: true })} />
+                {errors.exampleRequired && <span>This field is required</span>}
 
-                    <select name={"payment"}  ref={register({ required: true })}>
-                        <option value="0">Pay at site</option>
-                        <option value="1">Pay now</option>
-                    </select>
-                    <input name="firstName" placeholder="First Name" ref={register({ required: true })} />
-                    {errors.exampleRequired && <span>This field is required</span>}
+                <input name="lastName" placeholder="Last Name" ref={register({ required: true })} />
+                {errors.exampleRequired && <span>This field is required</span>}
 
-                    <input name="lastName" placeholder="Last Name" ref={register({ required: true })} />
-                    {errors.exampleRequired && <span>This field is required</span>}
+                <input name="email" placeholder="Email" ref={register({ required: true })} />
+                {errors.exampleRequired && <span>This field is required</span>}
 
-                    <input name="email" placeholder="Email" ref={register({ required: true })} />
-                    {errors.exampleRequired && <span>This field is required</span>}
+                <input name="phone" placeholder="Phone Number" ref={register({ required: true })} />
+                {errors.exampleRequired && <span>This field is required</span>}
 
-                    <input name="phone" placeholder="Phone Number" ref={register({ required: true })} />
-                    {errors.exampleRequired && <span>This field is required</span>}
+                <textarea name="notes" placeholder="Notes" rows={5}
+                    ref={register({ required: false })} />
 
-                    <input name="notes" placeholder="Notes" rows={5}
-                        ref={register({ required: false })} />
-
-                    <input type="submit" />
-                </form>
-
-            </div>
+                <button className='__btn'>Book now</button>
+            </form>
         </div>
     )
 }

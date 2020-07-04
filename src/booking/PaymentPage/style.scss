@@ -21,15 +21,7 @@
             font-style: italic;
         }
     }
-
-    .confirmContainer{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #249225;
-        min-width: 150px;
-        min-height: 50px;
-        border-radius: 5px;
-        margin: 15px;
+    .__btn{
+        margin-top: 16px;
     }
 }

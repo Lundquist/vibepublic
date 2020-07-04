@@ -75,7 +75,7 @@ function PaymentPage(props) {
                 </div>
 
             </div>
-            <div className="confirmContainer" onClick={() => submit()}>
+            <div className="__btn" onClick={() => submit()}>
                 confirm
             </div>
 

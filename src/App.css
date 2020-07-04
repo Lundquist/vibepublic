@@ -45,6 +45,18 @@ body{
   font-size: 0.95em;
   color: rgba(0, 0, 0, 0.6);
 }
+.__btn{
+  text-transform: uppercase;
+  background: #6200EE;
+  padding: 9px 20px;
+  font-weight: bold;
+  border-radius: 4px;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  font-family: inherit;
+  font-size: 1em;
+}
 @media screen and (max-width: 600px){
   .__container{
     margin: 0 12px;

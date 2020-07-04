@@ -1,0 +1,62 @@
+.__input-container{
+    position: relative;
+    margin-bottom: 12px;
+    button{
+        margin: 0;
+        width: 100%;
+        border: none;
+        outline: none;
+        font-family: inherit;
+        font-size: inherit;
+        text-align: left;
+    }
+    .__card2{
+        top: 120%;
+        opacity: 0;
+        padding: 0;
+        visibility: hidden;
+        position: absolute;
+        transition: linear 0.2s all;
+        animation: forwards hideMenu 0.2s;
+    }
+    .__menu{
+        left: 0;
+        top: 100%;
+        margin: 0;
+        opacity: 1;
+        visibility: visible;
+        .__menu-item:hover{
+            cursor: pointer;
+            &:hover{
+                background: rgba($color: #757575, $alpha: 0.2);
+            }
+        }
+    }
+    .__selected{
+        padding: 8px 16px;
+        background: transparent;
+        border: 1px solid #707070;
+        border-radius: 4px;
+        cursor: pointer;
+        color: #707070;
+        .material-icons{
+            color: #000;
+            font-size: 32px;
+        }
+    }
+    .__menu-item{
+        padding: 12px 16px;
+        .material-icons{
+            color: transparent;
+            background: transparent;
+        }
+        &.__active{
+            .material-icons{
+                transition: linear 0.4s all;
+                color: #fff;
+                background: #7BED8D;
+                border-radius: 16px;
+            }
+        }
+    }
+}
