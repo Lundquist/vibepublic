@@ -1,5 +1,4 @@
 .__summery{
-    max-width: 190px;
     min-width: 190px;
     .__service__details{
         border-bottom: 1px solid #d3d3d3;
@@ -26,6 +25,8 @@
     .__date{
         margin: 8px 0 2px 0 !important;
         font-weight: 500;
+        max-width: 137px;
+        color: rgba(0, 0, 0, 0.8);
     }
     button{
         border-radius: 16px;

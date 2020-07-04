@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
 import withReducer from '../../store/withReducer';
 import reducer from '../../store/reducers';
@@ -11,8 +11,20 @@ function RightColumn() {
     const { selectedEmployee } = useSelector(({ global }) => global.employees);
     const { selectedService } = useSelector(({ global }) => global.services);
     const { information } = useSelector(({ global }) => global.company);
-    console.log(selectedEmployee);
-    console.log(selectedService);
+    const getEndingTime = () => {
+        let minutes = +moment(selectedTime).format('mm') + +selectedService.time;
+        let hours = +moment(selectedTime).format('HH');
+
+        if (minutes > 60) {
+            minutes = minutes - 60;
+            hours++;
+        }
+
+        hours.toString().length < 2 && (hours = `0${hours}`);
+        minutes.toString().length < 2 && (minutes = `0${minutes}`);
+
+        return `${moment(selectedTime).format('dddd, DD MMMM HH:mm')} - ${hours}:${minutes}`
+    }
     return (
         <div className='__summery'>
             <h2>Summery</h2>
@@ -27,19 +39,14 @@ function RightColumn() {
                     ) :
                         "No service selected yet"
                     }
-                    <h3 className='__date'>{moment(selectedTime) <= moment() ? null : moment(selectedTime).format('dddd, DD MMMM HH:mm')}</h3>
+                    {moment(selectedTime) >= moment() && <h3 className='__date'>{getEndingTime()}</h3>}
                 </div>
                 <b className="__flex __sb">
-                    <div>
-                        Price:
-                        </div>
-                    <div>
-                        € {selectedService.id !== 0 ? selectedService.price : 0}
-                    </div>
+                    Price:<div>€ {selectedService.id !== 0 ? selectedService.price : 0}</div>
                 </b>
-                <button className='__btn'>Book now</button>
+                {moment(selectedTime) >= moment() && <button className='__btn'>Book now</button>}
             </div>
-            
+
             <div className="__card2 __contact__information">
                 <h3>{information.name}</h3>
                 <div>
