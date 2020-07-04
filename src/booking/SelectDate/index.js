@@ -75,7 +75,7 @@ function SelectDate(props) {
 
     return (
         <div id="selectDateAndTimeContainer">
-            <div id="dateAndTimeHeader"> <SubHeader /> Select Time</div>
+            <h2><SubHeader /> Select Time</h2>
             <div id="dateAndTimContainer">
                 <div className='__app__calender col'>
                     <header className='flex sb'>

@@ -2,15 +2,9 @@
 #selectDateAndTimeContainer {
     display: flex;
     flex-direction: column;
-    background-color: #fafafa;
-    margin-left: 20%;
-
-    #dateAndTimeHeader {
-        font-weight: bolder;
-        font-size: 2rem;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+    margin: auto;
+    @media (max-width: 800px) {
+        margin: 0 !important;
     }
 
     .__app__calender {
@@ -21,6 +15,8 @@
         width: 100%;
         header {
             margin-bottom: 16px;
+            font-size: 1.2em;
+            font-weight: bolder;
             > .flex {
                 color: $primary_color;
                 cursor: pointer;
@@ -39,13 +35,9 @@
             font-size: 13px;
             header {
                 margin-bottom: 8px;
+                font-size: 14px;
             }
-            padding: 8px;
-        }
-        @media (max-width: 400px) {
-            padding: 4px;
-        }
-        @media screen {
+            padding: 0;
         }
     }
 }

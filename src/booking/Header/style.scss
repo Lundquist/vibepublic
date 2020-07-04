@@ -10,5 +10,8 @@
         font-weight: bolder;
         font-size: 1.7em;
         margin: 0.5em 6%;
+        @media (max-width: 600px) {
+            margin: 12px;
+        }
     }
 }

@@ -8,6 +8,7 @@
     flex: 1;
     font-size: 14px;
     color: rgba($color: $accent_color, $alpha: 0.6);
+    overflow: hidden;
     &.black{
         color: #000;
     }
