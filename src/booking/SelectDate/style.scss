@@ -1,14 +1,6 @@
 @import "./colors.scss";
 
 #selectDateAndTimeContainer {
-  body {
-    margin: 0;
-    background: rgb(245, 245, 245);
-    font-family: "Roboto", sans-serif;
-  }
-  * {
-    box-sizing: border-box;
-  }
   .grey {
     color: $accent_color !important;
   }
@@ -19,33 +11,6 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
-
-  .flex {
-    display: flex;
-    align-items: center;
-  }
-  .strech {
-    align-items: stretch !important;
-  }
-  .col {
-    display: flex;
-    flex-direction: column;
-  }
-  .sb {
-    justify-content: space-between;
-    font-size: 22px;
-  }
-  .container {
-    max-width: 1500px;
-    margin: auto;
-    width: 90%;
-  }
-  .wrap {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .fg {
-    flex-grow: 1;
+    cursor: pointer;
   }
 }

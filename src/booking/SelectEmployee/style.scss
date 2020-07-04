@@ -15,14 +15,8 @@
 }
 .employeesContainer{
     margin-left: 32px;
-    .material-icons{
-        margin: 16px 32px 0 0;
-    }
     @media (max-width: 800px) {
-        margin: 0 -64px 0 -42px;
-        .material-icons{
-            margin-right: 16px;
-        }
+        
         h2{
             margin-bottom: 24px;
         }
@@ -32,9 +26,6 @@
         .selectEmployeesButton >div{
             flex: 1;
             width: 100%;
-        }
-        .material-icons{
-            display: none;
         }
     }
 }

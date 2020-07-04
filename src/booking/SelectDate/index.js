@@ -75,24 +75,27 @@ function SelectDate(props) {
 
     return (
         <div id="selectDateAndTimeContainer">
-            <h2><SubHeader /> Select Time</h2>
+            <div className='__header'>
+        <i className='material-icons'>arrow_back</i>
+        <h2 className='__header'><i className='material-icons'>arrow_back</i><SubHeader /> Select time</h2>
+      </div>
             <div id="dateAndTimContainer">
-                <div className='__app__calender col'>
-                    <header className='flex sb'>
-                        <div className={`flex no-select ${currentDate <= moment() ? 'grey' : ''}`} onClick={() => changeWeek(true)}>
+                <div className='__app__calender __col'>
+                    <header className='__flex __sb'>
+                        <div className={`__flex no-select ${currentDate <= moment() ? 'grey' : ''}`} onClick={() => changeWeek(true)}>
                             <i className='material-icons'>keyboard_arrow_left</i>
                             <span>Earlier</span>
                         </div>
                         {bookings.length > 0 && <div className="no-select">{currentDate.format('DD')} - {currentDate.clone().add(6, 'days').format('DD')} {currentDate.format('MMM')}</div>}
-                        <div className='flex no-select' onClick={() => changeWeek()}>
+                        <div className='__flex no-select' onClick={() => changeWeek()}>
                             <span>Later</span>
                             <i className='material-icons'>keyboard_arrow_right</i>
                         </div>
                     </header>
-                    <div className='flex __calander_booking_header'>
+                    <div className='__flex __calander_booking_header'>
                         {bookings.map((booking, i) => <CalenderHeaderTitle {...booking} key={i} />)}
                     </div>
-                    <div className='__main_calender flex fg strech'>
+                    <div className='__main_calender __f1 __flex-strech'>
                         {bookings.map((booking) => <DateItem key={booking.date} {...booking} setDateTime={(d, t) => setDateTime(d, t)} />)}
                     </div>
                 </div>

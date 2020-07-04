@@ -45,12 +45,9 @@ function SelectEmployee(props) {
   }
 
   return (
-    <div className="employeesContainer __flex-strech">
-      <i className='material-icons'>arrow_back</i>
-      <div>
-        <h2><SubHeader /> Select employee</h2>
-        {employees.map(renderEmployees)}
-      </div>
+    <div className="employeesContainer __pagewrapper">
+      <h2 className='__header'><i className='material-icons'>arrow_back</i><SubHeader /> Select employee</h2>
+      {employees.map(renderEmployees)}
     </div>
   )
 
