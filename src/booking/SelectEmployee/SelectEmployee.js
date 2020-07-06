@@ -51,9 +51,9 @@ function SelectEmployee(props) {
   }
 
   return (
-    <div className="__container">
+    <div className="__employees">
       <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> Select employee</h2>
-      <div className='__card2 __employees'>
+      <div className='__card2'>
         {employees.map(renderEmployees)}
         {employees.map(renderEmployees)}
       </div>
