@@ -2,13 +2,11 @@
 
 .__date__item{
     text-align: center;
-    border: 1px solid rgba($color: $accent_color, $alpha: 0.1);
-    border-right: none;
-    border-top: none;
+    border-right: 1px solid rgba($color: $accent_color, $alpha: 0.08);
     font-size: 14px;
     cursor: pointer;
     &:last-child{
-        border-right: 1px solid rgba($color: $accent_color, $alpha: 0.2);
+        border: none;
     }
     .__booking__time{
         border: 1px solid;

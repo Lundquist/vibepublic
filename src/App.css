@@ -64,6 +64,11 @@ h2, h3, h4, h5{
   color: #fff;
   border: none;
 }
+@media screen and (max-width: 1200px){
+  .__container{
+    width: 95%;
+  }
+}
 @media screen and (max-width: 600px){
   .__container{
     margin: 0 12px;

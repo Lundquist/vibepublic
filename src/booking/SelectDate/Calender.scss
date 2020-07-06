@@ -2,16 +2,20 @@
 #selectDateAndTimeContainer {
     display: flex;
     flex-direction: column;
+    max-width: 724px;
     margin: auto;
     @media (max-width: 800px) {
         margin: 0 !important;
     }
 
     .__app__calender {
-        max-width: 724px;
-        background: #fff;
         min-height: 100vh;
-        width: 100%;
+        border-color: 6px;
+        @media (min-width: 601px) {
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+            background: #fff;
+            padding: 12px 8px;
+        }
         header {
             margin-bottom: 16px;
             font-size: 1.2em;
@@ -26,16 +30,6 @@
         }
         .__main_calender > div {
             flex: 1;
-        }
-        .__calander_booking_header {
-            box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.03);
-        }
-        @media (max-width: 500px) {
-            font-size: 13px;
-            header {
-                margin-bottom: 8px;
-                font-size: 14px;
-            }
         }
     }
 }

@@ -3,7 +3,7 @@
 
 .__calander_booking_title{
     text-align: center;
-    border-left: 1px solid rgba($color: $accent_color, $alpha: 0.1);
+    border-right: 1px solid rgba($color: $accent_color, $alpha: 0.08);
     position: relative;
     flex: 1;
     font-size: 14px;
@@ -13,7 +13,7 @@
         color: #000;
     }
     &:last-child{
-        border-right: 1px solid rgba($color: $accent_color, $alpha: 0.2);
+        border: none;
     }
     .squar{
         padding-top: 92%;
