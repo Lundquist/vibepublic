@@ -53,25 +53,18 @@ function SelectService(props) {
     const renderUnassignedServices = () => {
         return (
             <div key={0} className={`categoryContainer __flex __sb ${0 === selectedCategory ? "selected" : ""}`} onClick={() => toggleContainer(0)}>
-                <div>
-                    {t("common.unassigned")}
-                </div>
-                <div>
-                    <KeyboardArrowRightIcon />
-                </div>
+                {t("common.unassigned")}
+                <KeyboardArrowRightIcon />
             </div>
         )
     }
 
     const renderCategories = (category) => {
+        console.log(category)
         return (
             <div key={category.id} className={`categoryContainer __flex __sb ${category.id === selectedCategory ? "selected" : ""}`} onClick={() => toggleContainer(category.id)}>
-                <div>
-                    {category.name}
-                </div>
-                <div>
-                    <KeyboardArrowRightIcon />
-                </div>
+                {category.name}
+                <KeyboardArrowRightIcon />
             </div>
         )
     }
@@ -90,9 +83,9 @@ function SelectService(props) {
 
             return (
                 <div className="__flex __service" onClick={() => setService(service)} key={service.id}>
-                    <div className='__flex __f1'>
+                    <div className='__flex-strech __f1'>
                         <div className='__image-preview'><div></div>{$imagePreview}</div>
-                        <div className='__title __col'>
+                        <div className='__title'>
                             {service.name}
                             <div className='__small'>
                                 {service.time} min
@@ -124,7 +117,6 @@ function SelectService(props) {
             <div className='__f1 __services'>
                 <h2>Service</h2>
                 <div className="__card">
-                    {services.map(renderServices)}
                     {services.map(renderServices)}
                 </div>
             </div>

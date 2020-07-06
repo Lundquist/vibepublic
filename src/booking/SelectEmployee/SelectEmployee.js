@@ -38,17 +38,25 @@ function SelectEmployee(props) {
     }
 
     return (
-      <div className="selectEmployeesButton __flex" key={employee.id} onClick={() => setEmployee(employee)}>
-        {$imagePreview}
-        <div>{employee.firstName} {employee.lastName}</div>
+      <div className="selectEmployeesButton __flex-strech">
+        <div key={employee.id} className='__flex __f1' onClick={() => setEmployee(employee)}>
+          {$imagePreview}
+          <div className='__flex __user-info __sb'>
+            {employee.firstName} {employee.lastName}
+          </div>
+        </div>
+        <i className='material-icons'>info</i>
       </div>
     )
   }
 
   return (
-    <div className="employeesContainer __pagewrapper">
+    <div className="__container">
       <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> Select employee</h2>
-      {employees.map(renderEmployees)}
+      <div className='__card2 __employees'>
+        {employees.map(renderEmployees)}
+        {employees.map(renderEmployees)}
+      </div>
     </div>
   )
 
