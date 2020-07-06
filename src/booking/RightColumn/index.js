@@ -34,7 +34,7 @@ function RightColumn() {
                         <div>
                             <h3>{selectedService.name}</h3>
                             <div className='__time'>{selectedService.time} minutes</div>
-                            {selectedEmployee.firstName !== "" && <div className='__flex __service__details'><img src="https://ca.slack-edge.com/TSVP4QZM3-USJ915H35-6d0088e7a834-512" alt={selectedEmployee.firstName} /> {selectedEmployee.firstName} {selectedEmployee.lastName}</div>}
+                            {selectedEmployee.firstName !== "" && <div className='__flex'><img src="https://ca.slack-edge.com/TSVP4QZM3-USJ915H35-6d0088e7a834-512" alt={selectedEmployee.firstName} /> {selectedEmployee.firstName} {selectedEmployee.lastName}</div>}
                         </div>
                     ) :
                         "No service selected yet"
