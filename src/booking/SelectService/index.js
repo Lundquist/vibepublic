@@ -11,6 +11,7 @@ import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import PhotoSizeSelectActual from '@material-ui/icons/PhotoSizeSelectActual'
+import DialogBox from '../../ui/DialogBox/DialogBox';
 
 function iconStyles() {
     return {
@@ -45,9 +46,10 @@ function SelectService(props) {
         dispatch(Actions.goForward(currentPage))
     }
 
+    const [selectedInfo, setSelectedInfo] = useState(null);
     const showInfo = (e, service) => {
         e.stopPropagation();
-        console.log("hehehee " + service.description)
+        setSelectedInfo(service);
     }
 
     const renderUnassignedServices = () => {
@@ -60,7 +62,6 @@ function SelectService(props) {
     }
 
     const renderCategories = (category) => {
-        console.log(category)
         return (
             <div key={category.id} className={`categoryContainer __flex __sb ${category.id === selectedCategory ? "selected" : ""}`} onClick={() => toggleContainer(category.id)}>
                 {category.name}
@@ -73,7 +74,6 @@ function SelectService(props) {
         if (service.category == selectedCategory) {
             let $imagePreview = null;
             if (service.image) {
-                console.log(service.image)
                 var buffer = new Buffer(service.image);
                 // $imagePreview = (<img className="userImage" src={buffer} />);
                 $imagePreview = (<img className="userImage" src="https://ca.slack-edge.com/TSVP4QZM3-USJ915H35-6d0088e7a834-512" />)
@@ -107,6 +107,7 @@ function SelectService(props) {
 
     return (
         <div className='__flex-strech __bookings-page'>
+            {selectedInfo && <PopUpInfo service={selectedInfo} close={() => setSelectedInfo(null)} click={(service) => setService(service)} />}
             <div className='__f1'>
                 <h2>Category</h2>
                 <div className="__card __f1">
@@ -124,4 +125,12 @@ function SelectService(props) {
     )
 
 }
+
+const PopUpInfo = ({ service, close, click }) => (
+    <DialogBox className='__popup' title={service.name} close={close}>
+        {service.description}
+        <button className='__btn' onClick={() => click(service)}>Book</button>
+    </DialogBox>
+)
+
 export default withTranslation()(withReducer('calendarApp', reducer)(SelectService));

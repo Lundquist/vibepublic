@@ -5,7 +5,7 @@ import withReducer from '../../store/withReducer';
 import reducer from '../../store/reducers';
 import { addReservation } from '../../api'
 import moment from 'moment';
-import Toast from '../../ui/Select/Toast/Toast';
+import Toast from '../../ui/Toast/Toast';
 
 function PaymentPage(props) {
     const dispatch = useDispatch();

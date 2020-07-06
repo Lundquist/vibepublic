@@ -1,0 +1,49 @@
+.__Dialog-Box__wrapper{
+    .__blur{
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        left: 0;
+        top: 0;
+        background: rgba($color: #000000, $alpha: 0.8);
+        z-index: 1;
+    }
+    .material-icons{
+        font-size: 1.1em;
+        font-weight: bold;
+        color: #9e9e9e;
+        cursor: pointer;
+    }
+    .__card2{
+        left: 50%;
+        position: fixed;
+        width: 450px;
+        border-radius: 8px;
+        transform: translate(-50%);
+        animation: DialogBox 0.4s forwards;
+        padding: 16px;
+        z-index: 2;
+    }
+    h3{
+        margin: 0 0 24px 0;
+        font-weight: bold;
+    }
+    .__actions{
+        justify-content: flex-end;
+        margin: 0 -8px -8px 0;
+    }
+    p{
+        color: #9e9e9e;
+    }
+}
+
+@keyframes DialogBox{
+    0%{
+        top: 84px;
+        opacity: 0;
+    }
+    100%{
+        top: 42px;
+        opacity: 1;
+    }
+}
