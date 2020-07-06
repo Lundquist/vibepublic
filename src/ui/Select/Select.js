@@ -25,7 +25,7 @@ const Select = props => {
     return (
         <div className='__input-container'>
             <input type='hidden' value={value} />
-            <button type='button' className='__selected __flex __sb' onBlur={closeMenu} value={value} onClick={menuHandler} ref={inputRef}>
+            <button type='button' name={props.name} className='__selected __flex __sb' onBlur={closeMenu} value={value} onClick={menuHandler} ref={inputRef}>
                 {children}
                 <i className='material-icons'>arrow_drop_down</i>
             </button>

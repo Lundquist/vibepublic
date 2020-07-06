@@ -1,5 +1,5 @@
 .__summery{
-    min-width: 220px;
+    min-width: 210px;
     .__service__details{
         border-bottom: 1px solid #d3d3d3;
         min-height: 160px;
@@ -32,11 +32,10 @@
     }
     button{
         border-radius: 16px;
-        padding: 6px 24px;
-        font-size: 0.7em;
         margin: 16px auto 0 auto;
         display: block;
         background: #7BED8D;
+        width: 100%;
     }
     @media (max-width: 800px) {
         max-width: 100%;

@@ -41,7 +41,7 @@ function CustomerInfo(props) {
                     <option value="0">Pay at site</option>
                     <option value="1">Pay now</option>
                 </select> */}
-                <Select onSelect={(htmlElm) => console.log(htmlElm.value)} >
+                <Select name='payment' onSelect={(htmlElm) => console.log(htmlElm.value)} >
                     <option value="0">Pay at site</option>
                     <option value="1">Pay now</option>
                 </Select>
