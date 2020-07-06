@@ -90,9 +90,9 @@ function SelectService(props) {
 
             return (
                 <div className="__flex __service" onClick={() => setService(service)} key={service.id}>
-                    <div className='__flex-strech __f1'>
+                    <div className='__flex __f1'>
                         <div className='__image-preview'><div></div>{$imagePreview}</div>
-                        <div className='__title'>
+                        <div className='__title __col'>
                             {service.name}
                             <div className='__small'>
                                 {service.time} min
@@ -124,6 +124,7 @@ function SelectService(props) {
             <div className='__f1 __services'>
                 <h2>Service</h2>
                 <div className="__card">
+                    {services.map(renderServices)}
                     {services.map(renderServices)}
                 </div>
             </div>
