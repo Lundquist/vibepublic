@@ -8,7 +8,7 @@ const CalenderHeaderTitle = ({ date, bookingTimes }) => {
         <div className={`__calander_booking_title ${isSameDate || bookingTimes.length > 0 ? 'black' : '' }`}>
             <div className='squar'>
                 <div>
-                    <b>{date.format('dddd')}</b>
+                    <b>{date.format('ddd')}</b>
                     <h2>{date.format('DD')}</h2>
                     {isSameDate === today.year() && <span className='dot'></span>}
                 </div>
