@@ -29,11 +29,11 @@ function SelectDate(props) {
 
 
     function setDateTime(date, time) {
-
         dispatch(Actions.setSelectedTime(date.format('YYYY-MM-DD ') + time))
         dispatch(Actions.goForward(currentPage))
         dispatch(getCustomers)
-
+        const pathname = props.location.pathname.replace('select-booking-time', `bookingtime='${time}'/customer-information${props.location.search}`);
+        props.history.push(pathname);
     }
 
     const changeWeek = (showPrevious = false) => {

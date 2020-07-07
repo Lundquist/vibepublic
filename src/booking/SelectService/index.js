@@ -74,7 +74,7 @@ function SelectService(props) {
         setService(service);
         const {pathname, search} = props.location;
         props.history.push({
-            pathname: `${pathname}/${service.name.split(' ').join('-')}/select-employee` ,
+            pathname: `${pathname}/service='${service.name.split(' ').join('-')}'/select-employee` ,
             search,
         })
         
