@@ -29,6 +29,8 @@ function CustomerInfo(props) {
             }
             dispatch(createCustomer(existingCustomer))
         }
+        const pathname = props.location.pathname.replace('customer-information', `customername='${existingCustomer.firstName}'/confirm-booking${props.location.search}`);
+        props.history.push(pathname);
         dispatch(Actions.goForward(currentPage))
 
     }
