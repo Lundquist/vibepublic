@@ -15,8 +15,14 @@
         @media (max-width: 1200px) {
             width: 95%;
         }
-        @media (max-width: 600px) {
+    }
+    @media (max-width: 800px) {
+        .__title {
             margin: 12px;
+            border-radius: 4px;
+        }
+        .headerImage{
+            display: none;
         }
     }
 }
