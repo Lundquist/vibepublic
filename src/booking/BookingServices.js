@@ -77,6 +77,7 @@ function BookingServices(props) {
                 transitionLeaveTimeout={300}
             >
                 <Switch>
+                    <Route path='/booking/:selectedService/:selectedEmployee' component={SelectDate} />
                     <Route path='/booking/:selectedService' component={SelectEmployee} />
                     <Route path='/booking' component={SelectService} />
                 </Switch>

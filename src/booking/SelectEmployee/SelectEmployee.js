@@ -18,6 +18,17 @@ function SelectEmployee(props) {
   const { t } = useTranslation();
   const [employeeInfo, setEmployeeInfo] = useState(null);
 
+
+  const selectedEmployee = (employee) => {
+    setEmployee(employee);
+    const { pathname, search } = props.location;
+    props.history.push({
+      pathname: `${pathname}/${employee.firstName}-${employee.lastName}`,
+      search,
+    })
+
+  }
+
   function setEmployee(selectedEmployee) {
     dispatch(Actions.setSelectedEmployee(selectedEmployee))
     dispatch(Actions.goForward(currentPage))
@@ -41,7 +52,7 @@ function SelectEmployee(props) {
 
     return (
       <div className="selectEmployeesButton __flex-strech">
-        <div key={employee.id} className='__flex __f1' onClick={() => setEmployee(employee)}>
+        <div key={employee.id} className='__flex __f1' onClick={() => selectedEmployee(employee)}>
           {$imagePreview}
           <div className='__flex __user-info __sb'>
             {employee.firstName} {employee.lastName}
@@ -54,7 +65,7 @@ function SelectEmployee(props) {
 
   return (
     <div className="__employees">
-      {employeeInfo && <PopUpInfo employee={employeeInfo} close={() => setEmployeeInfo(null)} click={(employee) => setEmployee(employee)} />}
+      {employeeInfo && <PopUpInfo employee={employeeInfo} close={() => setEmployeeInfo(null)} click={(employee) => selectedEmployee(employee)} />}
       <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> Select employee</h2>
       <div className='__card2'>
         {employees.map(renderEmployees)}
@@ -67,9 +78,9 @@ function SelectEmployee(props) {
 
 const PopUpInfo = ({ employee, close, click }) => (
   <DialogBox className='__popup' title={`${employee.firstName} ${employee.lastName}`} close={close}>
-      {console.log(employee)}
-      {employee.description}
-      <button className='__btn' onClick={() => click(employee)}>Book</button>
+    {console.log(employee)}
+    {employee.description}
+    <button className='__btn' onClick={() => click(employee)}>Book</button>
   </DialogBox>
 )
 
