@@ -21,12 +21,8 @@ function SelectEmployee(props) {
 
   const selectedEmployee = (employee) => {
     setEmployee(employee);
-    const { pathname, search } = props.location;
-    props.history.push({
-      pathname: `${pathname}/${employee.firstName}-${employee.lastName}`,
-      search,
-    })
-
+    const pathname = props.location.pathname.replace('/select-employee', '/') + employee.firstName + '-' + employee.lastName + '/select-booking-time' + props.location.search;
+    props.history.push(pathname);
   }
 
   function setEmployee(selectedEmployee) {

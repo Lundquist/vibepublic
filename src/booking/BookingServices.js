@@ -77,8 +77,10 @@ function BookingServices(props) {
                 transitionLeaveTimeout={300}
             >
                 <Switch>
-                    <Route path='/booking/:selectedService/:selectedEmployee' component={SelectDate} />
-                    <Route path='/booking/:selectedService' component={SelectEmployee} />
+                    {/* <Route path='/booking/:selectedService/:selectedEmployee/:date/customer-info' component={PaymentPage} /> */}
+                    <Route path='/booking/:selectedService/:selectedEmployee/:date/customer-information' component={CustomerInformation} />
+                    <Route path='/booking/:selectedService/:selectedEmployee/select-booking-time' component={SelectDate} />
+                    <Route path='/booking/:selectedService/select-employee' component={SelectEmployee} />
                     <Route path='/booking' component={SelectService} />
                 </Switch>
             </ReactCSSTransitionGroup>
