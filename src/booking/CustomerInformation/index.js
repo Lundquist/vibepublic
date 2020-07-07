@@ -34,7 +34,10 @@ function CustomerInfo(props) {
         dispatch(Actions.goForward(currentPage))
 
     }
-    const goBack = () => dispatch(Actions.goBack(currentPage)); // to tell the store to go back.
+    const goBack = () => {
+        dispatch(Actions.goBack(currentPage))
+        props.history.goBack();
+    }; // to tell the store to go back.
     return (
         <div className="__payment-Page-Container">
             <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> Select Details</h2>

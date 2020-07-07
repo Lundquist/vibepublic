@@ -21,7 +21,10 @@ function SelectDate(props) {
     const [bookings, setBookings] = useState([]);
     const [currentDate, setCurrentDate] = useState(moment());
 
-    const goBack = () => dispatch(Actions.goBack(currentPage)); // to tell the store to go back.
+    const goBack = () => {
+        dispatch(Actions.goBack(currentPage))
+        props.history.goBack();
+      }; // to tell the store to go back.
 
     useEffect(() => {
         sortBookings()

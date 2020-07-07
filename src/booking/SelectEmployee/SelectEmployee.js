@@ -32,7 +32,10 @@ function SelectEmployee(props) {
 
   }
 
-  const goBack = () => dispatch(Actions.goBack(currentPage)); // to tell the store to go back.
+  const goBack = () => {
+    dispatch(Actions.goBack(currentPage))
+    props.history.goBack();
+  }; // to tell the store to go back.
 
 
 
