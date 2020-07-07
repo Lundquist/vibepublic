@@ -70,6 +70,15 @@ function SelectService(props) {
         )
     }
 
+    const selectedService = (service) => {
+        setService(service);
+        const {pathname, search} = props.location;
+        props.history.push({
+            pathname: `${pathname}/${service.name.split(' ').join('-')}` ,
+            search,
+        })
+        
+    }
     const renderServices = (service) => {
         if (service.category == selectedCategory) {
             let $imagePreview = null;
@@ -82,7 +91,7 @@ function SelectService(props) {
             }
 
             return (
-                <div className="__flex __service" onClick={() => setService(service)} key={service.id}>
+                <div className="__flex __service" onClick={() => selectedService(service)} key={service.id}>
                     <div className='__flex-strech __f1'>
                         <div className='__image-preview'><div></div>{$imagePreview}</div>
                         <div className='__title'>

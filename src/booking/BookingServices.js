@@ -13,6 +13,9 @@ import * as moment from 'moment'
 import { useTranslation } from 'react-i18next';
 import SelectDate from './SelectDate'
 import SubHeader from './SubHeader'
+import { Route, Switch } from 'react-router-dom';
+
+
 function BookingServices(props) {
     const { currentPage } = useSelector(({ global }) => global.booking);
 
@@ -59,14 +62,13 @@ function BookingServices(props) {
             case 3:
                 return (<SelectDate key={3} />);
             case 4:
-                return <CustomerInformation  key={4}/>
+                return <CustomerInformation key={4} />
             case 5:
                 return (<PaymentPage key={5} submit={(name, phone) => submit(name, phone)} />);
             default:
                 return (<SelectService />)
         }
     }
-
     return (
         <div>
             <ReactCSSTransitionGroup
@@ -74,7 +76,10 @@ function BookingServices(props) {
                 transitionEnterTimeout={300}
                 transitionLeaveTimeout={300}
             >
-                {renderPage()}
+                <Switch>
+                    <Route path='/booking/:selectedService' component={SelectEmployee} />
+                    <Route path='/booking' component={SelectService} />
+                </Switch>
             </ReactCSSTransitionGroup>
         </div>
     )
