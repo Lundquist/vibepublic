@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Actions from '../../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import withReducer from '../../store/withReducer';
@@ -7,7 +7,8 @@ import { useTranslation } from 'react-i18next';
 import { getAvailableHours } from '../../api'
 import moment from 'moment'
 import './style.scss';
-import SubHeader from '../SubHeader'
+import SubHeader from '../SubHeader';
+import DialogBox from '../../ui/DialogBox/DialogBox'
 
 
 function SelectEmployee(props) {
@@ -15,6 +16,7 @@ function SelectEmployee(props) {
   const { employees, selectedService } = useSelector(({ global }) => global.services);
   const { currentPage } = useSelector(({ global }) => global.booking);
   const { t } = useTranslation();
+  const [employeeInfo, setEmployeeInfo] = useState(null);
 
   function setEmployee(selectedEmployee) {
     dispatch(Actions.setSelectedEmployee(selectedEmployee))
@@ -45,13 +47,14 @@ function SelectEmployee(props) {
             {employee.firstName} {employee.lastName}
           </div>
         </div>
-        <i className='material-icons'>info</i>
+        <i className='material-icons' onClick={() => setEmployeeInfo(employee)}>info</i>
       </div>
     )
   }
 
   return (
     <div className="__employees">
+      {employeeInfo && <PopUpInfo employee={employeeInfo} close={() => setEmployeeInfo(null)} click={(employee) => setEmployee(employee)} />}
       <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> Select employee</h2>
       <div className='__card2'>
         {employees.map(renderEmployees)}
@@ -61,6 +64,14 @@ function SelectEmployee(props) {
   )
 
 }
+
+const PopUpInfo = ({ employee, close, click }) => (
+  <DialogBox className='__popup' title={`${employee.firstName} ${employee.lastName}`} close={close}>
+      {console.log(employee)}
+      {employee.description}
+      <button className='__btn' onClick={() => click(employee)}>Book</button>
+  </DialogBox>
+)
 
 //                 
 

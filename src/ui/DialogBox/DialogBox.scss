@@ -23,6 +23,9 @@
         animation: DialogBox 0.4s forwards;
         padding: 16px;
         z-index: 2;
+        @media (max-width: 500px) {
+            width: 90%;
+        }
     }
     h3{
         margin: 0 0 24px 0;
