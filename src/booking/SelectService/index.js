@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useRef } from 'react';
 import './style.scss';
 import * as Actions from '../../store/actions';
 import { getEmployeesForService } from '../../api'
@@ -25,19 +25,21 @@ function iconStyles() {
 function SelectService(props) {
     const dispatch = useDispatch();
     const classes = makeStyles(iconStyles)();
-
+    const servicesWrapper = useRef();
     const { t } = props;
 
     const [selectedCategory, setSelectedCategory] = useState(0);
     const { services, categories } = useSelector(({ global }) => global.services);
     const { currentPage } = useSelector(({ global }) => global.booking);
 
-    function toggleContainer(id) {
+    function toggleContainer(id, e) {
         if (selectedCategory !== id) {
             setSelectedCategory(id)
         } else {
             setSelectedCategory(0)
         }
+        e.target.scrollIntoView();
+        servicesWrapper.current.scrollIntoView();
     }
 
     const setService = (service) => {
@@ -54,7 +56,7 @@ function SelectService(props) {
 
     const renderUnassignedServices = () => {
         return (
-            <div key={0} className={`categoryContainer __flex __sb ${0 === selectedCategory ? "selected" : ""}`} onClick={() => toggleContainer(0)}>
+            <div key={0} className={`categoryContainer __flex __sb ${0 === selectedCategory ? "selected" : ""}`} onClick={(e) => toggleContainer(0, e)}>
                 {t("common.unassigned")}
                 <KeyboardArrowRightIcon />
             </div>
@@ -63,7 +65,7 @@ function SelectService(props) {
 
     const renderCategories = (category) => {
         return (
-            <div key={category.id} className={`categoryContainer __flex __sb ${category.id === selectedCategory ? "selected" : ""}`} onClick={() => toggleContainer(category.id)}>
+            <div key={category.id} className={`categoryContainer __flex __sb ${category.id === selectedCategory ? "selected" : ""}`} onClick={(e) => toggleContainer(category.id, e)}>
                 {category.name}
                 <KeyboardArrowRightIcon />
             </div>
@@ -91,7 +93,7 @@ function SelectService(props) {
             }
 
             return (
-                <div className="__flex __service" onClick={() => selectedService(service)} key={service.id}>
+                <div className="__flex __service" onClick={(e) => selectedService(service)} key={service.id}>
                     <div className='__flex-strech __f1'>
                         <div className='__image-preview'><div></div>{$imagePreview}</div>
                         <div className='__title'>
@@ -115,11 +117,11 @@ function SelectService(props) {
     //            
 
     return (
-        <div className='__flex-strech __bookings-page'>
+        <div className='__flex-strech __bookings-page' ref={servicesWrapper}>
             {selectedInfo && <PopUpInfo service={selectedInfo} close={() => setSelectedInfo(null)} click={(service) => setService(service)} />}
             <div className='__f1'>
                 <h2>Category</h2>
-                <div className="__card __f1">
+                <div className="__card __f1 __categories-wrapper">
                     {categories.map(renderCategories)}
                     {renderUnassignedServices()}
                 </div>

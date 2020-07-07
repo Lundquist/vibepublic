@@ -44,6 +44,32 @@
         }
     }   
     @media (max-width: 800px) {
+        .__categories-wrapper{
+            padding: 12px;
+            display: flex;
+            overflow: auto;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+            .categoryContainer{
+                margin: 0;
+                border: none;
+                padding: 6px 12px;
+                white-space: nowrap;
+                border-radius: 16px;
+                background: transparent;
+                position: relative;
+                &.selected{
+                    background: #3B86FF;
+                    color: #fff;
+                }
+                svg{
+                    display: none;
+                }
+            }
+            &::after{
+                padding: 6px;
+                content: '';
+            }
+        }
         display: block;
         .__services{
             margin: 32px 0;
