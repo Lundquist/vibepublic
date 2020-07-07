@@ -7,14 +7,13 @@
         transform: translate(0, -50%);
         cursor: pointer;
     }
-    @media (max-width: 800px) {
+    @media (max-width: 1200px) {
         .material-icons{
-            left: -42px;
-        }    
+            left: -28px;
+        }
     }
-    @media (max-width: 600px) {
+    @media (max-width: 800px) {
         display: flex;
-        align-items: center;
         .material-icons{
             position: static;
             transform: initial;
