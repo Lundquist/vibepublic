@@ -14,14 +14,12 @@ function BookingContent(props) {
     const params = new URLSearchParams(search);
     const companyId = params.get('companyId');
     const { initialized } = useSelector(({ global }) => global.company);
-    console.log("BookingContent")
 
     if (!initialized)
         dispatch(Actions.setCurrentCompany(companyId))
 
     const mouseDownHandler = (event) => {
         event.stopPropagation();
-        console.log("mouseDownHandler " + event.button)
         if (event.button === 1) {
             // do something on middle mouse button click
         }
