@@ -43,7 +43,6 @@ function SelectService(props) {
 
     useEffect(() => {
         setSelectedCategory(categories.length > 0 ? categories[0].id : 0)
-        console.log("asdf" + selectedCategory)
     }, [categories]);
 
     const setService = (service) => {
@@ -86,10 +85,6 @@ function SelectService(props) {
         
     }
     const renderServices = (service) => {
-        console.log("renderServices ")
-        console.log(selectedCategory)
-        console.log(service.category)
-
         if (service.category == selectedCategory) {
             let $imagePreview = null;
             if (service.image) {
