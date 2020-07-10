@@ -122,7 +122,6 @@ function SelectService(props) {
             <div className='__f1'>
                 <h2>Category</h2>
                 <div className="__card2 __f1 __categories-wrapper">
-                {renderUnassignedServices()}
                 {categories.map(renderCategories)}  
                 </div>
             </div>
