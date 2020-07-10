@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './style.scss';
 import * as Actions from '../../store/actions';
 import { getEmployeesForService } from '../../api'
@@ -28,10 +28,9 @@ function SelectService(props) {
     const servicesWrapper = useRef();
     const { t } = props;
 
-    const [selectedCategory, setSelectedCategory] = useState(0);
     const { services, categories } = useSelector(({ global }) => global.services);
     const { currentPage } = useSelector(({ global }) => global.booking);
-
+    const [selectedCategory, setSelectedCategory] = useState(categories.length > 0 ? categories[0].id : 0);
     function toggleContainer(id, e) {
         if (selectedCategory !== id) {
             setSelectedCategory(id)
@@ -41,6 +40,11 @@ function SelectService(props) {
         e.target.scrollIntoView();
         servicesWrapper.current.scrollIntoView();
     }
+
+    useEffect(() => {
+        setSelectedCategory(categories.length > 0 ? categories[0].id : 0)
+        console.log("asdf" + selectedCategory)
+    }, [categories]);
 
     const setService = (service) => {
         dispatch(Actions.setSelectedService(service.id))
@@ -82,6 +86,10 @@ function SelectService(props) {
         
     }
     const renderServices = (service) => {
+        console.log("renderServices ")
+        console.log(selectedCategory)
+        console.log(service.category)
+
         if (service.category == selectedCategory) {
             let $imagePreview = null;
             if (service.image) {
