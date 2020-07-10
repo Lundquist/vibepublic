@@ -7,8 +7,6 @@ import * as Actions from '../store/actions';
 const server = config.serverUrl
 
 function companyId() {
-    //return 2381;
-    console.log("companyID " + store.getState().global.company.information.id)
     return store.getState().global.company.information.id
 }
 export function getEmployees() {
@@ -17,6 +15,8 @@ export function getEmployees() {
 
     return (dispatch) =>
         request.then((response) => {
+            console.log("SelectEmployee " + JSON.stringify(response.data.Rows))
+
             dispatch(Actions.getEmployees(response.data.Rows))
         });
 }

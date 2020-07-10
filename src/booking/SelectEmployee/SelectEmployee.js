@@ -18,6 +18,7 @@ function SelectEmployee(props) {
   const { t } = useTranslation();
   const [employeeInfo, setEmployeeInfo] = useState(null);
 
+  console.log("SelectEmployee " + JSON.stringify(employees))
 
   const selectedEmployee = (employee) => {
     setEmployee(employee);
@@ -67,7 +68,6 @@ function SelectEmployee(props) {
       {employeeInfo && <PopUpInfo employee={employeeInfo} close={() => setEmployeeInfo(null)} click={(employee) => selectedEmployee(employee)} />}
       <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> Select employee</h2>
       <div className='__card2'>
-        {employees.map(renderEmployees)}
         {employees.map(renderEmployees)}
       </div>
     </div>
