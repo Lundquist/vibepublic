@@ -7,8 +7,9 @@ import * as Actions from '../store/actions';
 const server = config.serverUrl
 
 function companyId() {
-    return 2381;
-  //  return store.getState().global.company.information.id
+    //return 2381;
+    console.log("companyID " + store.getState().global.company.information.id)
+    return store.getState().global.company.information.id
 }
 export function getEmployees() {
     const URL = `${config.serverUrl}/employeecompany?companyId=${companyId()}`;

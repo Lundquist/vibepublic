@@ -21,8 +21,8 @@ export const INITIALIZE_COMPANY = '[GLOBAL] INITIALIZE_COMPANY';
 //const server = config.serverUrl
 
 function companyId() {
-    return 1;
-   // return store.getState().global.company.information.id
+    //return 1;
+    return store.getState().global.company.information.id
 }
 
 export function createNewCompany(email) {

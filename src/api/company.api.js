@@ -8,8 +8,8 @@ import store from '../store'
 const server = config.serverUrl
 
 function companyId() {
-    return 2381;
-   // return store.getState().global.company.information.id
+    //return 2381;
+    return store.getState().global.company.information.id
 }
 
 export function saveCompanyInfo(body) {

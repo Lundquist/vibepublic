@@ -6,8 +6,8 @@ import store from '../store'
 //store.subscribe(companyId)
 
 function companyId() {
-    return 2381;
-    //return store.getState().global.company.information.id
+    //return 2381;
+    return store.getState().global.company.information.id
 }
 
 export function getAvailableHours(employeeId, selectedDate, serviceTime) {

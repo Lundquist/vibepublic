@@ -5,8 +5,8 @@ import store from '../../../store'
 //store.subscribe(companyId)
 
 function companyId() {
-    return 1;
-    //return store.getState().global.company.information.id
+    //return 1;
+    return store.getState().global.company.information.id
 }
 
 

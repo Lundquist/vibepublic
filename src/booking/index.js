@@ -14,7 +14,7 @@ function BookingContent(props) {
     const params = new URLSearchParams(search);
     const companyId = params.get('companyId');
     const { initialized } = useSelector(({ global }) => global.company);
-console.log("BookingContent " + companyId)
+
     if (!initialized)
         dispatch(Actions.setCurrentCompany(companyId))
 
