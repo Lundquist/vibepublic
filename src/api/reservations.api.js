@@ -14,7 +14,6 @@ import axios from 'axios';
  * price: price of the service
  */
 export function addReservation(newReservation) {
-    console.log("addReservation " + config.serverUrl)
     return (dispatch) => {
         const request = axios.post(`${config.serverUrl}/reservations`, newReservation, {
             headers: {

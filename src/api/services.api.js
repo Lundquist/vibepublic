@@ -8,7 +8,7 @@ console.log("hrhrhrhrhr " + store)
 
 //store.subscribe(companyId)
 function companyId() {
-    return 1;
+    return 2381;
    // return store.getState().global.company.information.id
 }
 

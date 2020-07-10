@@ -8,7 +8,7 @@ import store from '../store'
 const server = config.serverUrl
 
 function companyId() {
-    return 1;
+    return 2381;
    // return store.getState().global.company.information.id
 }
 
