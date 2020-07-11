@@ -18,8 +18,6 @@ function SelectEmployee(props) {
   const { t } = useTranslation();
   const [employeeInfo, setEmployeeInfo] = useState(null);
 
-  console.log("SelectEmployee " + JSON.stringify(employees))
-
   const selectedEmployee = (employee) => {
     setEmployee(employee);
     const pathname = props.location.pathname.replace('select-employee', `employee='${employee.firstName}-${employee.lastName}'/select-booking-time${props.location.search}`);
@@ -32,7 +30,7 @@ function SelectEmployee(props) {
     dispatch(getAvailableHours(selectedEmployee.id, moment(), selectedService.id))
 
   }
-
+console.log("SelectEmployee " + JSON.stringify(employees))
   const goBack = () => {
     dispatch(Actions.goBack(currentPage))
     props.history.goBack();
