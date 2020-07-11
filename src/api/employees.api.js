@@ -15,8 +15,6 @@ export function getEmployees() {
 
     return (dispatch) =>
         request.then((response) => {
-            console.log("SelectEmployee " + JSON.stringify(response.data.Rows))
-
             dispatch(Actions.getEmployees(response.data.Rows))
         });
 }
