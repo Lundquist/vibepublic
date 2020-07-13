@@ -3,6 +3,7 @@ export const GO_BACK = '[BOOKING] GO_BACK';
 export const SET_AVAILABLE_HOURS = '[BOOKING] SET_AVAILABLE_HOURS';
 export const SET_SELECTED_TIME = '[BOOKING] SET_SELECTED_TIME';
 export const GO_TO_START = '[BOOKING] GO_TO_START';
+export const SET_BOOKING_NOTE = '[BOOKING] SET_BOOKING_NOTE';
 
 export function goForward(currentPage) {
     return {
@@ -38,6 +39,14 @@ export function setSelectedTime(time) {
         payload: time
     }
 }
+
+export function setBookingNote(note) {
+    return {
+        type: SET_BOOKING_NOTE,
+        payload: note
+    }
+}
+
 
 
 

@@ -8,46 +8,13 @@ import moment from 'moment';
 
 function PaymentPage(props) {
     const dispatch = useDispatch();
-    const { selectedTime } = useSelector(({ global }) => global.booking);
+    const { selectedTime, reservationNote } = useSelector(({ global }) => global.booking);
     const { selectedEmployee } = useSelector(({ global }) => global.employees);
     const { selectedService } = useSelector(({ global }) => global.services);
     const { selectedCustomer } = useSelector(({ global }) => global.customers);
     const [showToast, setShowToast] = useState(false);
 
-    /*
-    const stripe = window.Stripe("pk_test_wguKhnBNi9r1x4gDqXkgITv200M57KPGJm");
-
-    async function handleStripe(e) {
-        /*
-        const session = await Actions.payWithStripe({ customer: "Robert", price: 1337 }) .then(response => {
-            console.log("1111 " + session)
-            const {error} = stripe.redirectToCheckout({
-                // Make the id field from the Checkout Session creation API response
-                // available to this file, so you can provide it as parameter here
-                // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
-                sessionId: response.result.id
-              }).then(response2 => {
-                    console.log("magass " + session)
-              })
-              console.log(error.message)
-              // If `redirectToCheckout` fails due to a browser or network
-              // error, display the localized error message to your customer
-              // using `error.message`.
-              
-        })
-
-         * start: YYYY-MM-DD HH:mm:ss
- * end: YYYY-MM-DD HH:mm:ss
- * employee: The ID of the employee
- * service: ID of the service
- * customer: ID of the customer.
- * note: note about the reservation
- * price: price of the service
-
-       
-    } */
-
-    const submit = () => {
+     const submit = () => {
         setShowToast(false);
         setShowToast(true);
         let newReservation = {
@@ -56,10 +23,10 @@ function PaymentPage(props) {
             employee: selectedEmployee.id,
             customer: selectedCustomer.userId,
             service: selectedService.id,
-            price: selectedService.price
+            price: selectedService.price,
+            note: reservationNote
 
         }
-        console.log("submit " + JSON.stringify(newReservation))
         dispatch(addReservation(newReservation))
     }
 

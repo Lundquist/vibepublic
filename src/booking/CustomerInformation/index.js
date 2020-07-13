@@ -16,7 +16,6 @@ function CustomerInfo(props) {
     const onSubmit = (data) => {
         let existingCustomer = customers.find(customer => customer.email === data.email)
         if (existingCustomer !== undefined) {
-            console.log("we should save")
             existingCustomer.firstName = data.firstName
             existingCustomer.lastName = data.lastName
             existingCustomer.phone = data.phone
@@ -30,6 +29,7 @@ function CustomerInfo(props) {
             }
             dispatch(createCustomer(existingCustomer))
         }
+        dispatch(Actions.setBookingNote(data.notes))
         const pathname = props.location.pathname.replace('customer-information', `customername='${existingCustomer.firstName}'/confirm-booking${props.location.search}`);
         props.history.push(pathname);
         dispatch(Actions.goForward(currentPage))

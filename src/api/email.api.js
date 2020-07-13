@@ -2,6 +2,7 @@ import * as Actions from '../store/actions'
 import config from '../config'
 import axios from 'axios';
 import store from '../store'
+import { setSelectedEmployee } from '../store/actions';
 
 function selectedCustomer() {
     return store.getState().global.customers.selectedCustomer
@@ -15,6 +16,13 @@ function selectedDate() {
 function companyInformation() {
     return store.getState().global.company.information
 }
+function employee() {
+    return store.getState().global.employees.selectedEmplyoee
+}
+function notes() {
+    return store.getState().global.booking.reservationNote
+}
+
 export function sendEmail() {
     const URL = `${config.serverUrl}/email/confirmation`
 
@@ -25,7 +33,9 @@ export function sendEmail() {
         service: selectedService().name,
         serviceTime: selectedService().time,
         address: companyInformation().address,
-        price: selectedService().price
+        price: selectedService().price,
+        employee: employee(),
+        notes: notes()
     });
     request.then((response) => {
     })

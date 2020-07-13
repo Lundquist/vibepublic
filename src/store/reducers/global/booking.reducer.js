@@ -4,7 +4,8 @@ import moment from 'moment';
 const initialState = {
     currentPage: 1,
     availableHours: [],
-    selectedTime: moment()
+    selectedTime: moment(),
+    reservationNote: ''
 
 }
 
@@ -45,6 +46,14 @@ const bookingReducer = function (state = initialState, action) {
                     selectedTime: action.payload
                 };
             }
+        case Actions.SET_BOOKING_NOTE:
+            {
+                return {
+                    ...state,
+                    reservationNote: action.payload
+                };
+            }
+
         default:
             return state;
     }
