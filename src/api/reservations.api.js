@@ -21,8 +21,10 @@ export function addReservation(newReservation) {
             }
         });
 
-        return request.then((response) =>
-            sendEmail()
+        return request.then((response) => {
+            if (!response.Error)
+                sendEmail()
+        }
         )
     };
 }
