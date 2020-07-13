@@ -1,6 +1,6 @@
 import config from '../config'
 import axios from 'axios';
-
+import { sendEmail } from '../api'
 /**
  * 
  * @param {*} newReservation 
@@ -22,8 +22,7 @@ export function addReservation(newReservation) {
         });
 
         return request.then((response) =>
-            console.log("addReservation " + JSON.stringify(response))
-
+            sendEmail()
         )
     };
 }

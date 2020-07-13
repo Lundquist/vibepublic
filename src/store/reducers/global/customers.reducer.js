@@ -44,7 +44,6 @@ const customersReducer = function (state = initialState, action) {
             }
         }
         case Actions.SET_CUSTOMER: {
-            console.log("SET_CUSTOMER " + JSON.stringify(action.payload))
             return{
                 ...state,
                 selectedCustomer: action.payload

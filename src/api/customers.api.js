@@ -32,7 +32,6 @@ export function saveCustomer(customer) {
     });
     return (dispatch) =>
         request.then((response) => {
-            console.log("customers.api saveCustomer " + JSON.stringify(response))
             dispatch(Actions.setCustomer(customer))
         });
 }

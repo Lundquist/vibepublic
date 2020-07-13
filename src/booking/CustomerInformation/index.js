@@ -16,6 +16,7 @@ function CustomerInfo(props) {
     const onSubmit = (data) => {
         let existingCustomer = customers.find(customer => customer.email === data.email)
         if (existingCustomer !== undefined) {
+            console.log("we should save")
             existingCustomer.firstName = data.firstName
             existingCustomer.lastName = data.lastName
             existingCustomer.phone = data.phone
