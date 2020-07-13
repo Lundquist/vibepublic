@@ -4,19 +4,28 @@ import axios from 'axios';
 import store from '../store'
 
 function selectedCustomer() {
-    //return 2381;
-    //console.log("selectedCustomer " + JSON.stringify(store.getState().global))
     return store.getState().global.customers.selectedCustomer
 }
-
+function selectedService() {
+    return store.getState().global.services.selectedService
+}
+function selectedDate() {
+    return store.getState().global.booking.selectedTime
+}
+function companyInformation() {
+    return store.getState().global.company.information
+}
 export function sendEmail() {
     const URL = `${config.serverUrl}/email/confirmation`
-    console.log("TestMail " + selectedCustomer().firstname)
-    console.log("TestMail " + selectedCustomer().email)
 
     const request = axios.post(URL, {
         name: selectedCustomer().firstname,
-        email: selectedCustomer().email
+        email: selectedCustomer().email,
+        selectedTime: selectedDate(),
+        service: selectedService().name,
+        serviceTime: selectedService().time,
+        address: companyInformation().address,
+        price: selectedService().price
     });
     request.then((response) => {
     })
