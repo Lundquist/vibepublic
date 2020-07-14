@@ -85,6 +85,8 @@ export function setCurrentCompany(companyId) {
                 dispatch(api.getOpeningHours())
                 dispatch(getCompanyReservations(companyId))
 
+            }else{
+                console.log("getCompany ERROR" + JSON.stringify(response.data.Error))
             }
         }).then(() => dispatch(initializeCompany())
         ).catch(e => console.log("setCurrentCompany ERROR: " + e));
