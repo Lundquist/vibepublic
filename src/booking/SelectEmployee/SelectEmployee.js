@@ -65,7 +65,7 @@ function SelectEmployee(props) {
   return (
     <div className="__employees">
       {employeeInfo && <PopUpInfo employee={employeeInfo} close={() => setEmployeeInfo(null)} click={(employee) => selectedEmployee(employee)} />}
-      <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> {t('common.customer')}</h2>
+      <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> {t('selectEmployee')}</h2>
       <div className='__card2'>
         {employees.map(renderEmployees)}
       </div>

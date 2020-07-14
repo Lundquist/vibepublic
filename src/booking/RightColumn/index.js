@@ -5,8 +5,11 @@ import reducer from '../../store/reducers';
 import moment from 'moment'
 import { Map, Marker } from 'google-maps-react';
 import './style.scss';
+import { withTranslation } from 'react-i18next';
 
-function RightColumn() {
+
+function RightColumn(props) {
+    const { t } = props;
     const { selectedTime } = useSelector(({ global }) => global.booking);
     const { selectedEmployee } = useSelector(({ global }) => global.employees);
     const { selectedService } = useSelector(({ global }) => global.services);
@@ -27,7 +30,7 @@ function RightColumn() {
     }
     return (
         <div className='__summery'>
-            <h2>Summery</h2>
+            <h2> {t("summary")}</h2>
             <div className="__card2">
                 <div className='__service__details'>
                     {selectedService.id !== 0 ? (
@@ -37,7 +40,7 @@ function RightColumn() {
                             {selectedEmployee.firstName !== "" && <div className='__flex'><img src="https://ca.slack-edge.com/TSVP4QZM3-USJ915H35-6d0088e7a834-512" alt={selectedEmployee.firstName} /> {selectedEmployee.firstName} {selectedEmployee.lastName}</div>}
                         </div>
                     ) :
-                        "No service selected yet"
+                        t('noService')
                     }
                     {moment(selectedTime) >= moment() && <h3 className='__date'>{getEndingTime()}</h3>}
                 </div>
@@ -59,4 +62,4 @@ function RightColumn() {
     )
 
 }
-export default withReducer('calendarApp', reducer)(RightColumn);
+export default withTranslation()(withReducer('calendarApp', reducer)(RightColumn));

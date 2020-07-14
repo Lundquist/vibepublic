@@ -1,17 +1,23 @@
 import React from 'react';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
+import withReducer from '../../store/withReducer';
+import reducer from '../../store/reducers';
 import { createCustomer, saveCustomer } from '../../api'
 import * as Actions from '../../store/actions';
 import { useForm } from 'react-hook-form'
 import SubHeader from '../SubHeader';
 import Select from '../../ui/Select/Select';
+import { useTranslation } from 'react-i18next';
+
+
 
 function CustomerInfo(props) {
     const dispatch = useDispatch();
     const { register, handleSubmit, errors } = useForm()
     const { customers } = useSelector(({ global }) => global.customers);
     const { currentPage } = useSelector(({ global }) => global.booking);
+    const { t } = useTranslation();
 
     const onSubmit = (data) => {
         let existingCustomer = customers.find(customer => customer.email === data.email)
@@ -41,35 +47,35 @@ function CustomerInfo(props) {
     }; // to tell the store to go back.
     return (
         <div className="__payment-Page-Container">
-            <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> Select Details</h2>
+            <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> {t('completeBooking')}</h2>
             <form onSubmit={handleSubmit(onSubmit)} className='__card2'>
                 {/* <select name={"payment"} ref={register({ required: true })}>
                     <option value="0">Pay at site</option>
                     <option value="1">Pay now</option>
                 </select> */}
                 <Select name='payment' onSelect={(htmlElm) => console.log(htmlElm.value)} >
-                    <option value="0">Pay at site</option>
-                    <option value="1">Pay now</option>
+                    <option value="0">{t('paySite')}</option>
+                    <option value="1">{t('payNow')}</option>
                 </Select>
-                <input name="firstName" placeholder="First Name" ref={register({ required: true })} />
-                {errors.exampleRequired && <span>This field is required</span>}
+                <input name="firstName" placeholder={t('name')} ref={register({ required: true })} />
+                {errors.exampleRequired && <span>{t('reqField')}</span>}
 
-                <input name="lastName" placeholder="Last Name" ref={register({ required: true })} />
-                {errors.exampleRequired && <span>This field is required</span>}
+                <input name="lastName" placeholder={t('lastName')} ref={register({ required: true })} />
+                {errors.exampleRequired && <span>{t('reqField')}</span>}
 
-                <input name="email" placeholder="Email" ref={register({ required: true })} />
-                {errors.exampleRequired && <span>This field is required</span>}
+                <input name="email" placeholder={t('email')} ref={register({ required: true })} />
+                {errors.exampleRequired && <span>{t('reqField')}</span>}
 
-                <input name="phone" placeholder="Phone Number" ref={register({ required: true })} />
-                {errors.exampleRequired && <span>This field is required</span>}
+                <input name="phone" placeholder={t('phone')} ref={register({ required: true })} />
+                {errors.exampleRequired && <span>{t('reqField')}</span>}
 
-                <textarea name="notes" placeholder="Notes" rows={5}
+                <textarea name="notes" placeholder={t('notes')} rows={5}
                     ref={register({ required: false })} />
 
-                <button className='__btn'>Book now</button>
+                <button className='__btn'>{t('bookNow')}</button>
             </form>
         </div>
     )
 }
 
-export default CustomerInfo;
+export default withReducer('calendarApp', reducer)(CustomerInfo);

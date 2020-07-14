@@ -11,6 +11,8 @@ import { useTranslation } from 'react-i18next';
 import CalenderHeaderTitle from './CalenderHeader';
 import DateItem from './DateItem';
 import SubHeader from '../SubHeader'
+
+
 function SelectDate(props) {
     const dispatch = useDispatch();
     const { t } = useTranslation();
@@ -79,11 +81,11 @@ function SelectDate(props) {
                     <header className='__flex __sb'>
                         <div className={`__flex no-select ${currentDate <= moment() ? 'grey' : ''}`} onClick={() => changeWeek(true)}>
                             <i className='material-icons'>keyboard_arrow_left</i>
-                            <span>Earlier</span>
+                            <span>{t('earlier')}</span>
                         </div>
                         {bookings.length > 0 && <div className="no-select">{currentDate.format('DD')} - {currentDate.clone().add(6, 'days').format('DD')} {currentDate.format('MMM')}</div>}
                         <div className='__flex no-select' onClick={() => changeWeek()}>
-                            <span>Later</span>
+                            <span>{t('later')}</span>
                             <i className='material-icons'>keyboard_arrow_right</i>
                         </div>
                     </header>
