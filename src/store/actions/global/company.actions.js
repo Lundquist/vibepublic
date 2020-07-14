@@ -65,7 +65,8 @@ export function setCurrentCompany(companyId) {
     const request = axios.get(URL, {
         headers: {
             'Content-Type': 'application/json',
-        }
+            'Access-Control-Allow-Origin': '*'
+        },
     });
 
     return (dispatch) => {
