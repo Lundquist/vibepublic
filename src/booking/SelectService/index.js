@@ -39,6 +39,10 @@ function SelectService(props) {
         e.target.scrollIntoView();
         servicesWrapper.current.scrollIntoView();
     }
+    console.log("SelectService " )
+    console.log(JSON.stringify(services))
+    console.log("SelectService " )
+    console.log(JSON.stringify(categories))
 
     useEffect(() => {
         setSelectedCategory(categories.length > 0 ? categories[0].id : 0)

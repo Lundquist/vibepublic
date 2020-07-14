@@ -9,7 +9,6 @@ const server = config.serverUrl
 
 function companyId() {
     //return 2381;
-    console.log("company.api/companyId " + JSON.stringify(store.getState().global.company.information))
     return store.getState().global.company.information.id
 }
 
