@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 function BookingInfo() {
     const { information } = useSelector(({ global }) => global.company);
-    const backgroundImage = 'https://imageproxy.b17g.services/convert.jpeg?imformat=generic&quality=80&resize=375x204&shape=trimcut&source=https%3A%2F%2Fwww.fotbollskanalen.se%2FImageHandler.axd%3FimageFormat%3Doriginal%26guid%3Dd9507e5e-18d6-45f8-8932-81ddd1647384&retina=true';
+    const backgroundImage = 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80';
 
     return (
         <div id="headerContainer">

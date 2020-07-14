@@ -8,7 +8,7 @@ const availableLanguages = ['es', 'en', 'sv'];
 
 i18n
   .use(Backend) // load translation using xhr -> see /public/locales. We will add locales in the next step
-  .use(LanguageDetector)
+  //.use(LanguageDetector)
   .use(initReactI18next) // pass the i18n instance to react-i18next.
   .init({
     fallbackLng, // if user computer language is not on the list of available languages, than we will be using the fallback language specified earlier
