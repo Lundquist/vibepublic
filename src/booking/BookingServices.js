@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import withReducer from '../store/withReducer';
 import reducer from '../store/reducers';
 import * as moment from 'moment'
-import { useTranslation } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import SelectDate from './SelectDate'
 import SubHeader from './SubHeader'
 import { Route, Switch } from 'react-router-dom';
@@ -23,8 +23,8 @@ function BookingServices(props) {
     const [selectedEmployee, setSelectedEmployee] = useState(0);
     const [selectedDate, setSelectedDate] = useState(moment().format('YYYY-MM-DD'));
     const [selectedTime, setSelectedTime] = useState(0);
-    const { t } = useTranslation();
-
+    const { t } = props;
+    console.log("BookingServices " + t('common.myProfile'))
     async function submit(name, phone) {
         var newReservation = {
             start: selectedTime,
@@ -88,4 +88,4 @@ function BookingServices(props) {
     )
 
 }
-export default withReducer('calendarApp', reducer)(BookingServices);
+export default withTranslation()(withReducer('calendarApp', reducer)(BookingServices));

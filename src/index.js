@@ -5,6 +5,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import rootReducer from './store/reducers';
+import './i18n';
+
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
