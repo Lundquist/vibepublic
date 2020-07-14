@@ -2,7 +2,6 @@
 #selectDateAndTimeContainer {
     display: flex;
     flex-direction: column;
-    max-width: 724px;
     margin: auto;
     @media (max-width: 800px) {
         margin: 0 !important;

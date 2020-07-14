@@ -1,0 +1,194 @@
+{
+  "week_days": {
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday"
+  },
+  "common": {
+    "myProfile": "My Profile",
+    "inbox": "Inbox",
+    "logout": "Logout",
+    "settings": "Settings",
+    "back": "Back",
+    "ok": "OK",
+    "submit": "Submit",
+    "today": "Today",
+    "day": "Day",
+    "week": "Week",
+    "month": "Month",
+    "year": "Year",
+    "filter": "Filter",
+    "name": "Name", 
+    "userName": "Username",
+    "password": "Password",
+    "email": "E-mail",
+    "export": "Export",
+    "customer": "Customer",
+    "search": "Search",
+    "date": "Date",
+    "income": "Income",
+    "requiredField": "This field is required",
+    "calendar": "Calendar",
+    "edit": "Edit",
+    "address": "Address",
+    "website": "Website",
+    "select": "Select",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "add": "Add",
+    "clear": "Clear",
+    "location": "Location",
+    "unassigned": "Unassigned",
+    "delete": "Delete",
+    "employee": "Employee",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "phone":  "Phone",
+    "services": "Services",
+    "time": "Time",
+    "invoice": "Invoice",
+    "showMore": "Show More",
+    "birthday": "Birthday",
+    "visits": "Visits"
+
+  },
+  "sidePanelHeaderText": {
+    "SETTINGS_PANEL": "Settings",
+    "BOOKING_PANEL": "Booking",
+    "BOOKING_SETTINGS": "Booking Settings",
+    "BOOKING_CONTACT": "Messaging settings",
+    "EDIT_EMPLOYEE_PANEL": "New Employee",
+    "EMPLOYEE_PANEL": "Employee",
+    "SERVICE_PANEL": "Service",
+    "SEARCH_PANEL": "Search",
+    "CUSTOMER_PANEL": "Client",
+    "CATEGORY_PANEL": "Categories",
+    "COMPANY_INFORMATION_PANEL": "Company information",
+    "yourSubscription": "Your Subscription"
+
+  },
+  "sidepanel": {
+    "settings": {
+      "location_specific": "Location specific",
+      "payment_options": "Payment options",
+      "plugins": "Plugins",
+      "your_subscription": "Your subscription",
+      "language": "Language",
+      "currency": "Currency",
+      "time": "Time",
+      "change_plan": "Change plan",
+      "billing_options": "Billing options"
+    },
+    "employee": {
+      "new_employee": "New employee",
+      "working_times_holiday": "Working times & holiday",
+      "salary_overview": "Salary overview",
+      "working_times": "Working times",
+      "upcoming_holidays": "Upcoming holidays",
+      "no_employees_available": "No other employees are available to work on these dates",
+      "view_on_calendar": "View holidays on calendar",
+      "add_name": "Add a name"
+    }
+  },
+  "booking": {
+    "chooseService": "Choose a service",
+    "selectEmployee": "Select an employee",
+    "name": "Name",
+    "phone": "Phone",
+    "email":"E-mail",
+    "notes":"Notes",
+    "edit":"Edit",
+    "customerDetails":"Customer Details",
+    "internalNote":"Internal Note",
+    "pinCode": "Pin Code"
+  },
+
+
+    "service": { 
+      "loginReq": "Require Customer Pin",
+      "loginInfo": "If enabled all services placed in this category will be hidden unless customer has been given their login pin",
+      "allCategories": "All categories",
+      "services": "Service(s)", 
+      "categoryName": "Category Name",
+      "serviceTime": "Service Time",
+      "servicePrice": "Service Price",
+      "serviceVisibility": "Service visible in Public booking Page",
+      "addCategory": "Add Category",
+      "addService": "Add Service"
+
+    },
+
+
+  "header": {
+    "calendar": "Calendar",
+    "employees": "Employees",
+    "venue": "Venue",
+    "services": "Services",
+    "customers": "Customers",
+    "payments": "Payments",
+    "salesStatistics": "Sales & Statistics",
+    "statistics": "Statistics"
+  },
+  "calendar": {
+    "newBooking": "New Booking",
+    "bookingSettings": "Booking settings"
+  },
+  "employees": {
+    "newEmployee": "New Employee",
+    "lastUsedFilter": "Last used filters",
+    "no_employees": "No Employees yet.",
+    "click_new_employee": "But, you can add new by clicking on New Employee button."
+  },
+  "venue": {
+    "name": "Name",
+    "newVenue": "New Venue",
+    "companyInformation": "Company information",
+    "gallery": "Gallery",
+    "services": "Services",
+    "prices": "Prices",
+    "operatingHours": "Operating Hours",
+    "description": "Description",
+    "telephone": "Telephone",
+    "categories": "Categories",
+    "website": "Website",
+    "companyName": "Company Name"
+  },
+  "customersPromotions": {
+    "newCustomer": "New Customer",
+    "promotions": "Promotions",
+    "selectAll": "Select all customers",
+    "export": "Export",
+    "filter": "Filter"
+  },
+  "payments": {
+    "newPayment": "New payment method",
+    "paymentOptions": "Payment options"
+  },
+  "salesStats": {
+    "sales": "Sales",
+    "employeePerf": "Employee performance",
+    "servicePerf": "Service performance",
+    "timesOrdered": "Times ordered",
+    "totalRevenue": "Total revenue",
+    "byCustomer": "By customer",
+    "byRevenue": "By revenue",
+    "totalEarnings": "Total Earnings",
+    "totalVisitors": "Total Visitors"
+  },
+  "userMenu": {
+    "profile": "Profile",
+    "profilePicture": "Profile picture and more",
+    "settings": "Settings",
+    "settingsPayments": "Payments, currency,",
+    "settingsPlugins": "plugins and more",
+    "help": "Help",
+    "helpNeed": "Need help? The VIBE",
+    "helpTeam": "team has your back",
+    "switchVenues": "switch between venues"
+  }
+} 

@@ -1,0 +1,203 @@
+{
+  "week_days": {
+    "monday": "Lunes",
+    "tuesday": "Martes",
+    "wednesday": "Miércoles",
+    "thursday": "Jueves",
+    "friday": "Viernes",
+    "saturday": "Sábado",
+    "sunday": "Domingo"
+  },
+  "common": {
+    "myProfile": "Mi Perfil",
+    "inbox": "Bandeja de entrada or Correo",
+    "logout": "Cerrar sesión",
+    "settings": "Configuración",
+    "back": "Atrás",
+    "ok": "OK",
+    "submit": "Enviar",
+    "today": "Hoy",
+    "day": "Día",
+    "week": "Semana",
+    "month": "Mes",
+    "year": "Año",
+    "filter": "Filtrar",
+    "name": "Nombre", 
+    "userName": "Usuario",
+    "password": "Contraseña",
+    "email": "E-mail",
+    "export": "Exportar",
+    "customer": "Clientes",
+    "search": "Buscar",
+    "date": "Fecha",
+    "income": "Ingresos",
+    "requiredField": "Campo Obligatorio",
+    "calendar": "Calendario",
+    "edit": "Editar",
+    "address": "Dirección",
+    "website": "Página Web", 
+    "select": "Seleccionar", 
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "save": "Guardar",
+    "clear": "Limpiar", 
+    "add": "Añadir",
+    "location": "Ubicación", 
+    "unassigned": "Sin asignar", 
+    "delete": "Borrar",
+    "premunition": "Premunición",
+    "employee": "Empleado",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "phone":  "Teléfono",
+    "services": "Servicios",
+    "time": "Hora",
+    "invoice": "Factura",
+    "showMore": "Mostrar más",
+    "birthday": "Fecha de nacimiento",
+    "visits": "Visitas"
+
+    
+
+  },
+  "sidePanelHeaderText": {
+    "SETTINGS_PANEL": "Configuración", 
+    "BOOKING_PANEL": "Reservas", 
+    "BOOKING_SETTINGS": "Configuración de Reservas", 
+    "BOOKING_CONTACT": "Configuración de mensajes",  
+    "EDIT_EMPLOYEE_PANEL": "Nuevo Empleado", 
+    "EMPLOYEE_PANEL": "Añadir Empleado", 
+    "SERVICE_PANEL": "Servicios",
+    "SEARCH_PANEL": "Buscar", 
+    "CUSTOMER_PANEL": "Cliente",
+    "CATEGORY_PANEL": "Categorias",
+    "COMPANY_INFORMATION_PANEL": "Información de la Empresa",
+    "yourSubscription": "Mi Suscripción"
+  },
+  "sidepanel": { 
+      "settings": "Configuración",
+      "location_specific": "Ubicación Específica", 
+      "payment_options": "Opciones de pago", 
+      "plugins": "Plugins",
+      "your_subscription": "Tu suscripción", 
+      "language": "Idioma", 
+      "currency": "Divisa", 
+      "time": "Hora", 
+      "change_plan": "Cambio de planes", 
+      "billing_options": "Opciones de facturacións"
+    },
+    "employee": { 
+      "new_employee": "Nuevo Empleado", 
+      "working_times_holiday": "Horario de trabajo y vacaciones", 
+      "salary_overview": "Sueldos", 
+      "working_times": "Historial", 
+      "upcoming_holidays": "Vacaciones", 
+      "no_employees_available": "No hay empleados disponibles para estas fechas", 
+      "view_on_calendar": "Ver vacaciones en el calendario", 
+      "add_name": "Nombre" 
+  },
+  "booking": { 
+    "chooseService": "Elige un Servicio", 
+    "selectEmployee": "Elegir Empleado" ,
+    "name": "Nombre",
+    "phone": "Teléfono",
+    "email":"E-mail",
+    "notes":"Nota",
+    "edit":"Editar",
+    "customerDetails":"Detalles del cliente",
+    "internalNote":"Nota interna",
+    "pinCode": "Código PIN"
+
+
+  },
+
+
+  "service": { 
+      "loginReq": "Requerir PIN del cliente",
+      "loginInfo": "Todos los servicios habilitados en esta categoría estarán ocultos hasta que el cliente haya recibido su pin de inicio de sesión",
+      "allCategories": "Todas las categorias",
+      "services": "Servicio(s)",
+      "categoryName": "Nombre de la categoría",
+      "serviceTime": "Tiempo de servicio",
+      "servicePrice": "Precio del servicio",
+      "serviceVisibility": "Servicio visible en la página de reserva",
+      "addCategory": "Añadir Categoría",
+      "addService": "Añadir Servicio"
+
+      
+
+  },
+  "header": { 
+    "calendar": "Calendario", 
+    "employees": "Empleados", 
+    "venue": "Locales", 
+    "services": "Servicios", 
+    "customers": "Clientes", 	
+    "payments": "Pagos", 
+    "salesStatistics": "Ventas y Estadística",
+    "statistics": "Estadística"
+ 
+  },
+  "calendar": { 
+    "newBooking": "Nueva Reserva", 
+    "bookingSettings": "Configuracion de Reservas" 
+  },
+  "employees": { 
+    "newEmployee": "Añadir Empleado",  
+    "lastUsedFilter": "Ultimos filtros", 
+    "no_employees": "Sin Empleados Todavía", 
+    "click_new_employee": "Puede añadir uno nuevo haciendo click en Nuevo Empleado." 
+  },
+  "venue": {
+    "name": "Nombre", 
+    "newVenue": "Nuevo Local", 
+    "companyInformation": "Información de la Empresa", 
+    "gallery": "Galería", 
+    "services": "Servicios", 
+    "prices": "Precios", 
+    "operatingHours": "Horario de apertura", 
+    "description": "Descripción", 
+    "telephone": "Teléfono", 
+    "categories": "Categorías", 
+    "website": "Página Web",
+    "companyName": "Nombre de empresa"
+  },
+
+
+
+  "customersPromotions": { 
+    "newCustomer": "Nuevo Cliente", 	
+    "promotions": "Promociones", 
+    "selectAll": "Seleccionar todos los clientes", 
+    "export": "Exportar", 
+    "filter": "Filtrar" 
+  },
+  "payments": { 
+    "newPayment": "Añadir método de pago", 
+    "paymentOptions": "Opciones de pago" 
+  },
+  "salesStats": { 
+    "sales": "Ventas", 
+    "employeePerf": "Rendimiento de Empleado", 
+    "servicePerf": "Rendimiento de Servicio", 
+    "timesOrdered": "Veces Solicitado", 
+    "totalRevenue": "Ingresos Totales", 
+    "byCustomer": "Por Cliente", 
+    "byRevenue": "Por Ingresos",
+    "totalEarnings": "Ganancias Totales",
+    "totalVisitors": "Visitantes totales"
+  },
+  "userMenu": { 
+    "profile": "Perfil", 
+    "profilePicture": "Foto de perfil y mas", 
+    "settings": "Configuración", 
+    "settingsPayments": "Pagos, divisa,",
+    "settingsPlugins": "Plugins y mas", 
+    "help": "Ayuda", 
+    "helpNeed": "¿ Necesitas ayuda ? El Equipo de VIBE responde",
+    "helpTeam": "team has your back",
+    "switchVenues": "Cambiar de Local" 
+  }
+}
+
+
