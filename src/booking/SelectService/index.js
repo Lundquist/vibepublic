@@ -27,7 +27,7 @@ function SelectService(props) {
     const classes = makeStyles(iconStyles)();
     const servicesWrapper = useRef();
     const { t } = props;
-
+console.log("hehehehehehe "  + t('common.service'))
     const { services, categories } = useSelector(({ global }) => global.services);
     const { currentPage } = useSelector(({ global }) => global.booking);
     const [selectedCategory, setSelectedCategory] = useState(categories.length > 0 ? categories[0].id : 0);
@@ -123,7 +123,7 @@ function SelectService(props) {
         <div className='__flex-strech __bookings-page' ref={servicesWrapper}>
             {selectedInfo && <PopUpInfo service={selectedInfo} close={() => setSelectedInfo(null)} click={(service) => setService(service)} />}
             <div className='__f1'>
-                <h2>Category</h2>
+                <h2>{t('common.service')}</h2>
                 <div className="__card2 __f1 __categories-wrapper">
                 {categories.map(renderCategories)}  
                 </div>

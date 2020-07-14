@@ -3,19 +3,20 @@ import * as Actions from '../../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import withReducer from '../../store/withReducer';
 import reducer from '../../store/reducers';
-import { useTranslation } from 'react-i18next';
+//import { useTranslation } from 'react-i18next';
 import { getAvailableHours } from '../../api'
 import moment from 'moment'
 import './style.scss';
 import SubHeader from '../SubHeader';
 import DialogBox from '../../ui/DialogBox/DialogBox'
+import { withTranslation } from 'react-i18next';
 
 
 function SelectEmployee(props) {
   const dispatch = useDispatch();
   const { employees, selectedService } = useSelector(({ global }) => global.services);
   const { currentPage } = useSelector(({ global }) => global.booking);
-  const { t } = useTranslation();
+  const { t } = props;
   const [employeeInfo, setEmployeeInfo] = useState(null);
 
   const selectedEmployee = (employee) => {
@@ -30,7 +31,7 @@ function SelectEmployee(props) {
     dispatch(getAvailableHours(selectedEmployee.id, moment(), selectedService.id))
 
   }
-console.log("SelectEmployee " + JSON.stringify(employees))
+  console.log("SelectEmployee " + JSON.stringify(employees))
   const goBack = () => {
     dispatch(Actions.goBack(currentPage))
     props.history.goBack();
@@ -64,7 +65,7 @@ console.log("SelectEmployee " + JSON.stringify(employees))
   return (
     <div className="__employees">
       {employeeInfo && <PopUpInfo employee={employeeInfo} close={() => setEmployeeInfo(null)} click={(employee) => selectedEmployee(employee)} />}
-      <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> Select employee</h2>
+      <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> {t('common.customer')}</h2>
       <div className='__card2'>
         {employees.map(renderEmployees)}
       </div>
@@ -82,5 +83,4 @@ const PopUpInfo = ({ employee, close, click }) => (
 )
 
 //                 
-
-export default withReducer('calendarApp', reducer)(SelectEmployee);
+export default withTranslation()(withReducer('calendarApp', reducer)(SelectEmployee));

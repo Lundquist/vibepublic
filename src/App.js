@@ -8,7 +8,6 @@ import { createStore } from 'redux';
 //const store = createStore(reducer);
 
 const App = (props) => {
-  console.log("appyMcApp " + JSON.stringify(store))
   return (
     <Provider store={store}>
       <Booking />
