@@ -14,8 +14,11 @@ function companyId() {
 
 export function saveCompanyInfo(body) {
     const URL = `${server}/company`;
+    
     body.companyid = companyId();
-    const request = axios.put(URL, body);
+    const request = axios.put(URL, { 
+        headers: { 'Access-Control-Allow-Origin': '*' } 
+    }, body);
 
     return (dispatch) =>
         request.then((res) => {
