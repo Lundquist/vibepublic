@@ -10,7 +10,7 @@ function BookingInfo() {
 
     return (
         <div id="headerContainer">
-            <div className="headerImage" style={{ backgroundImage: `url(${backgroundImage})` }} />
+            <div className="headerImage" />
             <div className="__title">
                 {information.name}
             </div>
