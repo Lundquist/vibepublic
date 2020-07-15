@@ -3,11 +3,14 @@
     display: flex;
     flex-direction: column;
     margin: auto;
+    margin-right: 50px;
+
     @media (max-width: 800px) {
         margin: 0 !important;
     }
 
     .__app__calender {
+
         min-height: 100vh;
         border-color: 6px;
         @media (min-width: 601px) {
