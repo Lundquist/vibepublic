@@ -14,9 +14,9 @@ function BookingContent(props) {
     const params = new URLSearchParams(search);
     const companyId = params.get('companyId');
     const { initialized } = useSelector(({ global }) => global.company);
-
-    if (!initialized)
-        dispatch(Actions.setCurrentCompany(companyId))
+        
+    if(!initialized)
+    dispatch(Actions.setCurrentCompany(companyId))
 
     const mouseDownHandler = (event) => {
         event.stopPropagation();
