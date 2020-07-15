@@ -24,7 +24,7 @@ function BookingServices(props) {
     const [selectedDate, setSelectedDate] = useState(moment().format('YYYY-MM-DD'));
     const [selectedTime, setSelectedTime] = useState(0);
     const { t } = props;
-    console.log("BookingServices " + t('common.myProfile'))
+
     async function submit(name, phone) {
         var newReservation = {
             start: selectedTime,

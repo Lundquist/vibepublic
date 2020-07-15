@@ -39,11 +39,6 @@ function SelectService(props) {
         e.target.scrollIntoView();
         servicesWrapper.current.scrollIntoView();
     }
-    console.log("SelectService " )
-    console.log(JSON.stringify(services))
-    console.log("SelectService " )
-    console.log(JSON.stringify(categories))
-
     useEffect(() => {
         setSelectedCategory(categories.length > 0 ? categories[0].id : 0)
     }, [categories]);
@@ -81,10 +76,18 @@ function SelectService(props) {
     const selectedService = (service) => {
         setService(service);
         const {pathname, search} = props.location;
+        console.log("selectedService " + JSON.stringify(props.location))
+        props.history.push({
+            pathname: `${pathname}service='${service.name.split(' ').join('-')}'/select-employee` ,
+            search,
+        })
+
+       /*
         props.history.push({
             pathname: `${pathname}/service='${service.name.split(' ').join('-')}'/select-employee` ,
             search,
         })
+        */
         
     }
     const renderServices = (service) => {

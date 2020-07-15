@@ -68,13 +68,9 @@ export function setCurrentCompany(companyId) {
             'Access-Control-Allow-Origin': '*'
         },
     });
-    console.log("setCurrentCompany 00000000")
 
     return (dispatch) => {
-        console.log("setCurrentCompany 1111111111")
-
         request.then((response) => {
-            console.log("setCurrentCompany 333333333 " + JSON.stringify(response))
 
             if (!response.data.Error) {
 
@@ -82,6 +78,7 @@ export function setCurrentCompany(companyId) {
                     type: SET_COMPANY,
                     payload: response.data.Rows[0]
                 })
+                
                 dispatch(getCompanySettings(companyId))
                 dispatch(api.getEmployees())
                 dispatch(api.getServices())
