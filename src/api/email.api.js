@@ -17,7 +17,7 @@ function companyInformation() {
     return store.getState().global.company.information
 }
 function employee() {
-    return store.getState().global.employees.selectedEmplyoee
+    return store.getState().global.employees.selectedEmployee
 }
 function notes() {
     return store.getState().global.booking.reservationNote
@@ -25,7 +25,6 @@ function notes() {
 
 export function sendEmail() {
     const URL = `${config.serverUrl}/email/confirmation`
-
     const request = axios.post(URL, {
         name: selectedCustomer().firstname,
         email: selectedCustomer().email,
