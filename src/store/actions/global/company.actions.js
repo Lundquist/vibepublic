@@ -164,7 +164,7 @@ export function getCompanyReservations() {
         request.then((response) => {
             dispatch({
                 type: SET_RESERVATIONS,
-                payload: response.data
+                payload: response.data.Rows
             })
         });
 }

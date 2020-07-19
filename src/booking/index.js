@@ -22,9 +22,11 @@ function BookingContent(props) {
     if (!initialized && companyId)
         dispatch(Actions.setCurrentCompany(companyId))
 
-    dispatch(getReservation(cancelReservation))
+    if(cancelReservation !== null)
+        dispatch(getReservation(cancelReservation))
 
     const getBooking = () => {
+        console.log("getBooking ")
         return (
             <div className="bookingPage">
                 <BookingHeader />
@@ -35,7 +37,7 @@ function BookingContent(props) {
             </div>
         )
     }
-    console.log("bookingThingy " + cancelReservation)
+
     return (
         <div>
             {cancelReservation !== null ? <CancelBooking reservationId={cancelReservation} /> : getBooking()}

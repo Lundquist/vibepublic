@@ -89,7 +89,6 @@ export function saveCategory(categoryId, data) {
 }
 
 export function getEmployeesForService(serviceId) {
-    console.log("getEmployeesForService " + serviceId)
     const request = axios.get(`${config.serverUrl}/getEmployeesForService?serviceId=${serviceId}`);
     return (dispatch) => {
         request.then((response) => {

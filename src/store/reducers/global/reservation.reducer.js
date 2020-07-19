@@ -1,7 +1,12 @@
 import * as Actions from '../../actions';
 
 const initialState = {
-    reservation: {}
+    reservation: {
+        start: '',
+        end: '',
+        service: '',
+        employee: ''
+    }
 }
 
 const reservationReducer = function (state = initialState, action) {
