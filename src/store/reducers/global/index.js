@@ -7,6 +7,7 @@ import sidepanel from './sidepanel'
 import customers from './customers.reducer'
 import venue from './venue.reducer'
 import booking from './booking.reducer'
+import reservation from './reservation.reducer'
 
 const globalReducers = combineReducers({
     company,
@@ -16,7 +17,8 @@ const globalReducers = combineReducers({
     sidepanel,
     customers,
     venue,
-    booking
+    booking,
+    reservation
 });
 
 export default globalReducers;

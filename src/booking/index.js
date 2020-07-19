@@ -7,8 +7,9 @@ import withReducer from '../store/withReducer';
 import reducer from '../store/reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Actions from '../store/actions';
-import { deleteReservation } from '../api'
 import CancelBooking from './CancelBooking'
+import { getReservation } from '../api'
+
 function BookingContent(props) {
     const dispatch = useDispatch();
     const search = window.location.search;
@@ -21,6 +22,8 @@ function BookingContent(props) {
     if (!initialized && companyId)
         dispatch(Actions.setCurrentCompany(companyId))
 
+    dispatch(getReservation(cancelReservation))
+
     const getBooking = () => {
         return (
             <div className="bookingPage">
@@ -32,10 +35,10 @@ function BookingContent(props) {
             </div>
         )
     }
- console.log("bookingThingy " + cancelReservation)
+    console.log("bookingThingy " + cancelReservation)
     return (
         <div>
-            {cancelReservation !== null ? <CancelBooking reservationId={cancelReservation}/> : getBooking()}
+            {cancelReservation !== null ? <CancelBooking reservationId={cancelReservation} /> : getBooking()}
         </div>
     )
 }

@@ -1,6 +1,7 @@
 import config from '../config'
 import axios from 'axios';
 import { sendEmail } from '../api'
+import * as Actions from '../store/actions'
 /**
  * 
  * @param {*} newReservation 
@@ -54,12 +55,15 @@ export function deleteReservation(reservationId) {
 }
 
 export function getReservation(reservationId){
-    const URL = `${config.serverUrl}/reservations?reservationId=${reservationId}`;
+    console.log("getReservation " + reservationId)
+    const URL = `${config.serverUrl}/reservations?reservationId=${(reservationId / 1337)}`;
     const request = axios.get(URL);
 
     return (dispatch) =>
         request.then((response) => {
-            console.log("getReservations " + JSON.stringify(response.data.Rows))
+            console.log("getReservations2 " + JSON.stringify(response.data.Rows))
+
+           return dispatch(Actions.setReservation(response.data.Rows[0]));
            // dispatch(Actions.getEmployees(response.data.Rows))
         });
 

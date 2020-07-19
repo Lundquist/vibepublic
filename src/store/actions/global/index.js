@@ -6,5 +6,6 @@ export * from './customers.actions';
 export * from './sidepanel';
 export * from './venue.actions';
 export * from './booking.actions';
+export * from './reservation.actions';
 
 
