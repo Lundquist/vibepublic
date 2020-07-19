@@ -30,12 +30,15 @@ function SelectService(props) {
     const { services, categories } = useSelector(({ global }) => global.services);
     const { currentPage } = useSelector(({ global }) => global.booking);
     const [selectedCategory, setSelectedCategory] = useState(categories.length > 0 ? categories[0].id : 0);
+    
     function toggleContainer(id, e) {
+        setSelectedCategory(id)
+/*
         if (selectedCategory !== id) {
             setSelectedCategory(id)
         } else {
-            setSelectedCategory(0)
-        }
+            setSelectedCategory(1)
+        }*/
         e.target.scrollIntoView();
         servicesWrapper.current.scrollIntoView();
     }

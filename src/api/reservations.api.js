@@ -52,3 +52,15 @@ export function deleteReservation(reservationId) {
         })
     };
 }
+
+export function getReservation(reservationId){
+    const URL = `${config.serverUrl}/reservations?reservationId=${reservationId}`;
+    const request = axios.get(URL);
+
+    return (dispatch) =>
+        request.then((response) => {
+            console.log("getReservations " + JSON.stringify(response.data.Rows))
+           // dispatch(Actions.getEmployees(response.data.Rows))
+        });
+
+}

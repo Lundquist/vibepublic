@@ -46,7 +46,7 @@ function SelectEmployee(props) {
       var buffer = new Buffer(employee.userImage);
       $imagePreview = (<img className="userImage" src={buffer} />);
     } else {
-      $imagePreview = (<img className="userImage" src='https://ca.slack-edge.com/TSVP4QZM3-USJ915H35-6d0088e7a834-512' />);
+      $imagePreview = (<img className="userImage" src='https://n8d.at/wp-content/plugins/aioseop-pro-2.4.11.1/images/default-user-image.png' />);
     }
 
     return (

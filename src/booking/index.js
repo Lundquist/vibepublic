@@ -32,10 +32,10 @@ function BookingContent(props) {
             </div>
         )
     }
-
+ console.log("bookingThingy " + cancelReservation)
     return (
         <div>
-            {cancelReservation !== '' ? <CancelBooking reservationId={cancelReservation}/> : getBooking()}
+            {cancelReservation !== null ? <CancelBooking reservationId={cancelReservation}/> : getBooking()}
         </div>
     )
 }
