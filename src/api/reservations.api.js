@@ -22,9 +22,33 @@ export function addReservation(newReservation) {
         });
 
         return request.then((response) => {
+            console.log("addReservation " + JSON.stringify(response))
             if (!response.Error)
-                sendEmail()
+                sendEmail(response.data.reservation.id)
         }
         )
+    };
+}
+
+export function deleteReservation(reservationId) {
+    console.log("deleteReservation " + JSON.stringify(reservationId))
+
+    return (dispatch) => {
+        const request = axios.delete(`${config.serverUrl}/reservations`, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            params: {
+                data: reservationId / 1337
+            }
+
+        });
+
+        return request.then((response) => {
+            console.log("deleteReservation " + JSON.stringify(response))
+            /* if (!response.Error)
+                 sendEmail(response.data.reservation.id)
+         }*/
+        })
     };
 }

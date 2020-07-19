@@ -23,7 +23,8 @@ function notes() {
     return store.getState().global.booking.reservationNote
 }
 
-export function sendEmail() {
+export function sendEmail(reservationId) {
+    console.log("sendEmail " + reservationId)
     const URL = `${config.serverUrl}/email/confirmation`
     const request = axios.post(URL, {
         name: selectedCustomer().firstname,
@@ -34,7 +35,8 @@ export function sendEmail() {
         address: companyInformation().address,
         price: selectedService().price,
         employee: employee(),
-        notes: notes()
+        notes: notes(),
+        id: reservationId
     });
     request.then((response) => {
     })
