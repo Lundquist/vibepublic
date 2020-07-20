@@ -20,6 +20,14 @@ export function getServices() {
         });
 }
 
+export function getService(serviceId) {
+    const request = axios.get(`${config.serverUrl}/service?serviceId=${serviceId}`);
+    return (dispatch) =>
+        request.then((response) => {
+            dispatch(Actions.setSelectedService(response.data.Rows[0]))
+        });
+}
+
 export const saveServiceImage = (service) => {
     const request = axios.put(`${config.serverUrl}/serviceImage`, {
         service,
