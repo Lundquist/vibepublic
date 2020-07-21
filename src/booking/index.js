@@ -17,14 +17,16 @@ function BookingContent(props) {
     const companyId = params.get('companyId');
     const { initialized } = useSelector(({ global }) => global.company);
     const cancelReservation = params.get('cancelReservation');
-    console.log("BookingContent " + cancelReservation)
 
     if (!initialized && companyId)
         dispatch(Actions.setCurrentCompany(companyId))
 
     if(cancelReservation !== null)
         dispatch(getReservation(cancelReservation))
-
+    
+    if(!companyId && !cancelReservation)
+        window.location.href = 'https://www.vibescheduling.com/'
+    
     const getBooking = () => {
         console.log("getBooking ")
         return (
