@@ -28,7 +28,6 @@ function BookingContent(props) {
         window.location.href = 'https://www.vibescheduling.com/'
     
     const getBooking = () => {
-        console.log("getBooking ")
         return (
             <div className="bookingPage">
                 <BookingHeader />
