@@ -37,7 +37,7 @@ function RightColumn(props) {
                         <div>
                             <h3>{selectedService.name}</h3>
                             <div className='__time'>{selectedService.time} minutes</div>
-                            {selectedEmployee.firstName !== "" && <div className='__flex'><img src="https://ca.slack-edge.com/TSVP4QZM3-USJ915H35-6d0088e7a834-512" alt={selectedEmployee.firstName} /> {selectedEmployee.firstName} {selectedEmployee.lastName}</div>}
+                            {selectedEmployee.firstName !== "" && <div className='__flex'><img src="https://n8d.at/wp-content/plugins/aioseop-pro-2.4.11.1/images/default-user-image.png" alt={selectedEmployee.firstName} /> {selectedEmployee.firstName} {selectedEmployee.lastName}</div>}
                         </div>
                     ) :
                         t('noService')

@@ -70,6 +70,7 @@ function SelectDate(props) {
         });
         return bookingTimes
     }
+    
 
     return (
         <div id="selectDateAndTimeContainer">
