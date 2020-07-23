@@ -32,10 +32,18 @@ function RightColumn(props) {
         <div className='__summery'>
             <h2> {t("summary")}</h2>
             <div className="__card2">
+                <div id="companyInfomation">
+                    <h3>{information.name}</h3>
+                    <div id="companyDetails">
+                    <div>{information.address}</div>
+                    <div>{information.phone}</div>
+                    <div>{information.email}</div>
+                    </div>
+                </div>
                 <div className='__service__details'>
                     {selectedService.id !== 0 ? (
                         <div>
-                            <h3>{selectedService.name}</h3>
+                            <h4>{selectedService.name}</h4>
                             <div className='__time'>{selectedService.time} minutes</div>
                             {selectedEmployee.firstName !== "" && <div className='__flex'><img src="https://n8d.at/wp-content/plugins/aioseop-pro-2.4.11.1/images/default-user-image.png" alt={selectedEmployee.firstName} /> {selectedEmployee.firstName} {selectedEmployee.lastName}</div>}
                         </div>
@@ -48,15 +56,6 @@ function RightColumn(props) {
                     Price:<div>€ {selectedService.id !== 0 ? selectedService.price : 0}</div>
                 </b>
                 {moment(selectedTime) >= moment() && <button className='__btn'>Book now</button>}
-            </div>
-
-            <div className="__card2 __contact__information">
-                <h3>{information.name}</h3>
-                <div>
-                    <div>{information.address}</div>
-                    <div>{information.phone}</div>
-                    <div>{information.email}</div>
-                </div>
             </div>
         </div>
     )

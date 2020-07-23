@@ -4,15 +4,41 @@
         border-bottom: 1px solid #d3d3d3;
         min-height: 160px;
         margin-bottom: 4px;
+        margin-top: 10px;
+        font-size: 15px;
+
     }
     .__card2{
         color: rgba(0, 0, 0, 0.6);
+    }
+    #companyInfomation{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #d3d3d3;
+
+    }
+
+    #companyDetails{
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        font-size: 15px;
+ 
     }
     .__contact__information{
         margin: 26px 0;
         min-height: 300px;
     }
     h3{
+        margin: 0;
+        color: #000;
+    }
+    h4{
         margin: 0;
         color: #000;
     }
