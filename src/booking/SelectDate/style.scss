@@ -6,7 +6,6 @@
   }
   #noTimesContainer{
     display: flex;
-    justify-content: center;
     flex-direction: column;
   }
   #noTimesText{
@@ -19,7 +18,7 @@
     background-image: url('./assets/alertcalendar.png');
     background-repeat: no-repeat;
     background-position: top;
-    min-height: 320px !important;
+    min-height: 300px !important;
     min-width: 300px !important;
   }
   .no-select {
