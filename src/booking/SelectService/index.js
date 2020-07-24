@@ -85,12 +85,6 @@ function SelectService(props) {
             search,
         })
 
-       /*
-        props.history.push({
-            pathname: `${pathname}/service='${service.name.split(' ').join('-')}'/select-employee` ,
-            search,
-        })
-        */
         
     }
     const renderServices = (service) => {

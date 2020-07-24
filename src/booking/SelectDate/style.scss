@@ -4,6 +4,23 @@
   .grey {
     color: $accent_color !important;
   }
+  #noTimesContainer{
+    display: flex;
+    flex-direction: column;
+  }
+  #noTimesText{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  #noTimesImage{
+    background-image: url('./assets/alertcalendar.png');
+    background-repeat: no-repeat;
+    background-position: top;
+    min-height: 300px !important;
+    min-width: 300px !important;
+  }
   .no-select {
     -webkit-touch-callout: none;
     -webkit-user-select: none;

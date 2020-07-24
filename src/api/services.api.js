@@ -13,7 +13,8 @@ function companyId() {
 }
 
 export function getServices() {
-    const request = axios.get(`${config.serverUrl}/service?companyId=${companyId()}`);
+    console.log("services.api getServices")
+    const request = axios.get(`${config.serverUrl}/bookingService?companyId=${companyId()}`);
     return (dispatch) =>
         request.then((response) => {
             dispatch(Actions.getServices(response.data.Rows))
@@ -21,6 +22,8 @@ export function getServices() {
 }
 
 export function getService(serviceId) {
+    console.log("services.api getService 2222")
+
     const request = axios.get(`${config.serverUrl}/service?serviceId=${serviceId}`);
     return (dispatch) =>
         request.then((response) => {

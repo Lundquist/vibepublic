@@ -26,7 +26,7 @@ function SelectDate(props) {
     const goBack = () => {
         dispatch(Actions.goBack(currentPage))
         props.history.goBack();
-      }; // to tell the store to go back.
+    }; // to tell the store to go back.
 
     useEffect(() => {
         sortBookings()
@@ -71,6 +71,26 @@ function SelectDate(props) {
         return bookingTimes
     }
 
+
+    const checkIfAvailableThisWeek = () => {
+        let showTimes = false;
+        bookings.map((booking) => {
+            if (booking.bookingTimes.length > 0)
+                showTimes = true;
+        })
+        return showTimes;
+    }
+
+    const showNoTimesMessage = () => {
+        return (
+            <div id="noTimesContainer">
+                <div id="noTimesImage"></div>
+
+                <div id="noTimesText">No times available this week, try later.</div>
+            </div>
+        )
+    }
+
     return (
         <div id="selectDateAndTimeContainer">
             <div className='__header'>
@@ -93,7 +113,7 @@ function SelectDate(props) {
                         {bookings.map((booking, i) => <CalenderHeaderTitle {...booking} key={i} />)}
                     </div>
                     <div className='__main_calender __f1 __flex-strech'>
-                        {bookings.map((booking) => <DateItem key={booking.date} {...booking} setDateTime={(d, t) => setDateTime(d, t)} />)}
+                        {checkIfAvailableThisWeek() ? bookings.map((booking) => <DateItem key={booking.date} {...booking} setDateTime={(d, t) => setDateTime(d, t)} />) : showNoTimesMessage()}
                     </div>
                 </div>
             </div>

@@ -14,6 +14,7 @@ function RightColumn(props) {
     const { selectedEmployee } = useSelector(({ global }) => global.employees);
     const { selectedService } = useSelector(({ global }) => global.services);
     const { information } = useSelector(({ global }) => global.company);
+
     const getEndingTime = () => {
         let minutes = +moment(selectedTime).format('mm') + +selectedService.time;
         let hours = +moment(selectedTime).format('HH');
@@ -26,18 +27,35 @@ function RightColumn(props) {
         hours.toString().length < 2 && (hours = `0${hours}`);
         minutes.toString().length < 2 && (minutes = `0${minutes}`);
 
-        return `${moment(selectedTime).format('dddd, DD MMMM HH:mm')} - ${hours}:${minutes}`
+        return (
+            <div id="showSelectedTimeContainer">
+                <div id="showSelectedTimeContainerDate">
+                    {moment(selectedTime).format('dddd, DD MMMM HH:mm')}
+                </div>
+                <div id="showSelectedTimeContainerTime">
+                    {hours} - {minutes}
+                </div>
+            </div>
+        )
     }
     return (
         <div className='__summery'>
             <h2> {t("summary")}</h2>
             <div className="__card2">
+                <div id="companyInfomation">
+                    <h3>{information.name}</h3>
+                    <div id="companyDetails">
+                        <div>{information.address}</div>
+                        <div>{information.phone}</div>
+                        <div>{information.email}</div>
+                    </div>
+                </div>
                 <div className='__service__details'>
                     {selectedService.id !== 0 ? (
                         <div>
-                            <h3>{selectedService.name}</h3>
+                            <h4>{selectedService.name}</h4>
                             <div className='__time'>{selectedService.time} minutes</div>
-                            {selectedEmployee.firstName !== "" && <div className='__flex'><img src="https://ca.slack-edge.com/TSVP4QZM3-USJ915H35-6d0088e7a834-512" alt={selectedEmployee.firstName} /> {selectedEmployee.firstName} {selectedEmployee.lastName}</div>}
+                            {selectedEmployee.firstName !== "" && <div className='__flex'><img src="https://n8d.at/wp-content/plugins/aioseop-pro-2.4.11.1/images/default-user-image.png" alt={selectedEmployee.firstName} /> {selectedEmployee.firstName} {selectedEmployee.lastName}</div>}
                         </div>
                     ) :
                         t('noService')
@@ -48,15 +66,6 @@ function RightColumn(props) {
                     Price:<div>€ {selectedService.id !== 0 ? selectedService.price : 0}</div>
                 </b>
                 {moment(selectedTime) >= moment() && <button className='__btn'>Book now</button>}
-            </div>
-
-            <div className="__card2 __contact__information">
-                <h3>{information.name}</h3>
-                <div>
-                    <div>{information.address}</div>
-                    <div>{information.phone}</div>
-                    <div>{information.email}</div>
-                </div>
             </div>
         </div>
     )
