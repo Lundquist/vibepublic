@@ -50,11 +50,23 @@
         align-items: center;
         margin-right: 6px;
     }
+    #showSelectedTimeContainer{
+        display: flex;
+        flex-direction: column;
+    }
+    #showSelectedTimeContainerTime{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     .__date{
-        margin: 20px 0 0 !important;
+        margin: 10px 0 0 !important;
         font-weight: 500;
-        max-width: 137px;
+        max-width: 210px;
         color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     button{
         border-radius: 16px;

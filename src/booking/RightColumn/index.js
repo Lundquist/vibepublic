@@ -14,6 +14,7 @@ function RightColumn(props) {
     const { selectedEmployee } = useSelector(({ global }) => global.employees);
     const { selectedService } = useSelector(({ global }) => global.services);
     const { information } = useSelector(({ global }) => global.company);
+
     const getEndingTime = () => {
         let minutes = +moment(selectedTime).format('mm') + +selectedService.time;
         let hours = +moment(selectedTime).format('HH');
@@ -26,7 +27,16 @@ function RightColumn(props) {
         hours.toString().length < 2 && (hours = `0${hours}`);
         minutes.toString().length < 2 && (minutes = `0${minutes}`);
 
-        return `${moment(selectedTime).format('dddd, DD MMMM HH:mm')} - ${hours}:${minutes}`
+        return (
+            <div id="showSelectedTimeContainer">
+                <div id="showSelectedTimeContainerDate">
+                    {moment(selectedTime).format('dddd, DD MMMM HH:mm')}
+                </div>
+                <div id="showSelectedTimeContainerTime">
+                    {hours} - {minutes}
+                </div>
+            </div>
+        )
     }
     return (
         <div className='__summery'>
@@ -35,9 +45,9 @@ function RightColumn(props) {
                 <div id="companyInfomation">
                     <h3>{information.name}</h3>
                     <div id="companyDetails">
-                    <div>{information.address}</div>
-                    <div>{information.phone}</div>
-                    <div>{information.email}</div>
+                        <div>{information.address}</div>
+                        <div>{information.phone}</div>
+                        <div>{information.email}</div>
                     </div>
                 </div>
                 <div className='__service__details'>
