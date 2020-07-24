@@ -23,6 +23,8 @@
         animation: DialogBox 0.4s forwards;
         padding: 16px;
         z-index: 2;
+        overflow-y:auto;
+        max-height: 700px;
         @media (max-width: 500px) {
             width: 90%;
         }

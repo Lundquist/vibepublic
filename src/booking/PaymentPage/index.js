@@ -33,21 +33,16 @@ function PaymentPage(props) {
     return (
         <div className="paymentPageContainer">
             {showToast ? <Fragment>
-                <h1>You have successfully booked your ticket</h1>
-                <h2>A confirmation email has been sent to your email</h2>
-            </Fragment> : <Fragment>
-                <div className="paymentInformation">
-                    <div id="welcomeText">
-                        <span className="bold">Hello {selectedCustomer.firstName}</span>!
-                </div>
-                    <div id="bookingSettings">
-                        This is the reservation information.  <br />
-                    You have made a reservation for {selectedService.name} at {selectedTime} with {selectedEmployee.firstName} {selectedEmployee.lastName}
-                        <br />
-                    Please make sure it is accurate before submitting.
-                </div>
+                <div class="product-card">
+                    <div class="product-details">
+                      <h1>Confirmed</h1>
+                 {selectedCustomer.firstName}, we're pleased to inform you that your booking has been successfully received and confirmed. <br /><br />
+                 <b>{selectedService.name}</b> at  <b>{selectedTime}</b> with  <b>{selectedEmployee.firstName} {selectedEmployee.lastName}</b> <br /><br />
+                 A confirmation email has been sent to your email
 
-                </div>
+                        </div>
+                            </div>
+            </Fragment> : <Fragment>
                 <div className="__btn" onClick={() => submit()}>confirm</div>
             </Fragment>}
         </div>

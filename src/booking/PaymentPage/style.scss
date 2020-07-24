@@ -4,9 +4,48 @@
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    h1{
-        margin: calc(50vh - 220px) 0 12px 0;
-    }
+    $bg-color: #f3f3f3;
+    $shadow-color: darken( $bg-color, 25%);
+    $cursive-font: 'Pacifico', cursive;
+    $font-size: 18px;
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $bg-color;
+}
+
+.product-card {
+  background-color: #fdfefe;
+  max-width: 550px;
+  min-height: 400px;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 150px;
+  box-shadow: 8px 12px 30px $shadow-color;
+  color: #919495;
+  font-weight: normal;
+  text-align: left;
+  font-size: $font-size;
+  position: relative;
+}
+
+.product-details {
+  float: left;
+  height: 100%;
+  padding: 30px;
+  h1 {
+    color: #333;
+    font-family: $cursive-font;
+    margin-bottom: 35px;
+    text-align: center;
+  }
+ 
+}
+
+
     h2{
         margin: 0;
     }
