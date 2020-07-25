@@ -9,24 +9,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as Actions from '../store/actions';
 import CancelBooking from './CancelBooking'
 import { getReservation } from '../api'
+import {Helmet} from "react-helmet";
 
 function BookingContent(props) {
     const dispatch = useDispatch();
     const search = window.location.search;
     const params = new URLSearchParams(search);
     const companyId = params.get('companyId');
-    const { initialized } = useSelector(({ global }) => global.company);
+    const { initialized, information } = useSelector(({ global }) => global.company);
     const cancelReservation = params.get('cancelReservation');
 
     if (!initialized && companyId)
         dispatch(Actions.setCurrentCompany(companyId))
 
-    if(cancelReservation !== null)
+    if (cancelReservation !== null)
         dispatch(getReservation(cancelReservation))
-    
-    if(!companyId && !cancelReservation)
+
+    if (!companyId && !cancelReservation)
         window.location.href = 'https://www.vibescheduling.com/'
-    
+
     const getBooking = () => {
         return (
             <div className="bookingPage">
@@ -41,6 +42,10 @@ function BookingContent(props) {
 
     return (
         <div>
+            <Helmet>
+                <title>{information.name}</title>
+            </Helmet>
+
             {cancelReservation !== null ? <CancelBooking reservationId={cancelReservation} /> : getBooking()}
         </div>
     )
