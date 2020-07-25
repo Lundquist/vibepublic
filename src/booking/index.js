@@ -46,6 +46,7 @@ console.log("BookingContent " + currentPage)
     return (
         <div>
             <Helmet>
+                <link rel="shortcut icon" type="image/x-icon" href="public/favicon.ico" />
                 <title>{information.name}</title>
             </Helmet>
 
