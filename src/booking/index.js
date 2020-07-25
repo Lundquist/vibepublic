@@ -17,6 +17,7 @@ function BookingContent(props) {
     const params = new URLSearchParams(search);
     const companyId = params.get('companyId');
     const { initialized, information } = useSelector(({ global }) => global.company);
+    const { currentPage } = useSelector(({ global }) => global.booking);
     const cancelReservation = params.get('cancelReservation');
 
     if (!initialized && companyId)
@@ -28,13 +29,15 @@ function BookingContent(props) {
     if (!companyId && !cancelReservation)
         window.location.href = 'https://www.vibescheduling.com/'
 
+
+console.log("BookingContent " + currentPage)
     const getBooking = () => {
         return (
             <div className="bookingPage">
                 <BookingHeader />
                 <div className='__flex-strech __container __bookings-content'>
                     <div className='__f1'><BookingServices /></div>
-                    <RightColumn />
+                    {currentPage < 4 ? <RightColumn /> : null}
                 </div>
             </div>
         )

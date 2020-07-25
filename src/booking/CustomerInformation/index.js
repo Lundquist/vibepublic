@@ -38,7 +38,10 @@ function CustomerInfo(props) {
         dispatch(Actions.setBookingNote(data.notes))
         const pathname = props.location.pathname.replace('customer-information', `customername='${existingCustomer.firstName}'/confirm-booking${props.location.search}`);
         props.history.push(pathname);
-        dispatch(Actions.goForward(currentPage))
+
+    
+
+       // dispatch(Actions.goForward(currentPage))
 
     }
     const goBack = () => {
