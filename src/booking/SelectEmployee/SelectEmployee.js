@@ -74,7 +74,7 @@ console.log("renderEmployees " + JSON.stringify(employee))
 const PopUpInfo = ({ employee, close, click }) => (
   <DialogBox className='__popup' title={`${employee.firstName} ${employee.lastName}`} close={close}>
     {console.log(employee)}
-    {employee.description}
+    {employee.note}
     <button className='__btn' onClick={() => click(employee)}>Book</button>
   </DialogBox>
 )
