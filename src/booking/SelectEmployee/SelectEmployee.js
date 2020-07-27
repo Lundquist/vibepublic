@@ -10,7 +10,7 @@ import './style.scss';
 import SubHeader from '../SubHeader';
 import DialogBox from '../../ui/DialogBox/DialogBox'
 import { withTranslation } from 'react-i18next';
-
+import config from '../../config'
 
 function SelectEmployee(props) {
   const dispatch = useDispatch();
@@ -40,13 +40,10 @@ function SelectEmployee(props) {
 
 
   const renderEmployees = (employee) => {
-    let $imagePreview = null;
-
-    if (employee.userImage) {
-      var buffer = new Buffer(employee.userImage);
-      $imagePreview = (<img className="userImage" src={buffer} />);
-    } else {
-      $imagePreview = (<img className="userImage" src='https://n8d.at/wp-content/plugins/aioseop-pro-2.4.11.1/images/default-user-image.png' />);
+console.log("renderEmployees " + JSON.stringify(employee))
+    let $imagePreview = (<img className="userImage" src={'https://vibeemployeeimage.s3.eu-west-3.amazonaws.com/' + employee.userImage} onError={(e) => addDefaultSrc(e)} />);
+    const addDefaultSrc = (ev) => {
+        ev.target.src = "https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
     }
 
     return (
@@ -77,7 +74,7 @@ function SelectEmployee(props) {
 const PopUpInfo = ({ employee, close, click }) => (
   <DialogBox className='__popup' title={`${employee.firstName} ${employee.lastName}`} close={close}>
     {console.log(employee)}
-    {employee.description}
+    {employee.note}
     <button className='__btn' onClick={() => click(employee)}>Book</button>
   </DialogBox>
 )

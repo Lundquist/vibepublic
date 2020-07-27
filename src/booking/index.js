@@ -8,14 +8,15 @@ import reducer from '../store/reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Actions from '../store/actions';
 import CancelBooking from './CancelBooking'
-import { getReservation } from '../api'
-import {Helmet} from "react-helmet";
+import { getReservation, signUpToStripeConnect } from '../api'
+import { Helmet } from "react-helmet";
 
 function BookingContent(props) {
     const dispatch = useDispatch();
     const search = window.location.search;
     const params = new URLSearchParams(search);
     const companyId = params.get('companyId');
+    const code = params.get('code');
     const { initialized, information } = useSelector(({ global }) => global.company);
     const { currentPage } = useSelector(({ global }) => global.booking);
     const cancelReservation = params.get('cancelReservation');
@@ -26,11 +27,15 @@ function BookingContent(props) {
     if (cancelReservation !== null)
         dispatch(getReservation(cancelReservation))
 
-    if (!companyId && !cancelReservation)
-        window.location.href = 'https://www.vibescheduling.com/'
+    //if (!companyId && !cancelReservation && !code)
+    //    window.location.href = 'https://www.vibescheduling.com/'
 
+    if (code) {
+        dispatch(signUpToStripeConnect(code))
+    }
+    console.log("BookingContent123 " + code)
 
-console.log("BookingContent " + currentPage)
+    console.log("BookingContent " + currentPage)
     const getBooking = () => {
         return (
             <div className="bookingPage">
