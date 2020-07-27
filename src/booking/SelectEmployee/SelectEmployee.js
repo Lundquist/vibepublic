@@ -40,8 +40,8 @@ function SelectEmployee(props) {
 
 
   const renderEmployees = (employee) => {
-
-    let $imagePreview = (<img className="userImage" src={config.serverUrl + '/public/uploads/userImage/' + employee.id + '.png'} onError={(e) => addDefaultSrc(e)} />);
+console.log("renderEmployees " + JSON.stringify(employee))
+    let $imagePreview = (<img className="userImage" src={'https://vibeemployeeimage.s3.eu-west-3.amazonaws.com/' + employee.userImage} onError={(e) => addDefaultSrc(e)} />);
     const addDefaultSrc = (ev) => {
         ev.target.src = "https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
     }
