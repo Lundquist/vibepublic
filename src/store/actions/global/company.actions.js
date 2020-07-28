@@ -5,7 +5,7 @@ import * as Actions from '../../../store/actions'
 import store from '../../../store'
 import i18n from 'i18n';
 
-export const SET_COMPANY_SETTINGS = '[GLOBAL] GET_COMPANY_SETTINGS';
+export const GET_COMPANY_SETTINGS = '[GLOBAL] GET_COMPANY_SETTINGS';
 export const SET_COMPANY_INFORMATION = '[GLOBAL] SET_COMPANY_INFORMATION';
 export const SET_SERVICES = '[GLOBAL] GET_SERVICES';
 export const SET_RESERVATIONS = '[GLOBAL] GET_RESERVATIONS';
@@ -79,7 +79,7 @@ export function setCurrentCompany(companyId) {
                     payload: response.data.Rows[0]
                 })
                 
-                dispatch(getCompanySettings(companyId))
+                dispatch(api.getCompanySettings())
                 dispatch(api.getEmployees())
                 dispatch(api.getServices())
                 dispatch(api.getCategories())
@@ -101,7 +101,7 @@ export function initializeCompany() {
             type: INITIALIZE_COMPANY
         })
 }
-
+/*
 export function getCompanySettings(companyId) {
     const URL = `${config.serverUrl}/companySettings?companyId=${companyId}`;
     const request = axios.get(URL);
@@ -109,11 +109,12 @@ export function getCompanySettings(companyId) {
         request.then((response) => {
             // i18n.changeLanguage(response.data.Rows.companyLanguage)
             dispatch({
-                type: SET_COMPANY_SETTINGS,
+                type: GET_COMPANY_SETTINGS,
                 payload: response.data.Rows
             })
         });
 }
+*/
 
 export function getCompanyEmployees(companyId) {
     const request = axios.get(`${config.serverUrl}/employeecompany?companyId=${companyId}`);
@@ -127,11 +128,11 @@ export function getCompanyEmployees(companyId) {
 }
 
 export function setCompanySettings(settings){
-    i18n.changeLanguage(settings.companyLanguage);
+   // i18n.changeLanguage(settings.companyLanguage);
 
     return (dispatch) =>
     dispatch({
-        type: SET_COMPANY_SETTINGS,
+        type: GET_COMPANY_SETTINGS,
         payload: settings
     })
 }

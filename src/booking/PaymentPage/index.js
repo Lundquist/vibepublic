@@ -12,10 +12,14 @@ function PaymentPage(props) {
     const { selectedEmployee } = useSelector(({ global }) => global.employees);
     const { selectedService } = useSelector(({ global }) => global.services);
     const { selectedCustomer } = useSelector(({ global }) => global.customers);
+    const { settings } = useSelector(({ global }) => global.company);
 
+    console.log("addReservation: " + JSON.stringify(settings))
 
     useEffect(() => {
         if (selectedCustomer !== '') {
+            let cancelationTime = moment(selectedTime).subtract(settings.cancelationLimit, 'days').format('YYYY-MM-DD HH:mm');
+
             let newReservation = {
                 start: selectedTime,
                 end: moment(selectedTime).add(selectedService.time, 'minutes').format('YYYY-MM-DD HH:mm'),
@@ -23,7 +27,8 @@ function PaymentPage(props) {
                 customer: selectedCustomer.userId,
                 service: selectedService.id,
                 price: selectedService.price,
-                note: reservationNote
+                note: reservationNote,
+                cancelationTime: cancelationTime
 
             }
             dispatch(addReservation(newReservation))
