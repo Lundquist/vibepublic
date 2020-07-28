@@ -12,8 +12,6 @@ const initialState = {
 const reservationReducer = function (state = initialState, action) {
     switch (action.type) {
         case Actions.SET_RESERVATION:{
-            console.log("reservationReducer " + JSON.stringify(action.payload))
-
             return {
                 ...state,
                 reservation: action.payload

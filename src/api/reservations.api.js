@@ -55,14 +55,11 @@ export function deleteReservation(reservationId) {
 }
 
 export function getReservation(reservationId){
-    console.log("getReservation " + reservationId)
     const URL = `${config.serverUrl}/reservations?reservationId=${(reservationId / 1337)}`;
     const request = axios.get(URL);
 
     return (dispatch) =>
         request.then((response) => {
-            console.log("getReservations2 " + JSON.stringify(response.data.Rows))
-
            return dispatch(Actions.setReservation(response.data.Rows[0]));
            // dispatch(Actions.getEmployees(response.data.Rows))
         });
