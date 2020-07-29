@@ -14,7 +14,10 @@ function PaymentPage(props) {
     const { selectedCustomer } = useSelector(({ global }) => global.customers);
     const { settings } = useSelector(({ global }) => global.company);
 
-    console.log("addReservation: " + JSON.stringify(settings))
+    const params = new URLSearchParams(window.location.search);
+    const companyId = params.get('companyId');
+    if(selectedTime <= moment() && selectedService.id === 0 && selectedEmployee.id === 0)
+        props.history.push('/?companyId=' + companyId)
 
     useEffect(() => {
         if (selectedCustomer !== '') {
@@ -43,7 +46,7 @@ function PaymentPage(props) {
                     <div class="product-details">
                         <h1>Confirmed</h1>
                         {selectedCustomer.firstName}, we're pleased to inform you that your booking has been successfully received and confirmed. <br /><br />
-                        <b>{selectedService.name}</b> at  <b>{selectedTime}</b> with  <b>{selectedEmployee.firstName} {selectedEmployee.lastName}</b> <br /><br />
+                        <b>{selectedService.name}</b> at  <b>{moment(selectedTime).format('YYYY-MM-DD HH:mm')}</b> with  <b>{selectedEmployee.firstName} {selectedEmployee.lastName}</b> <br /><br />
                  A confirmation email has been sent.
 
                         </div>

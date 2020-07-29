@@ -11,6 +11,8 @@ import { useTranslation } from 'react-i18next';
 import CalenderHeaderTitle from './CalenderHeader';
 import DateItem from './DateItem';
 import SubHeader from '../SubHeader'
+import { setSelectedEmployee } from '../../store/actions';
+import config from '../../config';
 
 
 function SelectDate(props) {
@@ -22,11 +24,21 @@ function SelectDate(props) {
     const { selectedService } = useSelector(({ global }) => global.services);
     const [bookings, setBookings] = useState([]);
     const [currentDate, setCurrentDate] = useState(moment());
+    
+    const params = new URLSearchParams(window.location.search);
+    const companyId = params.get('companyId');
+    if(selectedEmployee.id === 0)
+        props.history.push('/?companyId=' + companyId)
 
     const goBack = () => {
         dispatch(Actions.goBack(currentPage))
         props.history.goBack();
-    }; // to tell the store to go back.
+        dispatch(Actions.setSelectedEmployee({
+            id: 0,
+            firstName: "",
+            lastName: ""
+        }))
+    }; 
 
     useEffect(() => {
         sortBookings()

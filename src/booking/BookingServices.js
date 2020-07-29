@@ -31,7 +31,7 @@ function BookingServices(props) {
                     <Route exact path='/:selectedService/:selectedEmployee/:date/customer-information' component={CustomerInformation} />
                     <Route exact path='/:selectedService/:selectedEmployee/select-booking-time' component={SelectDate} />
                     <Route exact path='/:selectedService/select-employee' component={SelectEmployee} />
-                    <Route exact path='/' component={SelectService} />
+                    <Route path='/' component={SelectService} />
                 </Switch>
             </ReactCSSTransitionGroup>
         </div>

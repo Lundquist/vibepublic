@@ -9,15 +9,21 @@ import { useForm } from 'react-hook-form'
 import SubHeader from '../SubHeader';
 import Select from '../../ui/Select/Select';
 import { useTranslation } from 'react-i18next';
-
+import moment from 'moment'
 
 
 function CustomerInfo(props) {
     const dispatch = useDispatch();
     const { register, handleSubmit, errors } = useForm()
     const { customers } = useSelector(({ global }) => global.customers);
-    const { currentPage } = useSelector(({ global }) => global.booking);
+    const { currentPage, selectedTime } = useSelector(({ global }) => global.booking);
     const { t } = useTranslation();
+
+    const params = new URLSearchParams(window.location.search);
+    const companyId = params.get('companyId');
+    if(selectedTime <= moment())
+        props.history.push('/?companyId=' + companyId)
+  
 
     const onSubmit = (data) => {
         let existingCustomer = customers.find(customer => customer.email === data.email)
@@ -47,7 +53,7 @@ function CustomerInfo(props) {
     const goBack = () => {
         dispatch(Actions.goBack(currentPage))
         props.history.goBack();
-    }; // to tell the store to go back.
+    }; 
     return (
         <div className="__payment-Page-Container">
             <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> {t('completeBooking')}</h2>
