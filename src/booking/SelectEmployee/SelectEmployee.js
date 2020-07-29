@@ -59,7 +59,7 @@ function SelectEmployee(props) {
             {employee.firstName} {employee.lastName}
           </div>
         </div>
-        <i className='material-icons' onClick={() => setEmployeeInfo(employee)}>info</i>
+        {employee.note ? <i className='material-icons' onClick={() => setEmployeeInfo(employee)}>info</i> : null}
       </div>
     )
   }
@@ -80,7 +80,6 @@ const PopUpInfo = ({ employee, close, click }) => (
   <DialogBox className='__popup' title={`${employee.firstName} ${employee.lastName}`} close={close}>
     {console.log(employee)}
     {employee.note}
-    <button className='__btn' onClick={() => click(employee)}>Book</button>
   </DialogBox>
 )
 

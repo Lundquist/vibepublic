@@ -79,7 +79,6 @@ function SelectService(props) {
     const selectedService = (service) => {
         setService(service);
         const {pathname, search} = props.location;
-        console.log("selectedService " + JSON.stringify(props.location))
         props.history.push({
             pathname: `${pathname}service='${service.name.split(' ').join('-')}'/select-employee` ,
             search,
@@ -87,6 +86,13 @@ function SelectService(props) {
 
         
     }
+
+    const PopUpInfo = ({ service, close, click }) => (
+        <DialogBox className='__popup' title={service.name} close={close}>
+            {service.description}
+            <button className='__btn' onClick={(e) => selectedService(service)}>Book</button>
+        </DialogBox>
+    )
     const renderServices = (service) => {
         if (service.category == selectedCategory) {
             let $imagePreview = null;
@@ -142,11 +148,6 @@ function SelectService(props) {
 
 }
 
-const PopUpInfo = ({ service, close, click }) => (
-    <DialogBox className='__popup' title={service.name} close={close}>
-        {service.description}
-        <button className='__btn' onClick={() => click(service)}>Book</button>
-    </DialogBox>
-)
+
 
 export default withTranslation()(withReducer('calendarApp', reducer)(SelectService));
