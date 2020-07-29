@@ -16,9 +16,11 @@ function CustomerInfo(props) {
     const dispatch = useDispatch();
     const { register, handleSubmit, errors } = useForm()
     const { customers } = useSelector(({ global }) => global.customers);
+    const { information } = useSelector(({ global }) => global.company);
     const { currentPage, selectedTime } = useSelector(({ global }) => global.booking);
     const { t } = useTranslation();
     const [noteLength, setNoteLength] = useState(0);
+    const [showStripe, setShowStripe] = useState(0);
 
     const params = new URLSearchParams(window.location.search);
     const companyId = params.get('companyId');
@@ -26,8 +28,15 @@ function CustomerInfo(props) {
         props.history.push('/?companyId=' + companyId)
 
 
+const renderStripePopUp = () => {
+    return(
+        <div>Stripe</div>
+    )
+}
+
     const onSubmit = (data) => {
         let existingCustomer = customers.find(customer => customer.email === data.email)
+
         if (existingCustomer !== undefined) {
             existingCustomer.firstName = data.firstName
             existingCustomer.lastName = data.lastName
@@ -57,6 +66,9 @@ function CustomerInfo(props) {
         dispatch(Actions.setSelectedTime(moment()))
 
     };
+
+
+console.log("CustomerInFo " + showStripe)
     return (
         <div className="__payment-Page-Container">
             <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> {t('completeBooking')}</h2>
@@ -65,7 +77,7 @@ function CustomerInfo(props) {
                     <option value="0">Pay at site</option>
                     <option value="1">Pay now</option>
                 </select> */}
-                <Select name='payment' onSelect={(htmlElm) => console.log(htmlElm.value)} >
+                <Select name='payment' onSelect={(e) => setShowStripe(e.value)} >
                     <option value="0">{t('paySite')}</option>
                     <option value="1">{t('payNow')}</option>
                 </Select>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useStripe, useElements, CardElement} from '@stripe/react-stripe-js';
 
-import CardSection from './CardSection';
+import CardSection from '../CardSection';
 
 export default function CheckoutForm() {
   const stripe = useStripe();
@@ -17,8 +17,8 @@ export default function CheckoutForm() {
       // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
-    var CLIENT_SECRET = 'pi_1FpUmEKZaRsxp2y4c9OPoTjM_secret_tv9tsgAQbAlNRYqm8MAzmYPuE';
-    const result = await stripe.confirmCardPayment('pi_1FpUmEKZaRsxp2y4c9OPoTjM_secret_tv9tsgAQbAlNRYqm8MAzmYPuE', {
+
+    const result = await stripe.confirmCardPayment('{CLIENT_SECRET}', {
       payment_method: {
         card: elements.getElement(CardElement),
         billing_details: {
