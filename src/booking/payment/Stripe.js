@@ -2,9 +2,9 @@ import React from 'react';
 import '../styles/customerInformation.scss';
 import * as Actions from '../store/actions';
 import { Button } from '@material-ui/core';
-
+import config from '../../config'
 function Stripe(props) {
-    const stripe = window.Stripe("pk_test_wguKhnBNi9r1x4gDqXkgITv200M57KPGJm");
+    const stripe = window.Stripe(config.STRIPE_PUBLISHABLE_KEY);
 
     async function handleStripe(e) {
         const session = await Actions.payWithStripe({ customer: "Robert", price: 1337 }).then(response => {

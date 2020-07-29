@@ -5,7 +5,7 @@ import {loadStripe} from '@stripe/stripe-js';
 import { useDispatch, useSelector } from 'react-redux';
 import withReducer from '../../../store/withReducer';
 import reducer from '../../../store/reducers';
-
+import config from '../../../config'
 import CheckoutForm from './CheckoutForm';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
@@ -16,14 +16,15 @@ import CheckoutForm from './CheckoutForm';
 const Stripe = () => {
     const { information } = useSelector(({ global }) => global.company);
 
-    const stripePromise = loadStripe("pk_test_wguKhnBNi9r1x4gDqXkgITv200M57KPGJm",
-    {stripeAccount: "{{CONNECTED_STRIPE_ACCOUNT_ID}}"});
+    const stripePromise = loadStripe(config.STRIPE_PUBLISHABLE_KEY,
+    {stripeAccount:information.stripeAccount});
   
 
-//      <CheckoutForm />
+//      
 
   return (
     <Elements stripe={stripePromise}>
+        <CheckoutForm />
     </Elements>
   );
 };

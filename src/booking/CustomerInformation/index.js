@@ -10,7 +10,7 @@ import SubHeader from '../SubHeader';
 import Select from '../../ui/Select/Select';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment'
-
+import Stripe from './Stripe';
 
 function CustomerInfo(props) {
     const dispatch = useDispatch();
@@ -28,11 +28,12 @@ function CustomerInfo(props) {
         props.history.push('/?companyId=' + companyId)
 
 
-const renderStripePopUp = () => {
-    return(
-        <div>Stripe</div>
-    )
-}
+    const renderStripePopUp = () => {
+        return (
+            <div>Stripe</div>
+        )
+    }
+
 
     const onSubmit = (data) => {
         let existingCustomer = customers.find(customer => customer.email === data.email)
@@ -67,20 +68,15 @@ const renderStripePopUp = () => {
 
     };
 
+    const renderStripe = () => {
+        return (
+            <Stripe />
+        )
+    }
 
-console.log("CustomerInFo " + showStripe)
-    return (
-        <div className="__payment-Page-Container">
-            <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> {t('completeBooking')}</h2>
-            <form onSubmit={handleSubmit(onSubmit)} className='__card2'>
-                {/* <select name={"payment"} ref={register({ required: true })}>
-                    <option value="0">Pay at site</option>
-                    <option value="1">Pay now</option>
-                </select> */}
-                <Select name='payment' onSelect={(e) => setShowStripe(e.value)} >
-                    <option value="0">{t('paySite')}</option>
-                    <option value="1">{t('payNow')}</option>
-                </Select>
+    const renderPayAtSite = () => {
+        return (
+            <form onSubmit={handleSubmit(onSubmit)} >
                 <input name="firstName" placeholder={t('name')} ref={register({ required: true })} />
                 {errors.exampleRequired && <span>{t('reqField')}</span>}
 
@@ -94,10 +90,26 @@ console.log("CustomerInFo " + showStripe)
                 {errors.exampleRequired && <span>{t('reqField')}</span>}
 
                 <textarea name="notes" maxlength="445" placeholder={t('notes')} rows={5}
-                    ref={register({ required: false })} onChange={(e) =>  setNoteLength(e.target.value.length)} />
+                    ref={register({ required: false })} onChange={(e) => setNoteLength(e.target.value.length)} />
                 {noteLength > 0 ? <div id="noteLengthContainer">{noteLength} / 445 </div> : <div id="noteLengthContainer"></div>}
                 <button className='__btn'>{t('bookNow')}</button>
             </form>
+        )
+    }
+
+    return (
+        <div className="__payment-Page-Container">
+            <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> {t('completeBooking')}</h2>
+            <div className='__card2'>
+                {information.stripeAccount !== null ?
+                    <Select name='payment' onSelect={(htmlElm) => setShowStripe(htmlElm)} >
+                        <option value="0">{t('paySite')}</option>
+                        <option value="1">{t('payNow')}</option>
+                    </Select>
+                    : null}
+                {showStripe === 0 ? renderPayAtSite() : renderStripe()}
+            </div>
+
         </div>
     )
 }
