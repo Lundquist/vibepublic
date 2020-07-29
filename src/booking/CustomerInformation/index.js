@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import withReducer from '../../store/withReducer';
@@ -18,12 +18,13 @@ function CustomerInfo(props) {
     const { customers } = useSelector(({ global }) => global.customers);
     const { currentPage, selectedTime } = useSelector(({ global }) => global.booking);
     const { t } = useTranslation();
+    const [noteLength, setNoteLength] = useState(0);
 
     const params = new URLSearchParams(window.location.search);
     const companyId = params.get('companyId');
-    if(selectedTime <= moment())
+    if (selectedTime <= moment())
         props.history.push('/?companyId=' + companyId)
-  
+
 
     const onSubmit = (data) => {
         let existingCustomer = customers.find(customer => customer.email === data.email)
@@ -45,9 +46,9 @@ function CustomerInfo(props) {
         const pathname = props.location.pathname.replace('customer-information', `customername='${existingCustomer.firstName}'/confirm-booking${props.location.search}`);
         props.history.push(pathname);
 
-    
 
-       // dispatch(Actions.goForward(currentPage))
+
+        // dispatch(Actions.goForward(currentPage))
 
     }
     const goBack = () => {
@@ -55,7 +56,7 @@ function CustomerInfo(props) {
         props.history.goBack();
         dispatch(Actions.setSelectedTime(moment()))
 
-    }; 
+    };
     return (
         <div className="__payment-Page-Container">
             <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> {t('completeBooking')}</h2>
@@ -80,9 +81,9 @@ function CustomerInfo(props) {
                 <input name="phone" placeholder={t('phone')} ref={register({ required: true })} />
                 {errors.exampleRequired && <span>{t('reqField')}</span>}
 
-                <textarea name="notes" placeholder={t('notes')} rows={5}
-                    ref={register({ required: false })} />
-
+                <textarea name="notes" maxlength="445" placeholder={t('notes')} rows={5}
+                    ref={register({ required: false })} onChange={(e) =>  setNoteLength(e.target.value.length)} />
+                {noteLength > 0 ? <div id="noteLengthContainer">{noteLength} / 445 </div> : <div id="noteLengthContainer"></div>}
                 <button className='__btn'>{t('bookNow')}</button>
             </form>
         </div>
