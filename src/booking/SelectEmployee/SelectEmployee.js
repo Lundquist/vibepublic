@@ -36,16 +36,16 @@ function SelectEmployee(props) {
     dispatch(getAvailableHours(selectedEmployee.id, moment(), selectedService.id))
 
   }
-  console.log("SelectEmployee " + JSON.stringify(employees))
   const goBack = () => {
     dispatch(Actions.goBack(currentPage))
     props.history.goBack();
+    dispatch(Actions.setSelectedService(0))
   }; // to tell the store to go back.
 
 
 
   const renderEmployees = (employee) => {
-console.log("renderEmployees " + JSON.stringify(employee))
+
     let $imagePreview = (<img className="userImage" src={'https://vibeemployeeimage.s3.eu-west-3.amazonaws.com/' + employee.userImage} onError={(e) => addDefaultSrc(e)} />);
     const addDefaultSrc = (ev) => {
         ev.target.src = "https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"

@@ -53,6 +53,8 @@ function CustomerInfo(props) {
     const goBack = () => {
         dispatch(Actions.goBack(currentPage))
         props.history.goBack();
+        dispatch(Actions.setSelectedTime(moment()))
+
     }; 
     return (
         <div className="__payment-Page-Container">
