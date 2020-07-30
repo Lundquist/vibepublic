@@ -13,7 +13,7 @@ import CheckoutForm from './CheckoutForm';
 // Call `loadStripe` with the same connected account ID used when creating
 // the PaymentIntent.
 
-const Stripe = () => {
+const Stripe = (props) => {
     const { information } = useSelector(({ global }) => global.company);
 
     const stripePromise = loadStripe(config.STRIPE_PUBLISHABLE_KEY,
@@ -24,7 +24,7 @@ const Stripe = () => {
 
   return (
     <Elements stripe={stripePromise}>
-        <CheckoutForm />
+        <CheckoutForm createCustomer={(data) => props.createCustomer(data)}/>
     </Elements>
   );
 };

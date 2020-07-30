@@ -1,35 +1,35 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form'
 import './style.scss'
 import CardSection from '../CardSection';
-import {startPaymentIntent} from '../../../../api'
+import { startPaymentIntent } from '../../../../api'
 import withReducer from '../../../../store/withReducer';
 import reducer from '../../../../store/reducers';
 import { useDispatch, useSelector } from 'react-redux';
 
 
-function CheckoutForm() {
+function CheckoutForm(props) {
   const stripe = useStripe();
   const elements = useElements();
   const { t } = useTranslation();
   const { register, handleSubmit, errors } = useForm()
   const [noteLength, setNoteLength] = useState(0);
   const { information } = useSelector(({ global }) => global.company);
+  const { selectedService } = useSelector(({ global }) => global.services);
 
   const startStripe = async (event) => {
     // We don't want to let default form submission happen here,
     // which would refresh the page.
-   // event.preventDefault();
+    // event.preventDefault();
 
     if (!stripe || !elements) {
       // Stripe.js has not yet loaded.
       // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
-const response = await startPaymentIntent(information.stripeAccount);
-console.log("hehehehe " + response)
+    const response = await startPaymentIntent(selectedService, information.stripeAccount);
 
     const result = await stripe.confirmCardPayment(response.data.clientSecret, {
       payment_method: {
@@ -54,9 +54,10 @@ console.log("hehehehe " + response)
         // payment_intent.succeeded event that handles any business critical
         // post-payment actions.
         console.log("successfully performed a payment. Whiskey for Robert")
+        props.createCustomer(event)
       }
     }
-    
+
   };
 
   return (

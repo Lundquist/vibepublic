@@ -23,7 +23,6 @@ export function addReservation(newReservation) {
         });
 
         return request.then((response) => {
-            console.log("addReservation " + JSON.stringify(response))
             if (!response.Error)
                 sendEmail(response.data.reservation.id)
         }

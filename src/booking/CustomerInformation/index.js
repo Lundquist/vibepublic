@@ -70,7 +70,7 @@ function CustomerInfo(props) {
 
     const renderStripe = () => {
         return (
-            <Stripe />
+            <Stripe createCustomer={(data) => onSubmit(data)}/>
         )
     }
 

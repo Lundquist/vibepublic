@@ -23,8 +23,11 @@ function PaymentPage(props) {
         if (selectedCustomer !== '') {
             let cancelationTime = moment(selectedTime).subtract(settings.cancelationLimit, 'days').format('YYYY-MM-DD HH:mm');
 
+            //start: moment.utc(selectedReservation.start).format('YYYY-MM-DD HH:mm'),
+            //end: moment.utc(selectedReservation.start).add(selectedService.time, 'minutes').format('YYYY-MM-DD HH:mm'),
+
             let newReservation = {
-                start: selectedTime,
+                start: moment.utc(selectedTime).format('YYYY-MM-DD HH:mm'),
                 end: moment(selectedTime).add(selectedService.time, 'minutes').format('YYYY-MM-DD HH:mm'),
                 employee: selectedEmployee.id,
                 customer: selectedCustomer.userId,
