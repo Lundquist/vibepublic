@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Calender.scss';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import * as moment from 'moment'
+import moment from 'moment-timezone';
 import withReducer from '../../store/withReducer';
 import reducer from '../../store/reducers';
 import * as Actions from '../../store/actions';
@@ -46,7 +46,9 @@ function SelectDate(props) {
 
 
     function setDateTime(date, time) {
-        dispatch(Actions.setSelectedTime(date.format('YYYY-MM-DD ') + time))
+        const [hours, minutes] = time.split(':');
+        let dateTime = date.set({ hours, minutes })
+        dispatch(Actions.setSelectedTime(moment.utc(dateTime).format('YYYY-MM-DD HH:mm')))
         dispatch(Actions.goForward(currentPage))
         dispatch(getCustomers)
         const pathname = props.location.pathname.replace('select-booking-time', `bookingtime='${time}'/customer-information${props.location.search}`);

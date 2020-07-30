@@ -25,7 +25,10 @@ function PaymentPage(props) {
 
             //start: moment.utc(selectedReservation.start).format('YYYY-MM-DD HH:mm'),
             //end: moment.utc(selectedReservation.start).add(selectedService.time, 'minutes').format('YYYY-MM-DD HH:mm'),
-
+            console.log("PaymentPage/useEffect")
+            console.log(moment.utc(selectedTime).format('YYYY-MM-DD HH:mm'),)
+            console.log(moment(selectedTime).format('YYYY-MM-DD HH:mm'),)
+            console.log(selectedTime)
             let newReservation = {
                 start: moment.utc(selectedTime).format('YYYY-MM-DD HH:mm'),
                 end: moment(selectedTime).add(selectedService.time, 'minutes').format('YYYY-MM-DD HH:mm'),
