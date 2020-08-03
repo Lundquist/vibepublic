@@ -33,7 +33,7 @@ function SelectEmployee(props) {
   function setEmployee(selectedEmployee) {
     dispatch(Actions.setSelectedEmployee(selectedEmployee))
     dispatch(Actions.goForward(currentPage))
-    dispatch(getAvailableHours(selectedEmployee.id, moment(), selectedService.id))
+    dispatch(getAvailableHours(selectedEmployee.id, moment(), selectedService.time))
 
   }
   const goBack = () => {
