@@ -21,13 +21,14 @@ function PaymentPage(props) {
 
     useEffect(() => {
         if (selectedCustomer !== '') {
-            let cancelationTime = moment(selectedTime).subtract(settings.cancelationLimit, 'days').format('YYYY-MM-DD HH:mm');
+            console.log("PaymentPage")
+            console.log(moment(selectedTime).local().format('YYYY-MM-DD HH:mm'))
+            console.log(moment.utc(moment(selectedTime)).format('YYYY-MM-DD HH:mm'))
 
-            //start: moment.utc(selectedReservation.start).format('YYYY-MM-DD HH:mm'),
-            //end: moment.utc(selectedReservation.start).add(selectedService.time, 'minutes').format('YYYY-MM-DD HH:mm'),
+            let cancelationTime = moment(selectedTime).subtract(settings.cancelationLimit, 'days').format('YYYY-MM-DD HH:mm');
             let newReservation = {
-                start: moment.utc(selectedTime).format('YYYY-MM-DD HH:mm'),
-                end: moment(selectedTime).add(selectedService.time, 'minutes').format('YYYY-MM-DD HH:mm'),
+                start: moment.utc(moment(selectedTime)).format('YYYY-MM-DD HH:mm'),
+                end: moment.utc(moment(selectedTime)).add(selectedService.time, 'minutes').format('YYYY-MM-DD HH:mm'),
                 employee: selectedEmployee.id,
                 customer: selectedCustomer.userId,
                 service: selectedService.id,
