@@ -60,7 +60,7 @@ function SelectDate(props) {
             return;
         }
         showPrevious === true ? setCurrentDate(currentDate.subtract(7, 'days')) : setCurrentDate(currentDate.add(7, 'days'));
-        dispatch(getAvailableHours(selectedEmployee.id, currentDate, selectedService.id))
+        dispatch(getAvailableHours(selectedEmployee.id, currentDate, selectedService.time))
     }
 
     const sortBookings = () => {
