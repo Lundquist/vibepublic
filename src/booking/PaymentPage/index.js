@@ -16,7 +16,7 @@ function PaymentPage(props) {
 
     const params = new URLSearchParams(window.location.search);
     const companyId = params.get('companyId');
-    if(selectedTime <= moment() && selectedService.id === 0 && selectedEmployee.id === 0)
+    if (selectedTime <= moment() && selectedService.id === 0 && selectedEmployee.id === 0)
         props.history.push('/?companyId=' + companyId)
 
     useEffect(() => {

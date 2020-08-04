@@ -48,7 +48,7 @@ function SelectDate(props) {
     function setDateTime(date, time) {
         const [hours, minutes] = time.split(':');
         let dateTime = date.set({ hours, minutes })
-        dispatch(Actions.setSelectedTime(moment.utc(dateTime).format('YYYY-MM-DD HH:mm')))
+        dispatch(Actions.setSelectedTime(moment(dateTime).format('YYYY-MM-DD HH:mm')))
         dispatch(Actions.goForward(currentPage))
         dispatch(getCustomers)
         const pathname = props.location.pathname.replace('select-booking-time', `bookingtime='${time}'/customer-information${props.location.search}`);
