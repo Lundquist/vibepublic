@@ -1,5 +1,6 @@
 export const GO_FORWARD = '[BOOKING] GO_FORWARD';
 export const GO_BACK = '[BOOKING] GO_BACK';
+export const REQUEST_AVAILABLE_HOURS = '[BOOKING] REQUEST_AVAILABLE_HOURS';
 export const SET_AVAILABLE_HOURS = '[BOOKING] SET_AVAILABLE_HOURS';
 export const SET_SELECTED_TIME = '[BOOKING] SET_SELECTED_TIME';
 export const GO_TO_START = '[BOOKING] GO_TO_START';
@@ -32,7 +33,11 @@ export function setAvailableHours(hours) {
     }
 }
 
-
+export function requestAvailableHours() {
+    return {
+        type: REQUEST_AVAILABLE_HOURS
+    }
+}
 export function setSelectedTime(time) {
     return {
         type: SET_SELECTED_TIME,

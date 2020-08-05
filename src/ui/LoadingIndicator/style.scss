@@ -1,0 +1,35 @@
+.lockableArea{
+    position: relative;
+    background-color: transparent; 
+    z-index: 999; 
+    border-radius: 10px;
+    display: flex;
+    min-height: 300px;
+    align-items: center;
+    justify-content: center;
+    .lds-dual-ring {
+        align-items: center;;
+        display: flex;
+        justify-content: center;
+      }
+      .lds-dual-ring:after {
+        content: " ";
+        display: flex;
+        margin: 8px;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        border: 3px solid #000;
+        border-color: #ddeffb transparent #ddeffb transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+      }
+      @keyframes lds-dual-ring {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    
+}

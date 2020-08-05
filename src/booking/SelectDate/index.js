@@ -13,21 +13,21 @@ import DateItem from './DateItem';
 import SubHeader from '../SubHeader'
 import { setSelectedEmployee } from '../../store/actions';
 import config from '../../config';
-
+import LoadingIndicator from '../../ui/LoadingIndicator'
 
 function SelectDate(props) {
     const dispatch = useDispatch();
     const { t } = useTranslation();
 
-    const { availableHours, currentPage } = useSelector(({ global }) => global.booking);
+    const { availableHours, currentPage, loadedAvailableHours } = useSelector(({ global }) => global.booking);
     const { selectedEmployee } = useSelector(({ global }) => global.employees);
     const { selectedService } = useSelector(({ global }) => global.services);
     const [bookings, setBookings] = useState([]);
     const [currentDate, setCurrentDate] = useState(moment());
-    
+
     const params = new URLSearchParams(window.location.search);
     const companyId = params.get('companyId');
-    if(selectedEmployee.id === 0)
+    if (selectedEmployee.id === 0)
         props.history.push('/?companyId=' + companyId)
 
     const goBack = () => {
@@ -38,8 +38,7 @@ function SelectDate(props) {
             firstName: "",
             lastName: ""
         }))
-    }; 
-
+    };
     useEffect(() => {
         sortBookings()
     }, [availableHours]);
@@ -72,6 +71,7 @@ function SelectDate(props) {
                 bookingTimes: getBookingTimes(nxtdate),
             });
         }
+
         setBookings(sortedBookings)
     }
 
@@ -82,6 +82,7 @@ function SelectDate(props) {
                 bookingTimes.push(moment(bookingItem).format('HH:mm'));
             }
         });
+
         return bookingTimes
     }
 
@@ -92,6 +93,7 @@ function SelectDate(props) {
             if (booking.bookingTimes.length > 0)
                 showTimes = true;
         })
+
         return showTimes;
     }
 
@@ -105,6 +107,24 @@ function SelectDate(props) {
         )
     }
 
+    const renderLoading = () => {
+        return (
+            <LoadingIndicator active={true} />
+        )
+    }
+
+    const renderContent = () => {
+        return (
+            <div>
+                <div className='__flex __calander_booking_header'>
+                    {bookings.map((booking, i) => <CalenderHeaderTitle {...booking} key={i} />)}
+                </div>
+                <div className='__main_calender __f1 __flex-strech'>
+                    {checkIfAvailableThisWeek() ? bookings.map((booking) => <DateItem key={booking.date} {...booking} setDateTime={(d, t) => setDateTime(d, t)} />) : showNoTimesMessage()}
+                </div>
+            </div>
+        )
+    }
     return (
         <div id="selectDateAndTimeContainer">
             <div className='__header'>
@@ -123,12 +143,7 @@ function SelectDate(props) {
                             <i className='material-icons'>keyboard_arrow_right</i>
                         </div>
                     </header>
-                    <div className='__flex __calander_booking_header'>
-                        {bookings.map((booking, i) => <CalenderHeaderTitle {...booking} key={i} />)}
-                    </div>
-                    <div className='__main_calender __f1 __flex-strech'>
-                        {checkIfAvailableThisWeek() ? bookings.map((booking) => <DateItem key={booking.date} {...booking} setDateTime={(d, t) => setDateTime(d, t)} />) : showNoTimesMessage()}
-                    </div>
+                    {loadedAvailableHours ? renderContent() : renderLoading()}
                 </div>
             </div>
         </div>
