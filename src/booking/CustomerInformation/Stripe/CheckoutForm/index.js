@@ -35,11 +35,13 @@ function CheckoutForm(props) {
       payment_method: {
         card: elements.getElement(CardElement),
         billing_details: {
-          name: event.name + " " + event.lastName,
+          name: event.firstName + " " + event.lastName,
           email: event.email,
           phone: event.phone
-        },
-      }
+        },        
+      },
+      receipt_email: event.email
+
     });
 
     if (result.error) {
