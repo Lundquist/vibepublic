@@ -16,19 +16,18 @@ function CheckoutForm(props) {
   const { t } = useTranslation();
   const { register, handleSubmit, errors } = useForm()
   const [noteLength, setNoteLength] = useState(0);
+  const [loading, setLoading] = useState(false);
   const { information } = useSelector(({ global }) => global.company);
   const { selectedService } = useSelector(({ global }) => global.services);
 
   const startStripe = async (event) => {
-    // We don't want to let default form submission happen here,
-    // which would refresh the page.
-    // event.preventDefault();
 
     if (!stripe || !elements) {
       // Stripe.js has not yet loaded.
       // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
+    setLoading(true)
     const response = await startPaymentIntent(selectedService, information.stripeAccount);
 
     const result = await stripe.confirmCardPayment(response.data.clientSecret, {
@@ -38,7 +37,7 @@ function CheckoutForm(props) {
           name: event.firstName + " " + event.lastName,
           email: event.email,
           phone: event.phone
-        },        
+        },
       },
       receipt_email: event.email
 
@@ -55,6 +54,7 @@ function CheckoutForm(props) {
         // execution. Set up a webhook or plugin to listen for the
         // payment_intent.succeeded event that handles any business critical
         // post-payment actions.
+        setLoading(false)
         console.log("successfully performed a payment. Whiskey for Robert")
         props.createCustomer(event)
       }
@@ -80,7 +80,10 @@ function CheckoutForm(props) {
         ref={register({ required: false })} onChange={(e) => setNoteLength(e.target.value.length)} />
       {noteLength > 0 ? <div id="noteLengthContainer">{noteLength} / 445 </div> : <div id="noteLengthContainer"></div>}
       <div id="stripeCardContainer"><CardSection /></div>
-      <button className='__btn'>{t('bookNow')}</button>
+      <div id="confirmContainer">
+        {loading ? <div className={loading ? "lds-dual-ring" : "VibeImageSpinnerLoaded"} />
+          : <button className='__btn'>{t('bookNow')}</button>}
+      </div>
     </form>
   );
 }
