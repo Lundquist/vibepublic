@@ -27,7 +27,7 @@ function BookingContent(props) {
         dispatch(getReservation(cancelReservation))
 
     if (!companyId && !cancelReservation)
-        window.location.href = 'https://www.vibescheduling.com/'
+        window.location.href = 'https://vibereserva.es/'
 
     const getBooking = () => {
         return (
