@@ -24,10 +24,15 @@
             svg{
                 width: 56px;
                 height: 56px;
+                object-fit: contain;
+
                 }
             img{
                 width: 56px;
                 height: 56px;
+                height: 50px;
+                object-fit: contain;
+
                 }
         }   
         .__title{
