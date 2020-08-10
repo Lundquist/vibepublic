@@ -121,34 +121,7 @@ export function getEmployeesForService(serviceId) {
         });
     }
 }
-/**
- * TO-DO
- * Fix some form of error handling if the reservation could not be added.
- * @param {} newReservation 
- */
-export function submitReservation(newReservation) {
-    const request = axios.post(`${config.serverUrl}/reservations`, newReservation, {
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    })
 
-    return (dispatch) => {
-        request.then((response) => {
-            if (!response.Error) {
-                dispatch(addReservation(response.data.reservation))
-                dispatch({
-                    type: RESET_BOOKING_PANEL
-                })
-                dispatch(getCompanyReservations())
-
-            }else{
-                console.log("submitReservation ERROR: " + JSON.stringify(response))
-            }
-
-        });
-    }
-}
 
 export function updateReservation(newReservation) {
     const request = axios.put(`${config.serverUrl}/reservations`, newReservation, {

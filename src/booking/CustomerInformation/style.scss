@@ -18,4 +18,12 @@
     @media (max-width: 600px) {
         width: auto;
     }
+
+    #noteLengthContainer{
+        min-height: 18px;
+        color: #D3D3D3;
+        font-size: 14px;
+        display: flex;
+        justify-content: flex-end;
+    }
 }

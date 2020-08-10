@@ -19,7 +19,9 @@ const servicesReducer = function (state = initialState, action) {
             }
         case Actions.SET_SELECTED_SERVICE:
             {
+                console.log("SET_SELECTED_SERVICE " + JSON.stringify(action.payload))
                 const selectedService = action.payload !== 'new' && action.payload !== 0 ? state.services.find((service) => service.id === action.payload) : {id:0};
+                console.log("SET_SELECTED_SERVICE2 " + JSON.stringify(selectedService))
                 return {
                     ...state,
                     selectedService: selectedService

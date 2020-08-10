@@ -18,6 +18,11 @@ function SelectEmployee(props) {
   const { currentPage } = useSelector(({ global }) => global.booking);
   const { t } = props;
   const [employeeInfo, setEmployeeInfo] = useState(null);
+  
+  const params = new URLSearchParams(window.location.search);
+  const companyId = params.get('companyId');
+  if(selectedService.id === 0)
+      props.history.push('/?companyId=' + companyId)
 
   const selectedEmployee = (employee) => {
     setEmployee(employee);
@@ -28,19 +33,19 @@ function SelectEmployee(props) {
   function setEmployee(selectedEmployee) {
     dispatch(Actions.setSelectedEmployee(selectedEmployee))
     dispatch(Actions.goForward(currentPage))
-    dispatch(getAvailableHours(selectedEmployee.id, moment(), selectedService.id))
+    dispatch(getAvailableHours(selectedEmployee.id, moment(), selectedService.time))
 
   }
-  console.log("SelectEmployee " + JSON.stringify(employees))
   const goBack = () => {
     dispatch(Actions.goBack(currentPage))
     props.history.goBack();
+    dispatch(Actions.setSelectedService(0))
   }; // to tell the store to go back.
 
 
 
   const renderEmployees = (employee) => {
-console.log("renderEmployees " + JSON.stringify(employee))
+
     let $imagePreview = (<img className="userImage" src={'https://vibeemployeeimage.s3.eu-west-3.amazonaws.com/' + employee.userImage} onError={(e) => addDefaultSrc(e)} />);
     const addDefaultSrc = (ev) => {
         ev.target.src = ".profile.png"
@@ -54,7 +59,7 @@ console.log("renderEmployees " + JSON.stringify(employee))
             {employee.firstName} {employee.lastName}
           </div>
         </div>
-        <i className='material-icons' onClick={() => setEmployeeInfo(employee)}>info</i>
+        {employee.note ? <i className='material-icons' onClick={() => setEmployeeInfo(employee)}>info</i> : null}
       </div>
     )
   }
@@ -75,7 +80,6 @@ const PopUpInfo = ({ employee, close, click }) => (
   <DialogBox className='__popup' title={`${employee.firstName} ${employee.lastName}`} close={close}>
     {console.log(employee)}
     {employee.note}
-    <button className='__btn' onClick={() => click(employee)}>Book</button>
   </DialogBox>
 )
 

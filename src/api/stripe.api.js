@@ -23,8 +23,28 @@ export const signUpToStripeConnect = (url) => {
             }
         });
     }
-
 }
+
+export const startPaymentIntent = async (service, account) => {
+    console.log("startPaymentIntent 1")
+    return axios.post(`${config.serverUrl}/stripe/paymentIntent`, {
+        currency: 'EUR',
+        account: account,
+        service: service
+
+    }).then((response) =>{
+        return response
+        console.log("startPaymentIntent" + JSON.stringify(response))
+    })
+
+    const response = await fetch('/secret');
+    const {client_secret: clientSecret} = await response.json();
+  
+}
+
+
+
+
 export const stripePaymentMethodHandler = (result, email) => {
     if (result.error) {
         // Show error in payment form3

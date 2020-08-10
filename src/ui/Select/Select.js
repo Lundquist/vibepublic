@@ -10,9 +10,10 @@ const Select = props => {
     const inputRef = useRef()
 
     const onSelect = index => {
+        console.log("onSelect " + index)
         setSelectedValueIndex(index);
         setShowMenu('');
-        props.onSelect && props.onSelect(inputRef.current);
+        props.onSelect && props.onSelect(index);
     }
 
     const menuHandler = () => {

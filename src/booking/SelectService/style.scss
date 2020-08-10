@@ -6,20 +6,34 @@
         padding: 16px 0;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         cursor: pointer;
+
+        #noImage{
+            width:0px;
+            height: 0px;
+            overflow: hidden;
+        }
         .__small{
             font-size: 15px;
             margin-top: 6px;
         }
         .__image-preview{
-            position: relative;
-            margin-right: 6px;
+            width: 56px;
+            height: 56px;
+            margin-right: 10px;
+    
             svg{
-                width: 42px;
-                height: 42px;
-            }
+                width: 56px;
+                height: 56px;
+                object-fit: contain;
+
+                }
             img{
-                width: 42px;
-            }
+                width: 56px;
+                height: 56px;
+                height: 50px;
+                object-fit: contain;
+
+                }
         }   
         .__title{
             margin: 1px 0 auto 0;
