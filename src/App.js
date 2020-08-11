@@ -3,8 +3,8 @@ import store from './store';
 import { Provider } from 'react-redux';
 import './App.css';
 import Booking from './booking'
-import reducer from './store/reducers'
-import { createStore } from 'redux';
+
+ 
 //const store = createStore(reducer);
 
 const App = (props) => {
@@ -15,4 +15,4 @@ const App = (props) => {
   );
 }
 
-export default App;
+export default (App);

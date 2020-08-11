@@ -79,7 +79,6 @@ function SelectService(props) {
     const selectedService = (service) => {
         setService(service);
         const {pathname, search} = props.location;
-        console.log("selectedService " + JSON.stringify(props.location))
         props.history.push({
             pathname: `${pathname}service='${service.name.split(' ').join('-')}'/select-employee` ,
             search,
@@ -87,21 +86,24 @@ function SelectService(props) {
 
         
     }
+
+    const PopUpInfo = ({ service, close, click }) => (
+        <DialogBox className='__popup' title={service.name} close={close}>
+            {service.description}
+            <button className='__btn' onClick={(e) => selectedService(service)}>Book</button>
+        </DialogBox>
+    )
     const renderServices = (service) => {
         if (service.category == selectedCategory) {
-            let $imagePreview = null;
-            if (service.image) {
-                var buffer = new Buffer(service.image);
-                // $imagePreview = (<img className="userImage" src={buffer} />);
-                $imagePreview = (<img className="userImage" src={buffer} />)
-            } else {
-                $imagePreview = (<PhotoSizeSelectActual />);
+            let $imagePreview = (<img className="serviceImage" src={'https://vibeserviceimage.s3.eu-west-3.amazonaws.com/' + service.image} onError={(e) => addDefaultSrc(e)} />);
+            const addDefaultSrc = (ev) => {
+                ev.target.src = "https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
             }
-
+        
             return (
                 <div className="__flex __service" onClick={(e) => selectedService(service)} key={service.id}>
                     <div className='__flex-strech __f1'>
-                        <div className='__image-preview'><div></div>{$imagePreview}</div>
+                        <div className='__image-preview'id={service.image === null ? "noImage" : "image"}>{$imagePreview}</div>
                         <div className='__title'>
                             {service.name}
                             <div className='__small'>
@@ -142,11 +144,6 @@ function SelectService(props) {
 
 }
 
-const PopUpInfo = ({ service, close, click }) => (
-    <DialogBox className='__popup' title={service.name} close={close}>
-        {service.description}
-        <button className='__btn' onClick={() => click(service)}>Book</button>
-    </DialogBox>
-)
+
 
 export default withTranslation()(withReducer('calendarApp', reducer)(SelectService));

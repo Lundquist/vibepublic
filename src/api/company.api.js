@@ -65,6 +65,18 @@ export function getOpeningHours() {
         });
 }
 
+export function getCompanySettings() {
+    console.log("getCompanySettings1")
+    const URL = `${config.serverUrl}/companySettings?companyId=${companyId()}`;
+    const request = axios.get(URL);
+    return (dispatch) =>
+        request.then((response) => {
+            console.log("getCompanySettings2 " + JSON.stringify(response.data.Rows))
+
+            dispatch(Actions.setCompanySettings(response.data.Rows))
+        });
+}
+
 export function putCompanySettings(companySettings) {
     const URL = `${config.serverUrl}/companySettings?companyId=${companyId()}`;
     const request = axios.put(URL, {

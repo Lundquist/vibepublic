@@ -27,7 +27,8 @@ const initialState = {
         notifyEmployees: 0,
         companyLanguage: 'en',
         currency: 'euro',
-        timezone: '+1'
+        timezone: '+1',
+        cancelationLimit: 0
     },
     services: [],
     customers: [],
@@ -62,7 +63,7 @@ const companyReducer = function (state = initialState, action) {
                     }
                 };
             }
-        case Actions.SET_COMPANY_SETTINGS:
+        case Actions.GET_COMPANY_SETTINGS:
             {
                 return {
                     ...state,

@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import withReducer from '../../store/withReducer';
@@ -12,43 +12,48 @@ function PaymentPage(props) {
     const { selectedEmployee } = useSelector(({ global }) => global.employees);
     const { selectedService } = useSelector(({ global }) => global.services);
     const { selectedCustomer } = useSelector(({ global }) => global.customers);
-    const [showToast, setShowToast] = useState(false);
+    const { settings } = useSelector(({ global }) => global.company);
 
-     const submit = () => {
-        setShowToast(false);
-        setShowToast(true);
-        let newReservation = {
-            start: selectedTime,
-            end: moment(selectedTime).add(selectedService.time, 'minutes').format('YYYY-MM-DD HH:mm'),
-            employee: selectedEmployee.id,
-            customer: selectedCustomer.userId,
-            service: selectedService.id,
-            price: selectedService.price,
-            note: reservationNote
+    const params = new URLSearchParams(window.location.search);
+    const companyId = params.get('companyId');
+    if (selectedTime <= moment() && selectedService.id === 0 && selectedEmployee.id === 0)
+        props.history.push('/?companyId=' + companyId)
 
+    useEffect(() => {
+        if (selectedCustomer !== '') {
+            console.log("PaymentPage")
+            console.log(moment(selectedTime).local().format('YYYY-MM-DD HH:mm'))
+            console.log(moment.utc(moment(selectedTime)).format('YYYY-MM-DD HH:mm'))
+
+            let cancelationTime = moment(selectedTime).subtract(settings.cancelationLimit, 'days').format('YYYY-MM-DD HH:mm');
+            let newReservation = {
+                start: moment(selectedTime).format('YYYY-MM-DD HH:mm'),
+                end: moment(selectedTime).add(selectedService.time, 'minutes').format('YYYY-MM-DD HH:mm'),
+                employee: selectedEmployee.id,
+                customer: selectedCustomer.userId,
+                service: selectedService.id,
+                price: selectedService.price,
+                note: reservationNote,
+                cancelationTime: cancelationTime
+
+            }
+            dispatch(addReservation(newReservation))
         }
-        dispatch(addReservation(newReservation))
-    }
+    }, [selectedCustomer]);
+
 
     return (
         <div className="paymentPageContainer">
-            {showToast ? <Fragment>
-                <h1>You have successfully booked your ticket</h1>
-                <h2>A confirmation email has been sent to your email</h2>
-            </Fragment> : <Fragment>
-                <div className="paymentInformation">
-                    <div id="welcomeText">
-                        <span className="bold">Hello {selectedCustomer.firstName}</span>!
-                </div>
-                    <div id="bookingSettings">
-                        This is the reservation information.  <br />
-                    You have made a reservation for {selectedService.name} at {selectedTime} with {selectedEmployee.firstName} {selectedEmployee.lastName}
-                        <br />
-                    Please make sure it is accurate before submitting.
-                </div>
+            {<Fragment>
+                <div class="product-card">
+                    <div class="product-details">
+                        <h1>Confirmed</h1>
+                        {selectedCustomer.firstName}, we're pleased to inform you that your booking has been successfully received and confirmed. <br /><br />
+                        <b>{selectedService.name}</b> at  <b>{moment(selectedTime).format('YYYY-MM-DD HH:mm')}</b> with  <b>{selectedEmployee.firstName} {selectedEmployee.lastName}</b> <br /><br />
+                 A confirmation email has been sent.
 
+                        </div>
                 </div>
-                <div className="__btn" onClick={() => submit()}>confirm</div>
             </Fragment>}
         </div>
     )

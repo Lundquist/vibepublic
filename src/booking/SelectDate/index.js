@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Calender.scss';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import * as moment from 'moment'
+import moment from 'moment-timezone';
 import withReducer from '../../store/withReducer';
 import reducer from '../../store/reducers';
 import * as Actions from '../../store/actions';
@@ -11,30 +11,43 @@ import { useTranslation } from 'react-i18next';
 import CalenderHeaderTitle from './CalenderHeader';
 import DateItem from './DateItem';
 import SubHeader from '../SubHeader'
-
+import { setSelectedEmployee } from '../../store/actions';
+import config from '../../config';
+import LoadingIndicator from '../../ui/LoadingIndicator'
 
 function SelectDate(props) {
     const dispatch = useDispatch();
     const { t } = useTranslation();
 
-    const { availableHours, currentPage } = useSelector(({ global }) => global.booking);
+    const { availableHours, currentPage, loadedAvailableHours } = useSelector(({ global }) => global.booking);
     const { selectedEmployee } = useSelector(({ global }) => global.employees);
     const { selectedService } = useSelector(({ global }) => global.services);
     const [bookings, setBookings] = useState([]);
     const [currentDate, setCurrentDate] = useState(moment());
 
+    const params = new URLSearchParams(window.location.search);
+    const companyId = params.get('companyId');
+    if (selectedEmployee.id === 0)
+        props.history.push('/?companyId=' + companyId)
+
     const goBack = () => {
         dispatch(Actions.goBack(currentPage))
         props.history.goBack();
-    }; // to tell the store to go back.
-
+        dispatch(Actions.setSelectedEmployee({
+            id: 0,
+            firstName: "",
+            lastName: ""
+        }))
+    };
     useEffect(() => {
         sortBookings()
     }, [availableHours]);
 
 
     function setDateTime(date, time) {
-        dispatch(Actions.setSelectedTime(date.format('YYYY-MM-DD ') + time))
+        const [hours, minutes] = time.split(':');
+        let dateTime = date.set({ hours, minutes })
+        dispatch(Actions.setSelectedTime(moment(dateTime).format('YYYY-MM-DD HH:mm')))
         dispatch(Actions.goForward(currentPage))
         dispatch(getCustomers)
         const pathname = props.location.pathname.replace('select-booking-time', `bookingtime='${time}'/customer-information${props.location.search}`);
@@ -46,7 +59,7 @@ function SelectDate(props) {
             return;
         }
         showPrevious === true ? setCurrentDate(currentDate.subtract(7, 'days')) : setCurrentDate(currentDate.add(7, 'days'));
-        dispatch(getAvailableHours(selectedEmployee.id, currentDate, selectedService.id))
+        dispatch(getAvailableHours(selectedEmployee.id, currentDate, selectedService.time))
     }
 
     const sortBookings = () => {
@@ -58,6 +71,7 @@ function SelectDate(props) {
                 bookingTimes: getBookingTimes(nxtdate),
             });
         }
+
         setBookings(sortedBookings)
     }
 
@@ -68,6 +82,7 @@ function SelectDate(props) {
                 bookingTimes.push(moment(bookingItem).format('HH:mm'));
             }
         });
+
         return bookingTimes
     }
 
@@ -78,6 +93,7 @@ function SelectDate(props) {
             if (booking.bookingTimes.length > 0)
                 showTimes = true;
         })
+
         return showTimes;
     }
 
@@ -91,6 +107,24 @@ function SelectDate(props) {
         )
     }
 
+    const renderLoading = () => {
+        return (
+            <LoadingIndicator active={true} />
+        )
+    }
+
+    const renderContent = () => {
+        return (
+            <div>
+                <div className='__flex __calander_booking_header'>
+                    {bookings.map((booking, i) => <CalenderHeaderTitle {...booking} key={i} />)}
+                </div>
+                <div className='__main_calender __f1 __flex-strech'>
+                    {checkIfAvailableThisWeek() ? bookings.map((booking) => <DateItem key={booking.date} {...booking} setDateTime={(d, t) => setDateTime(d, t)} />) : showNoTimesMessage()}
+                </div>
+            </div>
+        )
+    }
     return (
         <div id="selectDateAndTimeContainer">
             <div className='__header'>
@@ -109,12 +143,7 @@ function SelectDate(props) {
                             <i className='material-icons'>keyboard_arrow_right</i>
                         </div>
                     </header>
-                    <div className='__flex __calander_booking_header'>
-                        {bookings.map((booking, i) => <CalenderHeaderTitle {...booking} key={i} />)}
-                    </div>
-                    <div className='__main_calender __f1 __flex-strech'>
-                        {checkIfAvailableThisWeek() ? bookings.map((booking) => <DateItem key={booking.date} {...booking} setDateTime={(d, t) => setDateTime(d, t)} />) : showNoTimesMessage()}
-                    </div>
+                    {loadedAvailableHours ? renderContent() : renderLoading()}
                 </div>
             </div>
         </div>

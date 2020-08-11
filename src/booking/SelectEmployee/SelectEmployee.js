@@ -10,14 +10,19 @@ import './style.scss';
 import SubHeader from '../SubHeader';
 import DialogBox from '../../ui/DialogBox/DialogBox'
 import { withTranslation } from 'react-i18next';
-
-
+import config from '../../config'
+import profileImage from './assets/profile.png'
 function SelectEmployee(props) {
   const dispatch = useDispatch();
   const { employees, selectedService } = useSelector(({ global }) => global.services);
   const { currentPage } = useSelector(({ global }) => global.booking);
   const { t } = props;
   const [employeeInfo, setEmployeeInfo] = useState(null);
+  
+  const params = new URLSearchParams(window.location.search);
+  const companyId = params.get('companyId');
+  if(selectedService.id === 0)
+      props.history.push('/?companyId=' + companyId)
 
   const selectedEmployee = (employee) => {
     setEmployee(employee);
@@ -28,25 +33,22 @@ function SelectEmployee(props) {
   function setEmployee(selectedEmployee) {
     dispatch(Actions.setSelectedEmployee(selectedEmployee))
     dispatch(Actions.goForward(currentPage))
-    dispatch(getAvailableHours(selectedEmployee.id, moment(), selectedService.id))
+    dispatch(getAvailableHours(selectedEmployee.id, moment(), selectedService.time))
 
   }
-  console.log("SelectEmployee " + JSON.stringify(employees))
   const goBack = () => {
     dispatch(Actions.goBack(currentPage))
     props.history.goBack();
+    dispatch(Actions.setSelectedService(0))
   }; // to tell the store to go back.
 
 
 
   const renderEmployees = (employee) => {
-    let $imagePreview = null;
 
-    if (employee.userImage) {
-      var buffer = new Buffer(employee.userImage);
-      $imagePreview = (<img className="userImage" src={buffer} />);
-    } else {
-      $imagePreview = (<img className="userImage" src='https://n8d.at/wp-content/plugins/aioseop-pro-2.4.11.1/images/default-user-image.png' />);
+    let $imagePreview = (<img className="userImage" src={'https://vibeemployeeimage.s3.eu-west-3.amazonaws.com/' + employee.userImage} onError={(e) => addDefaultSrc(e)} />);
+    const addDefaultSrc = (ev) => {
+        ev.target.src = profileImage
     }
 
     return (
@@ -57,7 +59,7 @@ function SelectEmployee(props) {
             {employee.firstName} {employee.lastName}
           </div>
         </div>
-        <i className='material-icons' onClick={() => setEmployeeInfo(employee)}>info</i>
+        {employee.note ? <i className='material-icons' onClick={() => setEmployeeInfo(employee)}>info</i> : null}
       </div>
     )
   }
@@ -77,8 +79,7 @@ function SelectEmployee(props) {
 const PopUpInfo = ({ employee, close, click }) => (
   <DialogBox className='__popup' title={`${employee.firstName} ${employee.lastName}`} close={close}>
     {console.log(employee)}
-    {employee.description}
-    <button className='__btn' onClick={() => click(employee)}>Book</button>
+    {employee.note}
   </DialogBox>
 )
 

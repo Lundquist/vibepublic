@@ -5,7 +5,8 @@ const initialState = {
     currentPage: 1,
     availableHours: [],
     selectedTime: moment(),
-    reservationNote: ''
+    reservationNote: '',
+    loadedAvailableHours: false
 
 }
 
@@ -32,11 +33,19 @@ const bookingReducer = function (state = initialState, action) {
                     currentPage: 1
                 };
             }
+        case Actions.REQUEST_AVAILABLE_HOURS:
+            {
+                return {
+                    ...state,
+                    loadedAvailableHours: false
+                };
+            }
         case Actions.SET_AVAILABLE_HOURS:
             {
                 return {
                     ...state,
-                    availableHours: action.payload
+                    availableHours: action.payload,
+                    loadedAvailableHours: true
                 };
             }
         case Actions.SET_SELECTED_TIME:
