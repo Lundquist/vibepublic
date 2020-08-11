@@ -11,7 +11,7 @@ import SubHeader from '../SubHeader';
 import DialogBox from '../../ui/DialogBox/DialogBox'
 import { withTranslation } from 'react-i18next';
 import config from '../../config'
-
+import profileImage from './assets/profile.png'
 function SelectEmployee(props) {
   const dispatch = useDispatch();
   const { employees, selectedService } = useSelector(({ global }) => global.services);
@@ -48,7 +48,7 @@ function SelectEmployee(props) {
 
     let $imagePreview = (<img className="userImage" src={'https://vibeemployeeimage.s3.eu-west-3.amazonaws.com/' + employee.userImage} onError={(e) => addDefaultSrc(e)} />);
     const addDefaultSrc = (ev) => {
-        ev.target.src = ".profile.png"
+        ev.target.src = profileImage
     }
 
     return (
