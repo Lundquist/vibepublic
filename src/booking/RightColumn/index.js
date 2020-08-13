@@ -6,6 +6,7 @@ import moment from 'moment'
 import { Map, Marker } from 'google-maps-react';
 import './style.scss';
 import { withTranslation } from 'react-i18next';
+import profileImage from '../SelectEmployee/assets/profile.png'
 
 
 function RightColumn(props) {
@@ -38,6 +39,11 @@ function RightColumn(props) {
             </div>
         )
     }
+    let $imagePreview = (<img className="userImage" src={'https://vibeemployeeimage.s3.eu-west-3.amazonaws.com/' + selectedEmployee.userImage} onError={(e) => addDefaultSrc(e)} />);
+    const addDefaultSrc = (ev) => {
+        ev.target.src = profileImage
+    }
+
     return (
         <div className='__summery'>
             <h2> {t("summary")}</h2>
@@ -55,7 +61,7 @@ function RightColumn(props) {
                         <div>
                             <h4>{selectedService.name}</h4>
                             <div className='__time'>{selectedService.time} minutes</div>
-                            {selectedEmployee.firstName !== "" && <div className='__flex'><img src="https://n8d.at/wp-content/plugins/aioseop-pro-2.4.11.1/images/default-user-image.png" alt={selectedEmployee.firstName} /> {selectedEmployee.firstName} {selectedEmployee.lastName}</div>}
+                            {selectedEmployee.firstName !== "" && <div className='__flex'>{$imagePreview} {selectedEmployee.firstName} {selectedEmployee.lastName}</div>}
                         </div>
                     ) :
                         t('noService')
