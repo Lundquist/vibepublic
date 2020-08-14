@@ -45,7 +45,9 @@ function CheckoutForm(props) {
 
     if (result.error) {
       // Show error to your customer (e.g., insufficient funds)
-      console.log(result.error.message);
+      setLoading(false)
+
+      console.log("CheckOutForm " + result.error.message);
     } else {
       // The payment has been processed!
       if (result.paymentIntent.status === 'succeeded') {

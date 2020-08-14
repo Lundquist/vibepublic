@@ -21,10 +21,6 @@ function PaymentPage(props) {
 
     useEffect(() => {
         if (selectedCustomer !== '') {
-            console.log("PaymentPage")
-            console.log(moment(selectedTime).local().format('YYYY-MM-DD HH:mm'))
-            console.log(moment.utc(moment(selectedTime)).format('YYYY-MM-DD HH:mm'))
-
             let cancelationTime = moment(selectedTime).subtract(settings.cancelationLimit, 'days').format('YYYY-MM-DD HH:mm');
             let newReservation = {
                 start: moment(selectedTime).format('YYYY-MM-DD HH:mm'),
