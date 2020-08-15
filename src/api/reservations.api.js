@@ -30,7 +30,7 @@ export function addReservation(newReservation) {
     };
 }
 
-export function deleteReservation(reservationId, paymentIntent) {
+export function deleteReservation(reservationId, paymentIntent, stripeAccount) {
     console.log("deleteReservation " + JSON.stringify(reservationId))
 
     return (dispatch) => {
@@ -46,7 +46,7 @@ export function deleteReservation(reservationId, paymentIntent) {
 
         return request.then((response) => {
             if (paymentIntent !== {} && !response.Error)
-                dispatch(refundReservation(paymentIntent))
+                dispatch(refundReservation(paymentIntent, stripeAccount))
 
             console.log("deleteReservation " + JSON.stringify(response))
             /* if (!response.Error)
@@ -56,9 +56,9 @@ export function deleteReservation(reservationId, paymentIntent) {
     };
 }
 
-export function refundReservation(paymentIntent) {
+export function refundReservation(paymentIntent, stripeAccount) {
     return async function (dispatch) {
-        return axios.get(`${config.serverUrl}/stripe/requestStripeRefund?paymentIntent=${paymentIntent}`).then((res) => {
+        return axios.get(`${config.serverUrl}/stripe/requestStripeRefund?paymentIntent=${paymentIntent}&stripeAccount=${stripeAccount}`).then((res) => {
             if (res.error) {
                 console.log("ERROR requestStripeRefund")
             } else {

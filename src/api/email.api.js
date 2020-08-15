@@ -24,7 +24,7 @@ function notes() {
 }
 
 export function sendEmail(reservationId) {
-    console.log("sendEmail " + reservationId)
+    console.log("sendEmail " + JSON.stringify(companyInformation()))
     const URL = `${config.serverUrl}/email/confirmation`
     const request = axios.post(URL, {
         name: selectedCustomer().firstname,
@@ -36,7 +36,9 @@ export function sendEmail(reservationId) {
         price: selectedService().price,
         employee: employee(),
         notes: notes(),
-        id: reservationId
+        id: reservationId,
+        companyId: companyInformation().id,
+
     });
     request.then((response) => {
     })

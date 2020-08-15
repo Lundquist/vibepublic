@@ -7,10 +7,10 @@ import './style.scss'
 const CancelBooking = (props) => {
     const dispatch = useDispatch();
     const { reservation } = useSelector(({ global }) => global.reservation);
+    const { information } = useSelector(({ global }) => global.company);
 
 console.log("CancelBooking ")
-console.log(JSON.stringify(props.reservationId))
-console.log(JSON.stringify(reservation))
+console.log(JSON.stringify(information))
 
     const renderDeleteReservation = () => {
 
@@ -23,7 +23,7 @@ console.log(JSON.stringify(reservation))
                         <br /><br />
                         <div className="bookingPage">
 
-                            <div id="deleteButton" onClick={() => dispatch(deleteReservation(props.reservationId, reservation.paymentIntent))}>Confirm</div>
+                            <div id="deleteButton" onClick={() => dispatch(deleteReservation(props.reservationId, reservation.paymentIntent, information.stripeAccount))}>Confirm</div>
                         </div>
 
                     </div>
