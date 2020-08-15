@@ -6,7 +6,8 @@ const initialState = {
     availableHours: [],
     selectedTime: moment(),
     reservationNote: '',
-    loadedAvailableHours: false
+    loadedAvailableHours: false,
+    paymentIntent: {}
 
 }
 
@@ -62,7 +63,13 @@ const bookingReducer = function (state = initialState, action) {
                     reservationNote: action.payload
                 };
             }
-
+        case Actions.SET_PAYMENT_INTENT:
+            {
+                return {
+                    ...state,
+                    paymentIntent: action.payload
+                };
+            }
         default:
             return state;
     }

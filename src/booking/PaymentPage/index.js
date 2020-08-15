@@ -8,7 +8,7 @@ import moment from 'moment';
 
 function PaymentPage(props) {
     const dispatch = useDispatch();
-    const { selectedTime, reservationNote } = useSelector(({ global }) => global.booking);
+    const { selectedTime, reservationNote, paymentIntent } = useSelector(({ global }) => global.booking);
     const { selectedEmployee } = useSelector(({ global }) => global.employees);
     const { selectedService } = useSelector(({ global }) => global.services);
     const { selectedCustomer } = useSelector(({ global }) => global.customers);
@@ -30,7 +30,8 @@ function PaymentPage(props) {
                 service: selectedService.id,
                 price: selectedService.price,
                 note: reservationNote,
-                cancelationTime: cancelationTime
+                cancelationTime: cancelationTime,
+                paymentIntent: paymentIntent
 
             }
             dispatch(addReservation(newReservation))

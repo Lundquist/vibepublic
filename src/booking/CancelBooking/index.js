@@ -8,7 +8,12 @@ const CancelBooking = (props) => {
     const dispatch = useDispatch();
     const { reservation } = useSelector(({ global }) => global.reservation);
 
+console.log("CancelBooking ")
+console.log(JSON.stringify(props.reservationId))
+console.log(JSON.stringify(reservation))
+
     const renderDeleteReservation = () => {
+
         return (
             < Fragment >
                 <div class="product-card">

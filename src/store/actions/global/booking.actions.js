@@ -5,6 +5,7 @@ export const SET_AVAILABLE_HOURS = '[BOOKING] SET_AVAILABLE_HOURS';
 export const SET_SELECTED_TIME = '[BOOKING] SET_SELECTED_TIME';
 export const GO_TO_START = '[BOOKING] GO_TO_START';
 export const SET_BOOKING_NOTE = '[BOOKING] SET_BOOKING_NOTE';
+export const SET_PAYMENT_INTENT = '[BOOKING] SET_PAYMENT_INTENT';
 
 export function goForward(currentPage) {
     return {
@@ -49,6 +50,13 @@ export function setBookingNote(note) {
     return {
         type: SET_BOOKING_NOTE,
         payload: note
+    }
+}
+
+export function setPaymentIntent(intent){
+    return {
+        type: SET_PAYMENT_INTENT,
+        payload: intent
     }
 }
 

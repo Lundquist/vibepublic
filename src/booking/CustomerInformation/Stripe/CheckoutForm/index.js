@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form'
 import './style.scss'
 import CardSection from '../CardSection';
+import {setPaymentIntent} from '../../../../store/actions'
 import { startPaymentIntent } from '../../../../api'
 import withReducer from '../../../../store/withReducer';
 import reducer from '../../../../store/reducers';
@@ -19,7 +20,7 @@ function CheckoutForm(props) {
   const [loading, setLoading] = useState(false);
   const { information } = useSelector(({ global }) => global.company);
   const { selectedService } = useSelector(({ global }) => global.services);
-
+  const dispatch = useDispatch();
   const startStripe = async (event) => {
 
     if (!stripe || !elements) {
@@ -57,7 +58,7 @@ function CheckoutForm(props) {
         // payment_intent.succeeded event that handles any business critical
         // post-payment actions.
         setLoading(false)
-        console.log("successfully performed a payment. Whiskey for Robert")
+        dispatch(setPaymentIntent(result.paymentIntent.id))
         props.createCustomer(event)
       }
     }
