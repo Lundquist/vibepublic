@@ -30,7 +30,7 @@ export function addReservation(newReservation) {
     };
 }
 
-export function deleteReservation(reservationId) {
+export function deleteReservation(reservationId, paymentIntent) {
     console.log("deleteReservation " + JSON.stringify(reservationId))
 
     return (dispatch) => {
@@ -45,6 +45,9 @@ export function deleteReservation(reservationId) {
         });
 
         return request.then((response) => {
+            if (paymentIntent !== {} && !response.Error)
+                dispatch(refundReservation(paymentIntent))
+
             console.log("deleteReservation " + JSON.stringify(response))
             /* if (!response.Error)
                  sendEmail(response.data.reservation.id)
@@ -53,14 +56,29 @@ export function deleteReservation(reservationId) {
     };
 }
 
-export function getReservation(reservationId){
+export function refundReservation(paymentIntent) {
+    return async function (dispatch) {
+        return axios.get(`${config.serverUrl}/stripe/requestStripeRefund?paymentIntent=${paymentIntent}`).then((res) => {
+            if (res.error) {
+                console.log("ERROR requestStripeRefund")
+            } else {
+                console.log("requestStripeRefund " + JSON.stringify(res))
+                //dispatch(Actions.setStripeCharges(res.data))
+            }
+        });
+    }
+
+    
+}
+
+export function getReservation(reservationId) {
     const URL = `${config.serverUrl}/reservations?reservationId=${(reservationId / 1337)}`;
     const request = axios.get(URL);
 
     return (dispatch) =>
         request.then((response) => {
-           return dispatch(Actions.setReservation(response.data.Rows[0]));
-           // dispatch(Actions.getEmployees(response.data.Rows))
+            return dispatch(Actions.setReservation(response.data.Rows[0]));
+            // dispatch(Actions.getEmployees(response.data.Rows))
         });
 
 }

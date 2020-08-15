@@ -23,7 +23,7 @@ console.log(JSON.stringify(reservation))
                         <br /><br />
                         <div className="bookingPage">
 
-                            <div id="deleteButton" onClick={() => dispatch(deleteReservation(props.reservationId))}>Confirm</div>
+                            <div id="deleteButton" onClick={() => dispatch(deleteReservation(props.reservationId, reservation.paymentIntent))}>Confirm</div>
                         </div>
 
                     </div>
