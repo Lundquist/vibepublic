@@ -11,7 +11,7 @@ function companyId() {
 }
 
 export function getAvailableHours(employeeId, selectedDate, serviceTime) {
-    const request = axios.get(`${config.serverUrl}/availableHours?employeeId=${employeeId}&selectedDay=${selectedDate}&serviceTime=${serviceTime}`);
+    const request = axios.get(`${config.serverUrl}/availableHours?employeeId=${employeeId}&companyId=${companyId()}&selectedDay=${selectedDate.format('YYYY-MM-DD HH:mm')}&serviceTime=${serviceTime}`);
     return (dispatch) =>{
         dispatch(Actions.requestAvailableHours())
         request.then((response) => {
