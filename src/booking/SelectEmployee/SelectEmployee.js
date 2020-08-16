@@ -56,7 +56,7 @@ function SelectEmployee(props) {
         <div key={employee.id} className='__flex __f1' onClick={() => selectedEmployee(employee)}>
           {$imagePreview}
           <div className='__flex __user-info __sb'>
-            {employee.firstName} {employee.lastName}
+            {employee.firstname} {employee.lastname}
           </div>
         </div>
         {employee.note ? <i className='material-icons' onClick={() => setEmployeeInfo(employee)}>info</i> : null}
