@@ -73,7 +73,6 @@ export function setCurrentCompany(companyId) {
         request.then((response) => {
 
             if (!response.data.Error) {
-                console.log("setCurrentCompany " + JSON.stringify(response.data.Rows[0]))
                 dispatch({
                     type: SET_COMPANY,
                     payload: response.data.Rows[0]

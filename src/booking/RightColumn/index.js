@@ -61,7 +61,7 @@ function RightColumn(props) {
                         <div>
                             <h4>{selectedService.name}</h4>
                             <div className='__time'>{selectedService.time} minutes</div>
-                            {selectedEmployee.firstName !== "" && <div className='__flex'>{$imagePreview} {selectedEmployee.firstName} {selectedEmployee.lastName}</div>}
+                            {selectedEmployee.firstname !== "" && <div className='__flex'>{$imagePreview} {selectedEmployee.firstname} {selectedEmployee.lastname}</div>}
                         </div>
                     ) :
                         t('noService')
