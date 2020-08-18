@@ -14,6 +14,7 @@ export const UPDATE_COMPANY_SETTINGS = '[GLOBAL] UPDATE_COMPANY_SETTINGS';
 export const PUT_COMPANY_SETTINGS = '[GLOBAL] PUT_COMPANY_SETTINGS';
 export const SET_COMPANY_EXPIRES = '[GLOBAL] SET_COMPANY_EXPIRES';
 export const SET_OPENING_HOURS = '[GLOBAL] SET_OPENING_HOURS';
+export const SET_CLOSED_DAYS = '[GLOBAL] SET_CLOSED_DAYS';
 export const ADD_RESERVATION = '[GLOBAL] ADD_RESERVATION';
 export const INITIALIZE_COMPANY = '[GLOBAL] INITIALIZE_COMPANY';
 
@@ -84,6 +85,7 @@ export function setCurrentCompany(companyId) {
                 dispatch(api.getCategories())
                 dispatch(api.getCustomers())
                 dispatch(api.getOpeningHours())
+                dispatch(api.getClosedDays())
                 dispatch(getCompanyReservations(companyId))
 
             }else{
@@ -180,6 +182,14 @@ export function setOpeningHours(value) {
     return (dispatch) =>
         dispatch({
             type: SET_OPENING_HOURS,
+            payload: value
+        })
+}
+
+export function setClosedDays(value) {
+    return (dispatch) =>
+        dispatch({
+            type: SET_CLOSED_DAYS,
             payload: value
         })
 }

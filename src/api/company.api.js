@@ -50,6 +50,20 @@ export function saveOpeningHours(openingHours) {
         });
 }
 
+export function getClosedDays() {
+    const URL = `${server}/companyClosedDays?companyId=${companyId()}`;
+    const request = axios.get(URL);
+
+    return (dispatch) =>
+        request.then((response) => {
+            if (response.error) {
+                console.log("getOpeningHours ERROR " + response.error)
+            } else {
+                dispatch(Actions.setClosedDays(response.data.Rows))
+            }
+        })
+}
+
 export function getOpeningHours() {
     const URL = `${server}/openingHours?companyId=${companyId()}`;
     const request = axios.get(URL);

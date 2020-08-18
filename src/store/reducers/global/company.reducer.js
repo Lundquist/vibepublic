@@ -34,7 +34,8 @@ const initialState = {
     customers: [],
     reservations: [],
     initialized: false,
-    openinghours: []
+    openinghours: [],
+    closedDays: []
 };
 
 const companyReducer = function (state = initialState, action) {
@@ -89,6 +90,12 @@ const companyReducer = function (state = initialState, action) {
             return {
                 ...state,
                 openinghours: action.payload
+            };
+        }
+        case Actions.SET_CLOSED_DAYS: {
+            return {
+                ...state,
+                closedDays: action.payload
             };
         }
         case Actions.SET_RESERVATIONS:

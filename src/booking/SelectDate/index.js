@@ -22,6 +22,7 @@ function SelectDate(props) {
     const { availableHours, currentPage, loadedAvailableHours } = useSelector(({ global }) => global.booking);
     const { selectedEmployee } = useSelector(({ global }) => global.employees);
     const { selectedService } = useSelector(({ global }) => global.services);
+    const { closedDays } = useSelector(({ global }) => global.company);
     const [bookings, setBookings] = useState([]);
     const [currentDate, setCurrentDate] = useState(moment());
 
@@ -78,7 +79,13 @@ function SelectDate(props) {
     const getBookingTimes = (date) => {
         const bookingTimes = [];
         availableHours.forEach(bookingItem => {
-            if (moment(date).format('YYYY-MM-DD') === moment(bookingItem).format('YYYY-MM-DD')) {
+            let dayIsClosed = false;
+            closedDays.map((v,k) => {
+                if(moment(v.date).format('YYYY-MM-DD') === moment(date).format('YYYY-MM-DD'))
+                    dayIsClosed = true;
+            })
+
+            if (moment(date).format('YYYY-MM-DD') === moment(bookingItem).format('YYYY-MM-DD') && !dayIsClosed) {
                 bookingTimes.push(moment(bookingItem).format('HH:mm'));
             }
         });
