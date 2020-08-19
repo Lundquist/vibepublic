@@ -4,11 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form'
 import './style.scss'
 import CardSection from '../CardSection';
-import {setPaymentIntent} from '../../../../store/actions'
+import { setPaymentIntent } from '../../../../store/actions'
 import { startPaymentIntent } from '../../../../api'
 import withReducer from '../../../../store/withReducer';
 import reducer from '../../../../store/reducers';
 import { useDispatch, useSelector } from 'react-redux';
+import DialogBox from '../../../../ui/DialogBox/DialogBox'
 
 
 function CheckoutForm(props) {
@@ -20,6 +21,9 @@ function CheckoutForm(props) {
   const [loading, setLoading] = useState(false);
   const { information } = useSelector(({ global }) => global.company);
   const { selectedService } = useSelector(({ global }) => global.services);
+
+  const [info, setInfo] = useState(null);
+
   const dispatch = useDispatch();
   const startStripe = async (event) => {
 
@@ -45,10 +49,13 @@ function CheckoutForm(props) {
     });
     console.log("CheckOutForm 0 " + JSON.stringify(result))
     if (result.error) {
+      console.log("CheckOutForm 1 " + result.error.type)
+      setInfo(result.error.message)
+
       // Show error to your customer (e.g., insufficient funds)
       setLoading(false)
+     
 
-      console.log("CheckOutForm " + result.error.message);
     } else {
       // The payment has been processed!
       if (result.paymentIntent.status === 'succeeded') {
@@ -66,30 +73,38 @@ function CheckoutForm(props) {
   };
 
   return (
-    <form onSubmit={handleSubmit(startStripe)}>
-      <input name="firstname" placeholder={t('name')} ref={register({ required: true })} />
-      {errors.exampleRequired && <span>{t('reqField')}</span>}
 
-      <input name="lastname" placeholder={t('lastname')} ref={register({ required: true })} />
-      {errors.exampleRequired && <span>{t('reqField')}</span>}
+      <form onSubmit={handleSubmit(startStripe)}>
+        <input name="firstname" placeholder={t('name')} ref={register({ required: true })} />
+        {errors.exampleRequired && <span>{t('reqField')}</span>}
 
-      <input name="email" placeholder={t('email')} ref={register({ required: true })} />
-      {errors.exampleRequired && <span>{t('reqField')}</span>}
+        <input name="lastname" placeholder={t('lastname')} ref={register({ required: true })} />
+        {errors.exampleRequired && <span>{t('reqField')}</span>}
 
-      <input name="phone" placeholder={t('phone')} ref={register({ required: true })} />
-      {errors.exampleRequired && <span>{t('reqField')}</span>}
+        <input name="email" placeholder={t('email')} ref={register({ required: true })} />
+        {errors.exampleRequired && <span>{t('reqField')}</span>}
 
-      <textarea name="notes" maxlength="445" placeholder={t('notes')} rows={5}
-        ref={register({ required: false })} onChange={(e) => setNoteLength(e.target.value.length)} />
-      {noteLength > 0 ? <div id="noteLengthContainer">{noteLength} / 445 </div> : <div id="noteLengthContainer"></div>}
-      <div id="stripeCardContainer"><CardSection /></div>
-      <div id="confirmContainer">
-        {loading ? <div className={loading ? "lds-dual-ring" : "VibeImageSpinnerLoaded"} />
-          : <button className='__btn'>{t('bookNow')}</button>}
-      </div>
-    </form>
+        <input name="phone" placeholder={t('phone')} ref={register({ required: true })} />
+        {errors.exampleRequired && <span>{t('reqField')}</span>}
+
+        <textarea name="notes" maxlength="445" placeholder={t('notes')} rows={5}
+          ref={register({ required: false })} onChange={(e) => setNoteLength(e.target.value.length)} />
+        {noteLength > 0 ? <div id="noteLengthContainer">{noteLength} / 445 </div> : <div id="noteLengthContainer"></div>}
+        <div id="stripeCardContainer"><CardSection resetInfo={(e) => setInfo(null)}/></div>
+        <div className={info !== null ? "showError" : "hideError"}>{info}</div>
+
+        <div id="confirmContainer">
+          {loading ? <div className={loading ? "lds-dual-ring" : "VibeImageSpinnerLoaded"} />
+            : <button className='__btn'>{t('bookNow')}</button>}
+        </div>
+      </form>
   );
 }
+const PopUpInfo = ({ info, close }) => (
+  <DialogBox className='__popup' title={"Error"} close={close}>
+    {info}
+  </DialogBox>
+)
 
 export default withReducer('calendarApp', reducer)(CheckoutForm);
 

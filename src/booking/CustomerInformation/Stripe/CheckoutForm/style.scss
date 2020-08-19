@@ -1,7 +1,14 @@
 #stripeCardContainer{
     margin-bottom: 18px;
 }
+.showError{
+    color: red
+}
+.hideError{
+    display: none;
+}
 #confirmContainer{
+    margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
