@@ -12,7 +12,7 @@
   "reqField": "This field is required",
   "bookNow": "Book Now",
   "name": "First Name",
-  "lastName": "Last Name",
+  "lastname": "Last Name",
   "email": "Email",
   "phone": "Phone Number",
   "notes": "Notes"

@@ -22,8 +22,8 @@ function SubHeader(props) {
             case 3:{
                 dispatch(Actions.setSelectedEmployee({
                     id: 0,
-                    firstName: "",
-                    lastName: ""
+                    firstname: "",
+                    lastname: ""
                 }))
                 break;
             }

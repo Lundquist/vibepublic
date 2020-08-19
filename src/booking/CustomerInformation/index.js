@@ -39,21 +39,21 @@ function CustomerInfo(props) {
         let existingCustomer = customers.find(customer => customer.email === data.email)
 
         if (existingCustomer !== undefined) {
-            existingCustomer.firstName = data.firstName
-            existingCustomer.lastName = data.lastName
+            existingCustomer.firstname = data.firstname
+            existingCustomer.lastname = data.lastname
             existingCustomer.phone = data.phone
             dispatch(saveCustomer(existingCustomer))
         } else {
             existingCustomer = {
-                firstName: data.firstName,
-                lastName: data.lastName,
+                firstname: data.firstname,
+                lastname: data.lastname,
                 phone: data.phone,
                 email: data.email
             }
             dispatch(createCustomer(existingCustomer))
         }
         dispatch(Actions.setBookingNote(data.notes))
-        const pathname = props.location.pathname.replace('customer-information', `customername='${existingCustomer.firstName}'/confirm-booking${props.location.search}`);
+        const pathname = props.location.pathname.replace('customer-information', `customername='${existingCustomer.firstname}'/confirm-booking${props.location.search}`);
         props.history.push(pathname);
 
 
@@ -77,10 +77,10 @@ function CustomerInfo(props) {
     const renderPayAtSite = () => {
         return (
             <form onSubmit={handleSubmit(onSubmit)} >
-                <input name="firstName" placeholder={t('name')} ref={register({ required: true })} />
+                <input name="firstname" placeholder={t('name')} ref={register({ required: true })} />
                 {errors.exampleRequired && <span>{t('reqField')}</span>}
 
-                <input name="lastName" placeholder={t('lastName')} ref={register({ required: true })} />
+                <input name="lastname" placeholder={t('lastname')} ref={register({ required: true })} />
                 {errors.exampleRequired && <span>{t('reqField')}</span>}
 
                 <input name="email" placeholder={t('email')} ref={register({ required: true })} />

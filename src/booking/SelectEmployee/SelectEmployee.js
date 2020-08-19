@@ -26,7 +26,7 @@ function SelectEmployee(props) {
 
   const selectedEmployee = (employee) => {
     setEmployee(employee);
-    const pathname = props.location.pathname.replace('select-employee', `employee='${employee.firstName}-${employee.lastName}'/select-booking-time${props.location.search}`);
+    const pathname = props.location.pathname.replace('select-employee', `employee='${employee.firstname}-${employee.lastname}'/select-booking-time${props.location.search}`);
     props.history.push(pathname);
   }
 
@@ -77,7 +77,7 @@ function SelectEmployee(props) {
 }
 
 const PopUpInfo = ({ employee, close, click }) => (
-  <DialogBox className='__popup' title={`${employee.firstName} ${employee.lastName}`} close={close}>
+  <DialogBox className='__popup' title={`${employee.firstname} ${employee.lastname}`} close={close}>
     {console.log(employee)}
     {employee.note}
   </DialogBox>

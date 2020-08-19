@@ -45,8 +45,8 @@ function PaymentPage(props) {
                 <div class="product-card">
                     <div class="product-details">
                         <h1>Confirmed</h1>
-                        {selectedCustomer.firstName}, we're pleased to inform you that your booking has been successfully received and confirmed. <br /><br />
-                        <b>{selectedService.name}</b> at  <b>{moment(selectedTime).format('YYYY-MM-DD HH:mm')}</b> with  <b>{selectedEmployee.firstName} {selectedEmployee.lastName}</b> <br /><br />
+                        {selectedCustomer.firstname}, we're pleased to inform you that your booking has been successfully received and confirmed. <br /><br />
+                        <b>{selectedService.name}</b> at  <b>{moment(selectedTime).format('YYYY-MM-DD HH:mm')}</b> with  <b>{selectedEmployee.firstname} {selectedEmployee.lastname}</b> <br /><br />
                  A confirmation email has been sent.
 
                         </div>

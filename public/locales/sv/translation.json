@@ -12,7 +12,7 @@
   "reqField": "Det här fältet är obligatoriskt",
   "bookNow": "Boka Nu",
   "name": "Namn",
-  "lastName": "Efternamn",
+  "lastname": "Efternamn",
   "email": "E-mail",
   "phone": "Mobilnummer",
   "notes": "Meddelande"

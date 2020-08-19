@@ -35,7 +35,7 @@ function CheckoutForm(props) {
       payment_method: {
         card: elements.getElement(CardElement),
         billing_details: {
-          name: event.firstName + " " + event.lastName,
+          name: event.firstname + " " + event.lastname,
           email: event.email,
           phone: event.phone
         },
@@ -67,10 +67,10 @@ function CheckoutForm(props) {
 
   return (
     <form onSubmit={handleSubmit(startStripe)}>
-      <input name="firstName" placeholder={t('name')} ref={register({ required: true })} />
+      <input name="firstname" placeholder={t('name')} ref={register({ required: true })} />
       {errors.exampleRequired && <span>{t('reqField')}</span>}
 
-      <input name="lastName" placeholder={t('lastName')} ref={register({ required: true })} />
+      <input name="lastname" placeholder={t('lastname')} ref={register({ required: true })} />
       {errors.exampleRequired && <span>{t('reqField')}</span>}
 
       <input name="email" placeholder={t('email')} ref={register({ required: true })} />

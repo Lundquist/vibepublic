@@ -3,7 +3,7 @@ import moment from 'moment'
 const initialState = {
     selectedCustomer: {
         id: 0,
-        firstName: "Choose one"
+        firstname: "Choose one"
     },
     selectedReservation: {
         id:0,
@@ -14,7 +14,7 @@ const initialState = {
     },
     selectedEmployee: {
         id: 0,
-        firstName: "Choose one"
+        firstname: "Choose one"
     },
     employees: [],
     selectedService: {

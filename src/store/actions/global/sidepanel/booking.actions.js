@@ -18,8 +18,8 @@ export function setBookingPanel(data) {
         if (data.type !== "new") {
             let employee = {
                 id: data.employeeId,
-                firstName: data.firstName,
-                lastName: data.lastName
+                firstname: data.firstname,
+                lastname: data.lastname
             }
             dispatch({
                 type: BOOKING_PANEL,

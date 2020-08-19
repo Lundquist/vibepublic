@@ -3,8 +3,8 @@ import * as Actions from '../../actions';
 const initialState = {
     selectedEmployee: {
         id: 0,
-        firstName: "",
-        lastName: ""
+        firstname: "",
+        lastname: ""
     },
     employees: [],
     filteredEmployees: []

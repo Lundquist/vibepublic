@@ -36,8 +36,8 @@ function SelectDate(props) {
         props.history.goBack();
         dispatch(Actions.setSelectedEmployee({
             id: 0,
-            firstName: "",
-            lastName: ""
+            firstname: "",
+            lastname: ""
         }))
     };
     useEffect(() => {
