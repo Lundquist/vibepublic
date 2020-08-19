@@ -43,7 +43,7 @@ function CheckoutForm(props) {
       receipt_email: event.email
 
     });
-
+    console.log("CheckOutForm 0 " + JSON.stringify(response))
     if (result.error) {
       // Show error to your customer (e.g., insufficient funds)
       setLoading(false)
