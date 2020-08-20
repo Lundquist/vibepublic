@@ -47,15 +47,10 @@ function CheckoutForm(props) {
       receipt_email: event.email
 
     });
-    console.log("CheckOutForm 0 " + JSON.stringify(result))
     if (result.error) {
-      console.log("CheckOutForm 1 " + result.error.type)
-      setInfo(result.error.message)
-
       // Show error to your customer (e.g., insufficient funds)
       setLoading(false)
-     
-
+      setInfo(result.error.message)
     } else {
       // The payment has been processed!
       if (result.paymentIntent.status === 'succeeded') {

@@ -26,7 +26,7 @@ export const signUpToStripeConnect = (url) => {
 }
 
 export const startPaymentIntent = async (service, account) => {
-    console.log("startPaymentIntent 1")
+    console.log("startPaymentIntent 1 " + JSON.stringify(service))
     return axios.post(`${config.serverUrl}/stripe/paymentIntent`, {
         currency: 'EUR',
         account: account,
