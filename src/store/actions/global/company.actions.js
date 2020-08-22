@@ -78,7 +78,7 @@ export function setCurrentCompany(companyId) {
                     type: SET_COMPANY,
                     payload: response.data.Rows[0]
                 })
-                
+
                 dispatch(api.getCompanySettings())
                 dispatch(api.getEmployees())
                 dispatch(api.getServices())
@@ -88,7 +88,7 @@ export function setCurrentCompany(companyId) {
                 dispatch(api.getClosedDays())
                 dispatch(getCompanyReservations(companyId))
 
-            }else{
+            } else {
                 console.log("getCompany ERROR" + JSON.stringify(response.data.Error))
             }
         }).then(() => dispatch(initializeCompany())
@@ -128,14 +128,14 @@ export function getCompanyEmployees(companyId) {
         });
 }
 
-export function setCompanySettings(settings){
-   // i18n.changeLanguage(settings.companyLanguage);
+export function setCompanySettings(settings) {
+    // i18n.changeLanguage(settings.companyLanguage);
 
     return (dispatch) =>
-    dispatch({
-        type: GET_COMPANY_SETTINGS,
-        payload: settings
-    })
+        dispatch({
+            type: GET_COMPANY_SETTINGS,
+            payload: settings
+        })
 }
 /*
 export function getCompanyServices(companyId) {
@@ -164,10 +164,11 @@ export function getCompanyReservations() {
     const request = axios.get(`${config.serverUrl}/reservations?companyId=${companyId()}`, { headers: { 'Authorization': `Bearer ${token}` } });
     return (dispatch) =>
         request.then((response) => {
-            dispatch({
-                type: SET_RESERVATIONS,
-                payload: response.data.Rows
-            })
+            if (response.data.Rows !== undefined)
+                dispatch({
+                    type: SET_RESERVATIONS,
+                    payload: response.data.Rows
+                })
         });
 }
 export function setStateChange(value) {
