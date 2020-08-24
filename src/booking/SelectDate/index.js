@@ -22,7 +22,7 @@ function SelectDate(props) {
     const { availableHours, currentPage, loadedAvailableHours } = useSelector(({ global }) => global.booking);
     const { selectedEmployee } = useSelector(({ global }) => global.employees);
     const { selectedService } = useSelector(({ global }) => global.services);
-    const { closedDays } = useSelector(({ global }) => global.company);
+    const { closedDays, settings } = useSelector(({ global }) => global.company);
     const [bookings, setBookings] = useState([]);
     const [currentDate, setCurrentDate] = useState(moment());
 
@@ -31,6 +31,8 @@ function SelectDate(props) {
     if (selectedEmployee.id === 0)
         props.history.push('/?companyId=' + companyId)
 
+
+    console.log("SelectDate " + JSON.stringify(settings))
     const goBack = () => {
         dispatch(Actions.goBack(currentPage))
         props.history.goBack();
@@ -59,6 +61,31 @@ function SelectDate(props) {
         if (currentDate.clone().subtract(6, 'days').isBefore(moment()) && showPrevious) {
             return;
         }
+
+        let lastDate = moment();
+        if (settings.bookingLimit === 1)
+            lastDate.add(1, 'days')
+        if (settings.bookingLimit === 2)
+            lastDate.add(2, 'days')
+        if (settings.bookingLimit === 3)
+            lastDate.add(4, 'days')
+        if (settings.bookingLimit === 4)
+            lastDate.add(7, 'days')
+        if (settings.bookingLimit === 5)
+            lastDate.add(14, 'days')
+        if (settings.bookingLimit === 6)
+            lastDate.add(21, 'days')
+        if (settings.bookingLimit === 7)
+            lastDate.add(1, 'months')
+        if (settings.bookingLimit === 8)
+            lastDate.add(2, 'months')
+        if (settings.bookingLimit === 9)
+            lastDate.add(3, 'months')
+
+        if (settings.bookingLimit !== 0 && currentDate.clone().add(6, 'days').isAfter(lastDate)) {
+            return;
+        }
+
         showPrevious === true ? setCurrentDate(currentDate.subtract(7, 'days')) : setCurrentDate(currentDate.add(7, 'days'));
         dispatch(getAvailableHours(selectedEmployee.id, currentDate, selectedService.time))
     }
@@ -80,8 +107,8 @@ function SelectDate(props) {
         const bookingTimes = [];
         availableHours.forEach(bookingItem => {
             let dayIsClosed = false;
-            closedDays.map((v,k) => {
-                if(moment(v.date).format('YYYY-MM-DD') === moment(date).format('YYYY-MM-DD'))
+            closedDays.map((v, k) => {
+                if (moment(v.date).format('YYYY-MM-DD') === moment(date).format('YYYY-MM-DD'))
                     dayIsClosed = true;
             })
 
