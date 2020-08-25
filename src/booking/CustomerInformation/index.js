@@ -89,7 +89,7 @@ function CustomerInfo(props) {
                 <input name="phone" placeholder={t('phone')} ref={register({ required: true })} />
                 {errors.exampleRequired && <span>{t('reqField')}</span>}
 
-                <textarea name="notes" maxlength="445" placeholder={t('notes')} rows={5}
+                <textarea name="notes" maxLength="445" placeholder={t('notes')} rows={5}
                     ref={register({ required: false })} onChange={(e) => setNoteLength(e.target.value.length)} />
                 {noteLength > 0 ? <div id="noteLengthContainer">{noteLength} / 445 </div> : <div id="noteLengthContainer"></div>}
                 <button className='__btn'>{t('bookNow')}</button>

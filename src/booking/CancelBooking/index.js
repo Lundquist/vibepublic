@@ -9,7 +9,6 @@ const CancelBooking = (props) => {
     const { reservation } = useSelector(({ global }) => global.reservation);
     const { information } = useSelector(({ global }) => global.company);
 
-console.log("CancelBooking ")
 console.log(JSON.stringify(information))
 
     const renderDeleteReservation = () => {

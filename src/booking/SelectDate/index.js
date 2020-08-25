@@ -32,7 +32,6 @@ function SelectDate(props) {
         props.history.push('/?companyId=' + companyId)
 
 
-    console.log("SelectDate " + JSON.stringify(settings))
     const goBack = () => {
         dispatch(Actions.goBack(currentPage))
         props.history.goBack();
