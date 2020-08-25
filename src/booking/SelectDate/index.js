@@ -57,11 +57,7 @@ function SelectDate(props) {
         props.history.push(pathname);
     }
 
-    const changeWeek = (showPrevious = false) => {
-        if (currentDate.clone().subtract(6, 'days').isBefore(moment()) && showPrevious) {
-            return;
-        }
-
+    const shouldGoForward = () => {
         let lastDate = moment();
         if (settings.bookingLimit === 1)
             lastDate.add(1, 'days')
@@ -83,8 +79,20 @@ function SelectDate(props) {
             lastDate.add(3, 'months')
 
         if (settings.bookingLimit !== 0 && currentDate.clone().add(6, 'days').isAfter(lastDate)) {
+            return false;
+        }
+
+        return true
+
+
+    }
+    const changeWeek = (showPrevious = false) => {
+        if (currentDate.clone().subtract(6, 'days').isBefore(moment()) && showPrevious) {
             return;
         }
+
+        if(!shouldGoForward() && !showPrevious)
+            return;
 
         showPrevious === true ? setCurrentDate(currentDate.subtract(7, 'days')) : setCurrentDate(currentDate.add(7, 'days'));
         dispatch(getAvailableHours(selectedEmployee.id, currentDate, selectedService.time))
@@ -172,7 +180,7 @@ function SelectDate(props) {
                             <span>{t('earlier')}</span>
                         </div>
                         {bookings.length > 0 && <div className="no-select">{currentDate.format('DD')} - {currentDate.clone().add(6, 'days').format('DD')} {currentDate.format('MMM')}</div>}
-                        <div className='__flex no-select' onClick={() => changeWeek()}>
+                        <div className={`__flex no-select ${shouldGoForward() ? '' : 'grey'}`} onClick={() => changeWeek()}>
                             <span>{t('later')}</span>
                             <i className='material-icons'>keyboard_arrow_right</i>
                         </div>
