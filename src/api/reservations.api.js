@@ -31,7 +31,6 @@ export function addReservation(newReservation) {
 }
 
 export function deleteReservation(reservationId, paymentIntent, stripeAccount) {
-    console.log("deleteReservation " + JSON.stringify(reservationId))
 
     return (dispatch) => {
         const request = axios.delete(`${config.serverUrl}/reservations`, {
@@ -48,7 +47,6 @@ export function deleteReservation(reservationId, paymentIntent, stripeAccount) {
             if (paymentIntent !== {} && !response.Error)
                 dispatch(refundReservation(paymentIntent, stripeAccount))
 
-            console.log("deleteReservation " + JSON.stringify(response))
             /* if (!response.Error)
                  sendEmail(response.data.reservation.id)
          }*/

@@ -4,7 +4,6 @@ import config from '../config'
 import store from '../store'
 import createReducer from '../store/reducers/';
 
-console.log("hrhrhrhrhr " + store)
 
 //store.subscribe(companyId)
 function companyId() {
@@ -13,7 +12,6 @@ function companyId() {
 }
 
 export function getServices() {
-    console.log("services.api getServices")
     const request = axios.get(`${config.serverUrl}/bookingService?companyId=${companyId()}`);
     return (dispatch) =>
         request.then((response) => {
@@ -22,7 +20,6 @@ export function getServices() {
 }
 
 export function getService(serviceId) {
-    console.log("services.api getService 2222")
 
     const request = axios.get(`${config.serverUrl}/service?serviceId=${serviceId}`);
     return (dispatch) =>
@@ -82,7 +79,6 @@ export function addCategory(data) {
 
     return (dispatch) =>
         request.then((response) => {
-            console.log("addCategory " + JSON.stringify(response))
             dispatch(getCategories())
         });
 }

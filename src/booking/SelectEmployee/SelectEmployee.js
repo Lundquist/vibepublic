@@ -78,7 +78,6 @@ function SelectEmployee(props) {
 
 const PopUpInfo = ({ employee, close, click }) => (
   <DialogBox className='__popup' title={`${employee.firstname} ${employee.lastname}`} close={close}>
-    {console.log(employee)}
     {employee.note}
   </DialogBox>
 )
