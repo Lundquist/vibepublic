@@ -1,7 +1,14 @@
 import config from '../config'
 import axios from 'axios';
 import { sendEmail } from '../api'
+import store from '../store'
+
 import * as Actions from '../store/actions'
+
+function companyId() {
+    return store.getState().global.company.information.id
+}
+
 /**
  * 
  * @param {*} newReservation 
@@ -16,7 +23,7 @@ import * as Actions from '../store/actions'
  */
 export function addReservation(newReservation) {
     return (dispatch) => {
-        const request = axios.post(`${config.serverUrl}/reservations`, newReservation, {
+        const request = axios.post(`${config.serverUrl}/reservations`, { newReservation, companyId: companyId() }, {
             headers: {
                 'Content-Type': 'application/json',
             }
@@ -29,6 +36,9 @@ export function addReservation(newReservation) {
         )
     };
 }
+
+
+
 
 export function deleteReservation(reservationId, paymentIntent, stripeAccount) {
 
@@ -66,7 +76,7 @@ export function refundReservation(paymentIntent, stripeAccount) {
         });
     }
 
-    
+
 }
 
 export function getReservation(reservationId) {
