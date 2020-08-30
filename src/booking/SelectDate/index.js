@@ -19,7 +19,7 @@ function SelectDate(props) {
     const dispatch = useDispatch();
     const { t } = useTranslation();
 
-    const { availableHours, currentPage, loadedAvailableHours } = useSelector(({ global }) => global.booking);
+    const { availableHours, currentPage, loadedAvailableHours, bookingComplete } = useSelector(({ global }) => global.booking);
     const { selectedEmployee } = useSelector(({ global }) => global.employees);
     const { selectedService } = useSelector(({ global }) => global.services);
     const { closedDays, settings } = useSelector(({ global }) => global.company);
@@ -28,7 +28,7 @@ function SelectDate(props) {
 
     const params = new URLSearchParams(window.location.search);
     const companyId = params.get('companyId');
-    if (selectedEmployee.id === 0)
+    if (selectedEmployee.id === 0  || bookingComplete)
         props.history.push('/?companyId=' + companyId)
 
 
