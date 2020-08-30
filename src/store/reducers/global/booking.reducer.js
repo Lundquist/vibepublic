@@ -48,7 +48,7 @@ const bookingReducer = function (state = initialState, action) {
             {
                 return {
                     ...state,
-                    bookingComplete: true
+                    bookingComplete: action.payload
                 };
             }
         case Actions.SET_AVAILABLE_HOURS:

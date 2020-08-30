@@ -33,7 +33,7 @@ export function addReservation(newReservation) {
         return request.then((response) => {
             if (!response.Error){
                 sendEmail(response.data.reservation.id)
-                dispatch(Actions.setBookingComplete())
+                dispatch(Actions.setBookingComplete(true))
             }
         }
         )

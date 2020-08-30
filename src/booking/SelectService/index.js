@@ -44,6 +44,7 @@ function SelectService(props) {
     }
     useEffect(() => {
         setSelectedCategory(categories.length > 0 ? categories[0].id : 0)
+        dispatch(Actions.setBookingComplete(false))
     }, [categories]);
 
     const setService = (service) => {

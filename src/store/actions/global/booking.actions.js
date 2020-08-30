@@ -27,9 +27,10 @@ export function goToStart() {
         type: GO_TO_START
     }
 }
-export function setBookingComplete() {
+export function setBookingComplete(complete) {
     return {
-        type: SET_BOOKING_COMPLETE
+        type: SET_BOOKING_COMPLETE,
+        payload: complete
     }
 }
 export function setAvailableHours(hours) {
