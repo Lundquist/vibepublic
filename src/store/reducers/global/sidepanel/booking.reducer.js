@@ -1,5 +1,6 @@
 import * as Actions from '../../../actions';
 import moment from 'moment'
+import { BOOKING_EMPLOYEE } from '../../../actions';
 const initialState = {
     selectedCustomer: {
         id: 0,

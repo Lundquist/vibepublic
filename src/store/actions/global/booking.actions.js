@@ -6,6 +6,7 @@ export const SET_SELECTED_TIME = '[BOOKING] SET_SELECTED_TIME';
 export const GO_TO_START = '[BOOKING] GO_TO_START';
 export const SET_BOOKING_NOTE = '[BOOKING] SET_BOOKING_NOTE';
 export const SET_PAYMENT_INTENT = '[BOOKING] SET_PAYMENT_INTENT';
+export const SET_BOOKING_COMPLETE = '[BOOKING] SET_BOOKING_COMPLETE';
 
 export function goForward(currentPage) {
     return {
@@ -26,7 +27,11 @@ export function goToStart() {
         type: GO_TO_START
     }
 }
-
+export function setBookingComplete() {
+    return {
+        type: SET_BOOKING_COMPLETE
+    }
+}
 export function setAvailableHours(hours) {
     return {
         type: SET_AVAILABLE_HOURS,

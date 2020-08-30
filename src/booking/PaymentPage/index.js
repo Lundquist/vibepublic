@@ -5,6 +5,7 @@ import withReducer from '../../store/withReducer';
 import reducer from '../../store/reducers';
 import { addReservation } from '../../api'
 import moment from 'moment';
+import * as Actions from '../../store/actions';
 
 function PaymentPage(props) {
     const dispatch = useDispatch();
@@ -13,6 +14,8 @@ function PaymentPage(props) {
     const { selectedService } = useSelector(({ global }) => global.services);
     const { selectedCustomer } = useSelector(({ global }) => global.customers);
     const { settings } = useSelector(({ global }) => global.company);
+
+
 
     const params = new URLSearchParams(window.location.search);
     const companyId = params.get('companyId');
@@ -37,7 +40,6 @@ function PaymentPage(props) {
             dispatch(addReservation(newReservation))
         }
     }, [selectedCustomer]);
-
 
     return (
         <div className="paymentPageContainer">

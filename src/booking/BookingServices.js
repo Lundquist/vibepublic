@@ -19,7 +19,11 @@ import { Route, Switch } from 'react-router-dom';
 function BookingServices(props) {
     const { t } = props;
 
-      return (
+const clearData = () => {
+    console.log("clearData")
+}
+
+    return (
         <div>
             <ReactCSSTransitionGroup
                 transitionName="page"
@@ -27,7 +31,7 @@ function BookingServices(props) {
                 transitionLeaveTimeout={300}
             >
                 <Switch>
-                    <Route path='/:selectedService/:selectedEmployee/:date/:customerName/confirm-booking' component={PaymentPage} />
+                    <Route path='/:selectedService/:selectedEmployee/:date/:customerName/confirm-booking' component={PaymentPage} onLeave={() => clearData()}/>
                     <Route exact path='/:selectedService/:selectedEmployee/:date/customer-information' component={CustomerInformation} />
                     <Route exact path='/:selectedService/:selectedEmployee/select-booking-time' component={SelectDate} />
                     <Route exact path='/:selectedService/select-employee' component={SelectEmployee} />

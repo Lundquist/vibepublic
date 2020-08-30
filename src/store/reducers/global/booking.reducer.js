@@ -1,5 +1,6 @@
 import * as Actions from '../../actions';
 import moment from 'moment';
+import { GO_BACK } from '../../actions';
 
 const initialState = {
     currentPage: 1,
@@ -7,7 +8,8 @@ const initialState = {
     selectedTime: moment(),
     reservationNote: '',
     loadedAvailableHours: false,
-    paymentIntent: {}
+    paymentIntent: {},
+    bookingComplete: false
 
 }
 
@@ -22,6 +24,7 @@ const bookingReducer = function (state = initialState, action) {
             }
         case Actions.GO_BACK:
             {
+                console.log("GO_BACK")
                 return {
                     ...state,
                     currentPage: action.payload - 1
@@ -41,6 +44,13 @@ const bookingReducer = function (state = initialState, action) {
                     loadedAvailableHours: false
                 };
             }
+        case Actions.SET_BOOKING_COMPLETE:
+            {
+                return {
+                    ...state,
+                    bookingComplete: true
+                };
+            }
         case Actions.SET_AVAILABLE_HOURS:
             {
                 return {
@@ -56,6 +66,7 @@ const bookingReducer = function (state = initialState, action) {
                     selectedTime: action.payload
                 };
             }
+
         case Actions.SET_BOOKING_NOTE:
             {
                 return {

@@ -15,13 +15,13 @@ import profileImage from './assets/profile.png'
 function SelectEmployee(props) {
   const dispatch = useDispatch();
   const { employees, selectedService } = useSelector(({ global }) => global.services);
-  const { currentPage } = useSelector(({ global }) => global.booking);
+  const { currentPage, bookingComplete } = useSelector(({ global }) => global.booking);
   const { t } = props;
   const [employeeInfo, setEmployeeInfo] = useState(null);
   
   const params = new URLSearchParams(window.location.search);
   const companyId = params.get('companyId');
-  if(selectedService.id === 0)
+  if(selectedService.id === 0 || bookingComplete)
       props.history.push('/?companyId=' + companyId)
 
   const selectedEmployee = (employee) => {

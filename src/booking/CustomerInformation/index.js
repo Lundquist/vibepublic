@@ -17,14 +17,14 @@ function CustomerInfo(props) {
     const { register, handleSubmit, errors } = useForm()
     const { customers } = useSelector(({ global }) => global.customers);
     const { information } = useSelector(({ global }) => global.company);
-    const { currentPage, selectedTime } = useSelector(({ global }) => global.booking);
+    const { currentPage, selectedTime, bookingComplete } = useSelector(({ global }) => global.booking);
     const { t } = useTranslation();
     const [noteLength, setNoteLength] = useState(0);
     const [showStripe, setShowStripe] = useState(0);
 
     const params = new URLSearchParams(window.location.search);
     const companyId = params.get('companyId');
-    if (selectedTime <= moment())
+    if (selectedTime <= moment() || bookingComplete)
         props.history.push('/?companyId=' + companyId)
 
 

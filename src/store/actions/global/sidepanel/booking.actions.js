@@ -78,6 +78,7 @@ export function resetBookingPanel() {
     }
 }
 
+
 export function setBookingCustomer(data) {
     return {
         type: BOOKING_CUSTOMER,

@@ -2,8 +2,9 @@ import config from '../config'
 import axios from 'axios';
 import { sendEmail } from '../api'
 import store from '../store'
-
+import moment from 'moment'
 import * as Actions from '../store/actions'
+import { resetBookingPanel, setSelectedService, setSelectedEmployee } from '../store/actions';
 
 function companyId() {
     return store.getState().global.company.information.id
@@ -30,8 +31,10 @@ export function addReservation(newReservation) {
         });
 
         return request.then((response) => {
-            if (!response.Error)
+            if (!response.Error){
                 sendEmail(response.data.reservation.id)
+                dispatch(Actions.setBookingComplete())
+            }
         }
         )
     };

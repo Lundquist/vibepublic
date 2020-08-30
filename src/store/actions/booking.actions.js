@@ -6,6 +6,7 @@ export const GO_TO_START = '[BOOKING] GO_TO_START';
 export const EMPLOYEES_FOR_SERVICE = '[SERVICE] EMPLOYEES_FOR_SERVICE';
 export const GET_CUSTOMERS = '[CUSTOMERS] GET CUSTOMERS';
 export const SET_CUSTOMER = '[CUSTOMERS] SET_CUSTOMER';
+export const SET_BOOKING_COMPLETE = '[CUSTOMERS] SET_BOOKING_COMPLETE';
 
 export function goForward(currentPage) {
     return {
@@ -24,6 +25,12 @@ export function goBack(currentPage) {
 export function goToStart() {
     return {
         type: GO_TO_START
+    }
+}
+
+export function setBookingComplete() {
+    return {
+        type: SET_BOOKING_COMPLETE
     }
 }
 

@@ -4,7 +4,8 @@ import moment from 'moment';
 const initialState = {
     currentPage: 1,
     availableHours: [],
-    selectedTime: moment()
+    selectedTime: moment(),
+    bookingComplete: false
 
 }
 
@@ -31,6 +32,8 @@ const bookingReducer = function (state = initialState, action) {
                     currentPage: 1
                 };
             }
+
+
         case Actions.SET_AVAILABLE_HOURS:
             {
                 return {
