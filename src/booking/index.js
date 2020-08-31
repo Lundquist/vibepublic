@@ -35,7 +35,7 @@ function BookingContent(props) {
                 <BookingHeader />
                 <div className='__flex-strech __container __bookings-content'>
                     <div className='__f1'><BookingServices /></div>
-                    {currentPage < 4 ? <RightColumn /> : null}
+                    {currentPage < 5 ? <RightColumn /> : null}
                 </div>
             </div>
         )
