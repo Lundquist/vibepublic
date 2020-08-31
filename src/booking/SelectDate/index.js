@@ -14,7 +14,7 @@ import SubHeader from '../SubHeader'
 import { setSelectedEmployee } from '../../store/actions';
 import config from '../../config';
 import LoadingIndicator from '../../ui/LoadingIndicator'
-
+  
 function SelectDate(props) {
     const dispatch = useDispatch();
     const { t } = useTranslation();
@@ -28,7 +28,7 @@ function SelectDate(props) {
 
     const params = new URLSearchParams(window.location.search);
     const companyId = params.get('companyId');
-    if (selectedEmployee.id === 0  || bookingComplete)
+    if (selectedEmployee.id === 0 || bookingComplete)
         props.history.push('/?companyId=' + companyId)
 
 
@@ -90,7 +90,7 @@ function SelectDate(props) {
             return;
         }
 
-        if(!shouldGoForward() && !showPrevious)
+        if (!shouldGoForward() && !showPrevious)
             return;
 
         showPrevious === true ? setCurrentDate(currentDate.subtract(7, 'days')) : setCurrentDate(currentDate.add(7, 'days'));
@@ -101,6 +101,7 @@ function SelectDate(props) {
         let sortedBookings = [];
         for (let i = 0; i < 7; i++) {
             const nxtdate = currentDate.clone().add(i, 'days')
+
             sortedBookings.push({
                 date: nxtdate,
                 bookingTimes: getBookingTimes(nxtdate),
@@ -142,7 +143,7 @@ function SelectDate(props) {
         return (
             <div id="noTimesContainer">
                 <div id="noTimesImage"></div>
-
+                {/** HIWA */}
                 <div id="noTimesText">No times available this week, try later.</div>
             </div>
         )

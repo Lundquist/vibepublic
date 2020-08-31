@@ -25,6 +25,37 @@ function PaymentPage(props) {
     useEffect(() => {
         if (selectedCustomer !== '') {
             let cancelationTime = moment(selectedTime).subtract(settings.cancelationLimit, 'days').format('YYYY-MM-DD HH:mm');
+            let reminderTime = '';
+            if (settings.confirmationEmail === 0) {
+            } else if (settings.confirmationEmail === 1) {
+                reminderTime = moment(selectedTime).subtract(6, 'hours').format('ddd, DD MMM YYYY HH:mm:ss ZZ');
+            } else if (settings.confirmationEmail === 2) {
+                reminderTime = moment(selectedTime).subtract(12, 'hours').format('ddd, DD MMM YYYY HH:mm:ss ZZ');
+            } else if (settings.confirmationEmail === 3) {
+                reminderTime = moment(selectedTime).subtract(1, 'days').format('ddd, DD MMM YYYY HH:mm:ss ZZ');
+            } else if (settings.confirmationEmail === 4) {
+                reminderTime = moment(selectedTime).subtract(2, 'days').format('ddd, DD MMM YYYY HH:mm:ss ZZ');
+            } else if (settings.confirmationEmail === 5) {
+                reminderTime = moment(selectedTime).subtract(4, 'days').format('ddd, DD MMM YYYY HH:mm:ss ZZ');
+            } else if (settings.confirmationEmail === 6) {
+                reminderTime = moment(selectedTime).subtract(1, 'weeks').format('ddd, DD MMM YYYY HH:mm:ss ZZ');
+            } else if (settings.confirmationEmail === 7) {
+                reminderTime = moment(selectedTime).subtract(2, 'weeks').format('ddd, DD MMM YYYY HH:mm:ss ZZ');
+            } else if (settings.confirmationEmail === 8) {
+                reminderTime = moment(selectedTime).subtract(3, 'weeks').format('ddd, DD MMM YYYY HH:mm:ss ZZ');
+            } else if (settings.confirmationEmail === 9) {
+                reminderTime = moment(selectedTime).subtract(1, 'month').format('ddd, DD MMM YYYY HH:mm:ss ZZ');
+            } else if (settings.confirmationEmail === 10) {
+                reminderTime = moment(selectedTime).subtract(2, 'month').format('ddd, DD MMM YYYY HH:mm:ss ZZ');
+            } else if (settings.confirmationEmail === 11) {
+                reminderTime = moment(selectedTime).subtract(3, 'month').format('ddd, DD MMM YYYY HH:mm:ss ZZ');
+            }
+
+
+
+
+            console.log("yayayayaya " + reminderTime)
+            //moment(selectedTime).subtract(settings.confirmationEmail, 'days').format('YYYY-MM-DD HH:mm');
             let newReservation = {
                 start: moment(selectedTime).format('YYYY-MM-DD HH:mm'),
                 end: moment(selectedTime).add(selectedService.time, 'minutes').format('YYYY-MM-DD HH:mm'),
@@ -34,7 +65,8 @@ function PaymentPage(props) {
                 price: selectedService.price,
                 note: reservationNote,
                 cancelationTime: cancelationTime,
-                paymentIntent: paymentIntent
+                paymentIntent: paymentIntent,
+                reminderTime: reminderTime
 
             }
             dispatch(addReservation(newReservation))

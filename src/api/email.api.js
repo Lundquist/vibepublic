@@ -23,8 +23,7 @@ function notes() {
     return store.getState().global.booking.reservationNote
 }
 
-export function sendEmail(reservationId) {
-    console.log("sendEmail " + JSON.stringify(companyInformation()))
+export function sendEmail(reservationId, reminderTime) {
     const URL = `${config.serverUrl}/email/confirmation`
     const request = axios.post(URL, {
         name: selectedCustomer().firstname,
@@ -38,6 +37,29 @@ export function sendEmail(reservationId) {
         notes: notes(),
         id: reservationId,
         companyId: companyInformation().id,
+        reminderTime: reminderTime
+
+    });
+    request.then((response) => {
+    })
+
+}
+
+export function sendEmailReminder(reservationId, reminderTime) {
+    const URL = `${config.serverUrl}/email/reminder`
+    const request = axios.post(URL, {
+        name: selectedCustomer().firstname,
+        email: selectedCustomer().email,
+        selectedTime: selectedDate(),
+        service: selectedService().name,
+        serviceTime: selectedService().time,
+        address: companyInformation().address,
+        price: selectedService().price,
+        employee: employee(),
+        notes: notes(),
+        id: reservationId,
+        companyId: companyInformation().id,
+        reminderTime: reminderTime
 
     });
     request.then((response) => {

@@ -1,6 +1,6 @@
 import config from '../config'
 import axios from 'axios';
-import { sendEmail } from '../api'
+import { sendEmail, sendEmailReminder } from '../api'
 import store from '../store'
 import moment from 'moment'
 import * as Actions from '../store/actions'
@@ -32,7 +32,9 @@ export function addReservation(newReservation) {
 
         return request.then((response) => {
             if (!response.Error){
-                sendEmail(response.data.reservation.id)
+                console.log("addReservation " + JSON.stringify(response.data.reservation))
+                sendEmail(response.data.reservation.id, newReservation.reminderTime)
+                sendEmailReminder(response.data.reservation.id, newReservation.reminderTime)
                 dispatch(Actions.setBookingComplete(true))
             }
         }

@@ -28,7 +28,9 @@ const initialState = {
         companyLanguage: 'en',
         currency: 'euro',
         timezone: '+1',
-        cancelationLimit: 0
+        cancelationLimit: 0,
+        confirmationEmail: ''
+
     },
     services: [],
     customers: [],
