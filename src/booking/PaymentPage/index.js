@@ -28,9 +28,9 @@ function PaymentPage(props) {
             let newReservation = {
                 start: moment(selectedTime).format('YYYY-MM-DD HH:mm'),
                 end: moment(selectedTime).add(selectedService.time, 'minutes').format('YYYY-MM-DD HH:mm'),
-                employee: selectedEmployee.id,
-                customer: selectedCustomer.userId,
-                service: selectedService.id,
+                employee: selectedEmployee,
+                customer: selectedCustomer,
+                service: selectedService,
                 price: selectedService.price,
                 note: reservationNote,
                 cancelationTime: cancelationTime,
