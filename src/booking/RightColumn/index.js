@@ -11,7 +11,7 @@ import profileImage from '../SelectEmployee/assets/profile.png'
 
 function RightColumn(props) {
     const { t } = props;
-    const { selectedTime } = useSelector(({ global }) => global.booking);
+    const { selectedTime, currentPage } = useSelector(({ global }) => global.booking);
     const { selectedEmployee } = useSelector(({ global }) => global.employees);
     const { selectedService } = useSelector(({ global }) => global.services);
     const { information } = useSelector(({ global }) => global.company);
@@ -71,7 +71,7 @@ function RightColumn(props) {
                 <b className="__flex __sb">
                     Price:<div>€ {selectedService.id !== 0 ? selectedService.price : 0}</div>
                 </b>
-                {moment(selectedTime) >= moment() && <button className='__btn'>Book now</button>}
+                {moment(selectedTime) >= moment() && currentPage < 2 && <button className='__btn'>Book now</button>}
             </div>
         </div>
     )
