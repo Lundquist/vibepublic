@@ -1,0 +1,81 @@
+.__summery{
+    min-width: 210px;
+    .__service__details{
+        border-bottom: 1px solid #d3d3d3;
+        min-height: 160px;
+        margin-bottom: 4px;
+        margin-top: 10px;
+        font-size: 15px;
+
+    }
+    .__card2{
+        color: rgba(0, 0, 0, 0.6);
+    }
+    #companyInfomation{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #d3d3d3;
+    }
+
+    #companyDetails{
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        font-size: 15px;
+ 
+    }
+    .__contact__information{
+        margin: 26px 0;
+        min-height: 300px;
+    }
+    h3{
+        font-size: 17px;
+        margin: 0;
+        color: #000;
+    }
+    h4{
+        margin: 0;
+        color: #000;
+    }
+    .__time{
+        margin: 2px 0 16px 0;
+    }
+    img{
+        width: 36px;
+        align-items: center;
+        margin-right: 6px;
+    }
+    #showSelectedTimeContainer{
+        display: flex;
+        flex-direction: column;
+    }
+    #showSelectedTimeContainerTime{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .__date{
+        margin: 10px 0 0 !important;
+        font-weight: 500;
+        max-width: 210px;
+        color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    button{
+        border-radius: 16px;
+        margin: 16px auto 0 auto;
+        display: block;
+        background: #7BED8D;
+        width: 100%;
+    }
+    @media (max-width: 800px) {
+        max-width: 100%;
+    }
+}
