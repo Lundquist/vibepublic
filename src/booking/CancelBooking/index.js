@@ -17,12 +17,12 @@ console.log(JSON.stringify(information))
             < Fragment >
                 <div class="product-card">
                     <div class="product-details">
-                        <h1>Cancel Reservation?</h1>
-                Are you sure you want to cancel your reservation for <b>{reservation.name}</b> at <b>{moment(reservation.start).format('YYYY-MM-DD HH:mm')}</b> ? <br /><br />
+                        <h1>Cancelar la reserva?</h1>
+                        ¿Está seguro de que desea cancelar su reserva para <b>{reservation.name}</b> en <b>{moment(reservation.start).format('YYYY-MM-DD HH:mm')}</b> ? <br /><br />
                         <br /><br />
                         <div className="bookingPage">
 
-                            <div id="deleteButton" onClick={() => dispatch(deleteReservation(props.reservationId, reservation.paymentIntent, information.stripeAccount))}>Confirm</div>
+                            <div id="deleteButton" onClick={() => dispatch(deleteReservation(props.reservationId, reservation.paymentIntent, information.stripeAccount))}>Confirmar</div>
                         </div>
 
                     </div>
@@ -36,9 +36,8 @@ console.log(JSON.stringify(information))
             <Fragment>
                 <div class="product-card">
                     <div class="product-details">
-                        <h1>Warning</h1>
-                The current reservation can not be canceled because it is to close to the start time of the reservation. Please contact the company directly.
-
+                        <h1>Lo siento</h1>
+                        La reserva actual ya no se puede cancelar. Para mas informacion póngase en contacto directamente con la empresa.
                     </div>
                 </div>
             </Fragment>
