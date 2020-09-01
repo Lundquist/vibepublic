@@ -9,7 +9,7 @@ import { withTranslation } from 'react-i18next';
 import profileImage from '../SelectEmployee/assets/profile.png'
 
 
-function RightColumn(props) {
+function Summary(props) {
     const { t } = props;
     const { selectedTime, currentPage } = useSelector(({ global }) => global.booking);
     const { selectedEmployee } = useSelector(({ global }) => global.employees);
@@ -68,9 +68,8 @@ function RightColumn(props) {
                     }
                     {moment(selectedTime) >= moment() && <h3 className='__date'>{getEndingTime()}</h3>}
                 </div>
-                                    {/** HIWA */}
-
                 <b className="__flex __sb">
+                    {/** HIWA */}
                     Price:<div>€ {selectedService.id !== 0 ? selectedService.price : 0}</div>
                 </b>
                 {moment(selectedTime) >= moment() && currentPage < 2 && <button className='__btn'>Book now</button>}
@@ -79,4 +78,4 @@ function RightColumn(props) {
     )
 
 }
-export default withTranslation()(withReducer('calendarApp', reducer)(RightColumn));
+export default withTranslation()(withReducer('calendarApp', reducer)(Summary));

@@ -10,6 +10,7 @@ import * as Actions from '../store/actions';
 import CancelBooking from './CancelBooking'
 import { getReservation, signUpToStripeConnect } from '../api'
 import { Helmet } from "react-helmet";
+import Summary from './Summary';
 
 function BookingContent(props) {
     const dispatch = useDispatch();
@@ -35,7 +36,8 @@ function BookingContent(props) {
                 <BookingHeader />
                 <div className='__flex-strech __container __bookings-content'>
                     <div className='__f1'><BookingServices /></div>
-                    {currentPage < 5 ? <RightColumn /> : null}
+                    {currentPage < 4 ? <RightColumn /> : null}
+                    {currentPage === 4 ? <Summary /> : null}
                 </div>
             </div>
         )
