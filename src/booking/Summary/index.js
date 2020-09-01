@@ -69,10 +69,10 @@ function Summary(props) {
                     {moment(selectedTime) >= moment() && <h3 className='__date'>{getEndingTime()}</h3>}
                 </div>
                 <b className="__flex __sb">
-                    {/** HIWA */}
-                    Price:<div>€ {selectedService.id !== 0 ? selectedService.price : 0}</div>
+                    
+                    Precio:<div>€ {selectedService.id !== 0 ? selectedService.price : 0}</div>
                 </b>
-                {moment(selectedTime) >= moment() && currentPage < 2 && <button className='__btn'>Book now</button>}
+                {moment(selectedTime) >= moment() && currentPage < 2 && <button className='__btn'>Reservar ahora</button>}
             </div>
         </div>
     )

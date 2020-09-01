@@ -143,8 +143,8 @@ function SelectDate(props) {
         return (
             <div id="noTimesContainer">
                 <div id="noTimesImage"></div>
-                {/** HIWA */}
-                <div id="noTimesText">No times available this week, try later.</div>
+                
+                <div id="noTimesText">No hay horarios disponibles esta semana, inténtalo más tarde.</div>
             </div>
         )
     }
