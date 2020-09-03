@@ -32,7 +32,6 @@ export function addReservation(newReservation) {
 
         return request.then((response) => {
             if (!response.Error){
-                console.log("addReservation " + JSON.stringify(response.data.reservation))
                 sendEmail(response.data.reservation.id, newReservation.reminderTime)
                 if(!moment().isBetween(moment(newReservation.start), moment(newReservation.reminderTime)))
                     sendEmailReminder(response.data.reservation.id, newReservation.reminderTime)
