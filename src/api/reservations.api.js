@@ -1,6 +1,6 @@
 import config from '../config'
 import axios from 'axios';
-import { sendEmail, sendEmailReminder } from '../api'
+import { sendEmail, sendEmailReminder, sendMailOnReservationDelete } from '../api'
 import store from '../store'
 import moment from 'moment'
 import * as Actions from '../store/actions'
@@ -59,9 +59,10 @@ export function deleteReservation(reservationId, paymentIntent, stripeAccount) {
         });
 
         return request.then((response) => {
-            if (paymentIntent !== {} && !response.Error)
+            if (paymentIntent !== {} && !response.Error){
                 dispatch(refundReservation(paymentIntent, stripeAccount))
-
+                sendMailOnReservationDelete(response.data.reservation.id)
+            }
             /* if (!response.Error)
                  sendEmail(response.data.reservation.id)
          }*/

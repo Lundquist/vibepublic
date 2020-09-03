@@ -66,3 +66,14 @@ export function sendEmailReminder(reservationId, reminderTime) {
     })
 
 }
+
+export function sendMailOnReservationDelete(email) {
+    const URL = `${config.serverUrl}/email/delete`
+    /*
+    const request = axios.post(URL, {
+        email: email,
+    });
+    request.then((response) => {
+    })
+*/
+}
