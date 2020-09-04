@@ -18,6 +18,8 @@ function CustomerInfo(props) {
     const { customers } = useSelector(({ global }) => global.customers);
     const { information } = useSelector(({ global }) => global.company);
     const { currentPage, selectedTime, bookingComplete } = useSelector(({ global }) => global.booking);
+    const { selectedService } = useSelector(({ global }) => global.services);
+
     const { t } = useTranslation();
     const [noteLength, setNoteLength] = useState(0);
     const [showStripe, setShowStripe] = useState(0);
@@ -26,13 +28,6 @@ function CustomerInfo(props) {
     const companyId = params.get('companyId');
     if (selectedTime <= moment() || bookingComplete)
         props.history.push('/?companyId=' + companyId)
-
-
-    const renderStripePopUp = () => {
-        return (
-            <div>Stripe</div>
-        )
-    }
 
 
     const onSubmit = (data) => {
@@ -101,7 +96,7 @@ function CustomerInfo(props) {
         <div className="__payment-Page-Container">
             <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> {t('completeBooking')}</h2>
             <div className='__card2'>
-                {information.stripeAccount !== null ?
+                {information.stripeAccount !== null  && selectedService.price !== "" ?
                     <Select name='payment' onSelect={(htmlElm) => setShowStripe(htmlElm)} >
                         <option value="0">{t('paySite')}</option>
                         <option value="1">{t('payNow')}</option>

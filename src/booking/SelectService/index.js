@@ -100,7 +100,7 @@ function SelectService(props) {
             const addDefaultSrc = (ev) => {
                 ev.target.src = "https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
             }
-        
+        console.log("renderServices " + service.price)
             return (
                 <div className="__flex __service" onClick={(e) => selectedService(service)} key={service.id}>
                     <div className='__flex-strech __f1'>
@@ -113,7 +113,7 @@ function SelectService(props) {
                         </div>
                     </div>
                     <div className='__flex __footer'>
-                        € {service.price}
+                        {service.price === 0 || service.price === "" ? null : service.price + " €" }
                         {service.description !== null ? <InfoOutlinedIcon onClick={(e) => showInfo(e, service)} />
                             : <div className="__infoImage" />}
                     </div>

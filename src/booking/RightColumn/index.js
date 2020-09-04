@@ -44,6 +44,22 @@ function RightColumn(props) {
         ev.target.src = profileImage
     }
 
+    const renderPrice = () => {
+        if (selectedService.price !== "") {
+            return (
+                <b className="__flex __sb">
+                    Precio:<div> {selectedService.id !== 0 ? selectedService.price : 0} €</div>
+                </b>
+            )
+        } else {
+            return (
+                <b className="__flex __sb">
+                    Precio:<div> Gratis</div>
+                </b>
+            )
+        }
+    }
+
     return (
         <div className='__summery'>
             <h2> {t("summary")}</h2>
@@ -68,11 +84,8 @@ function RightColumn(props) {
                     }
                     {moment(selectedTime) >= moment() && <h3 className='__date'>{getEndingTime()}</h3>}
                 </div>
-                                    
 
-                <b className="__flex __sb">
-                    Precio:<div>€ {selectedService.id !== 0 ? selectedService.price : 0}</div>
-                </b>
+                {renderPrice()}
                 {moment(selectedTime) >= moment() && currentPage < 2 && <button className='__btn'>Reservar ahora</button>}
             </div>
         </div>
