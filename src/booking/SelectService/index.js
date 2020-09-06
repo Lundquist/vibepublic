@@ -59,15 +59,6 @@ function SelectService(props) {
         setSelectedInfo(service);
     }
 
-    const renderUnassignedServices = () => {
-        return (
-            <div key={0} className={`categoryContainer __flex __sb ${0 === selectedCategory ? "selected" : ""}`} onClick={(e) => toggleContainer(0, e)}>
-                {t("common.unassigned")}
-                <KeyboardArrowRightIcon />
-            </div>
-        )
-    }
-
     const renderCategories = (category) => {
         return (
             <div key={category.id} className={`categoryContainer __flex __sb ${category.id === selectedCategory ? "selected" : ""}`} onClick={(e) => toggleContainer(category.id, e)}>

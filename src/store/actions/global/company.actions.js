@@ -89,10 +89,10 @@ export function setCurrentCompany(companyId) {
                 dispatch(getCompanyReservations(companyId))
 
             } else {
-                console.log("getCompany ERROR" + JSON.stringify(response.data.Error))
+                console.log("getCompany ERROR1" + JSON.stringify(response.data.Error))
             }
         }).then(() => dispatch(initializeCompany())
-        ).catch(e => console.log("setCurrentCompany ERROR: " + e));
+        ).catch(e => {console.log("setCurrentCompany ERROR2: " + e); window.location.href = 'https://vibereserva.es/'});
     }
 }
 
