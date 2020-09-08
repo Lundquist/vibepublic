@@ -23,7 +23,7 @@ export function saveCompanyInfo(body) {
     return (dispatch) =>
         request.then((res) => {
             if (res.error) {
-                console.log("ERROR SAVECOMPANYINFO")
+                console.log("ERROR saveCompanyInfo " + JSON.stringify(res.error))
             } else {
                 dispatch(Actions.updateCompany(body))
             }

@@ -16,13 +16,10 @@ function CustomerInfo(props) {
     const dispatch = useDispatch();
     const { register, handleSubmit, errors } = useForm()
     const { customers } = useSelector(({ global }) => global.customers);
-    const { information } = useSelector(({ global }) => global.company);
     const { currentPage, selectedTime, bookingComplete } = useSelector(({ global }) => global.booking);
-    const { selectedService } = useSelector(({ global }) => global.services);
 
     const { t } = useTranslation();
     const [noteLength, setNoteLength] = useState(0);
-    const [showStripe, setShowStripe] = useState(0);
 
     const params = new URLSearchParams(window.location.search);
     const companyId = params.get('companyId');
@@ -59,7 +56,6 @@ function CustomerInfo(props) {
     const goBack = () => {
         dispatch(Actions.goBack(currentPage))
         props.history.goBack();
-        dispatch(Actions.setSelectedTime(moment()))
 
     };
 
@@ -96,13 +92,7 @@ function CustomerInfo(props) {
         <div className="__payment-Page-Container">
             <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> {t('completeBooking')}</h2>
             <div className='__card2'>
-                {information.stripeAccount !== null  && selectedService.price !== "" ?
-                    <Select name='payment' onSelect={(htmlElm) => setShowStripe(htmlElm)} >
-                        <option value="0">{t('paySite')}</option>
-                        <option value="1">{t('payNow')}</option>
-                    </Select>
-                    : null}
-                {showStripe === 0 ? renderPayAtSite() : renderStripe()}
+                {renderPayAtSite()}
             </div>
 
         </div>

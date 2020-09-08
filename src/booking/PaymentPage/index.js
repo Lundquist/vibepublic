@@ -51,11 +51,6 @@ function PaymentPage(props) {
                 reminderTime = moment(selectedTime).subtract(3, 'month').format('ddd, DD MMM YYYY HH:mm:ss ZZ');
             }
 
-
-
-
-            console.log("yayayayaya " + reminderTime)
-            //moment(selectedTime).subtract(settings.confirmationEmail, 'days').format('YYYY-MM-DD HH:mm');
             let newReservation = {
                 start: moment(selectedTime).format('YYYY-MM-DD HH:mm'),
                 end: moment(selectedTime).add(selectedService.time, 'minutes').format('YYYY-MM-DD HH:mm'),

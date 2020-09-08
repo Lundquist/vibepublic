@@ -7,22 +7,7 @@ import store from '../store'
 //store.subscribe(companyId)
 
 function companyId() {
-    //return 2381;
     return store.getState().global.company.information.id
-}
-export const signUpToStripeConnect = (url) => {
-    console.log("Booking/signupToStripeConnect")
-    return async function (dispatch) {
-        return axios.get(`${config.serverUrl}/stripe/connectStripeAccount?code=${url}`).then((res) => {
-            if (res.error) {
-                console.log("ERROR signUpToStripeConnect")
-            } else {
-                console.log("Booking/signupToStripeConnect2222 ")
-
-                //  dispatch(Actions.setPrices(res.data.data))
-            }
-        });
-    }
 }
 
 export const startPaymentIntent = async (service, account) => {

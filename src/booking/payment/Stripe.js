@@ -15,7 +15,7 @@ function Stripe(props) {
                 sessionId: response.result.id
             }).then(response2 => {
             })
-            console.log(error.message)
+            console.log("Stripe/handleStripe " + error.message)
             // If `redirectToCheckout` fails due to a browser or network
             // error, display the localized error message to your customer
             // using `error.message`.

@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as Actions from '../../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import withReducer from '../../store/withReducer';
 import reducer from '../../store/reducers';
-//import { useTranslation } from 'react-i18next';
 import { getAvailableHours } from '../../api'
 import moment from 'moment'
 import './style.scss';
 import SubHeader from '../SubHeader';
 import DialogBox from '../../ui/DialogBox/DialogBox'
 import { withTranslation } from 'react-i18next';
-import config from '../../config'
 import profileImage from './assets/profile.png'
+
 function SelectEmployee(props) {
   const dispatch = useDispatch();
   const { employees, selectedService } = useSelector(({ global }) => global.services);
@@ -36,16 +35,23 @@ function SelectEmployee(props) {
     dispatch(getAvailableHours(selectedEmployee.id, moment(), selectedService.time))
 
   }
+  useEffect(() => {
+    dispatch(Actions.setSelectedEmployee({
+      id: 0,
+      firstname: "",
+      lastname: ""
+  }))
+}, []);
+ 
+
   const goBack = () => {
     dispatch(Actions.goBack(currentPage))
     props.history.goBack();
-    dispatch(Actions.setSelectedService(0))
-  }; // to tell the store to go back.
+  }; 
 
 
 
-  const renderEmployees = (employee) => {
-
+  const RenderEmployees = ({employee}) => {
     let $imagePreview = (<img className="userImage" src={'https://vibeemployeeimage.s3.eu-west-3.amazonaws.com/' + employee.userImage} onError={(e) => addDefaultSrc(e)} />);
     const addDefaultSrc = (ev) => {
         ev.target.src = profileImage
@@ -69,7 +75,7 @@ function SelectEmployee(props) {
       {employeeInfo && <PopUpInfo employee={employeeInfo} close={() => setEmployeeInfo(null)} click={(employee) => selectedEmployee(employee)} />}
       <h2 className='__header'><i className='material-icons' onClick={goBack}>arrow_back</i><SubHeader /> {t('selectEmployee')}</h2>
       <div className='__card2'>
-        {employees.map(renderEmployees)}
+        {employees.map((v,k) => <RenderEmployees employee={v} key={k}/>)}
       </div>
     </div>
   )

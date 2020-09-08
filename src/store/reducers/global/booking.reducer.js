@@ -24,7 +24,6 @@ const bookingReducer = function (state = initialState, action) {
             }
         case Actions.GO_BACK:
             {
-                console.log("GO_BACK")
                 return {
                     ...state,
                     currentPage: action.payload - 1

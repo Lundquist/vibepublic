@@ -76,7 +76,6 @@ export function refundReservation(paymentIntent, stripeAccount) {
             if (res.error) {
                 console.log("ERROR requestStripeRefund")
             } else {
-                console.log("requestStripeRefund " + JSON.stringify(res))
                 //dispatch(Actions.setStripeCharges(res.data))
             }
         });

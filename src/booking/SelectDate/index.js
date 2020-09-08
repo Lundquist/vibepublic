@@ -11,8 +11,6 @@ import { useTranslation } from 'react-i18next';
 import CalenderHeaderTitle from './CalenderHeader';
 import DateItem from './DateItem';
 import SubHeader from '../SubHeader'
-import { setSelectedEmployee } from '../../store/actions';
-import config from '../../config';
 import LoadingIndicator from '../../ui/LoadingIndicator'
   
 function SelectDate(props) {
@@ -35,16 +33,17 @@ function SelectDate(props) {
     const goBack = () => {
         dispatch(Actions.goBack(currentPage))
         props.history.goBack();
-        dispatch(Actions.setSelectedEmployee({
-            id: 0,
-            firstname: "",
-            lastname: ""
-        }))
     };
     useEffect(() => {
         sortBookings()
     }, [availableHours]);
 
+    useEffect(() => {
+        dispatch(Actions.setSelectedTime(moment()))
+
+    }, []);
+
+    
 
     function setDateTime(date, time) {
         const [hours, minutes] = time.split(':');

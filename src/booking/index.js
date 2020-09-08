@@ -8,7 +8,7 @@ import reducer from '../store/reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Actions from '../store/actions';
 import CancelBooking from './CancelBooking'
-import { getReservation, signUpToStripeConnect } from '../api'
+import { getReservation } from '../api'
 import { Helmet } from "react-helmet";
 import Summary from './Summary';
 

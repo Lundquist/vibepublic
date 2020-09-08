@@ -70,7 +70,7 @@ function Summary(props) {
                 </div>
                 <b className="__flex __sb">
                     
-                    Precio:<div>€ {selectedService.id !== 0 ? selectedService.price : 0}</div>
+                    Precio:<div>{selectedService.id !== 0 ? selectedService.price : 0} €</div>
                 </b>
                 {moment(selectedTime) >= moment() && currentPage < 2 && <button className='__btn'>Reservar ahora</button>}
             </div>

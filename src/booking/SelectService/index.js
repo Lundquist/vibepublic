@@ -33,12 +33,6 @@ function SelectService(props) {
     
     function toggleContainer(id, e) {
         setSelectedCategory(id)
-/*
-        if (selectedCategory !== id) {
-            setSelectedCategory(id)
-        } else {
-            setSelectedCategory(1)
-        }*/
         e.target.scrollIntoView();
         servicesWrapper.current.scrollIntoView();
     }
@@ -46,6 +40,11 @@ function SelectService(props) {
         setSelectedCategory(categories.length > 0 ? categories[0].id : 0)
         dispatch(Actions.setBookingComplete(false))
     }, [categories]);
+
+    useEffect(() => {
+        dispatch(Actions.setSelectedService(0))
+    }, []);
+   
 
     const setService = (service) => {
         dispatch(Actions.setSelectedService(service.id))
@@ -91,7 +90,6 @@ function SelectService(props) {
             const addDefaultSrc = (ev) => {
                 ev.target.src = "https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
             }
-        console.log("renderServices " + service.price)
             return (
                 <div className="__flex __service" onClick={(e) => selectedService(service)} key={service.id}>
                     <div className='__flex-strech __f1'>
