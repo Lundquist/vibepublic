@@ -16,16 +16,11 @@ import CheckoutForm from './CheckoutForm';
 const Stripe = (props) => {
     const { information } = useSelector(({ global }) => global.company);
 
-    const stripePromise = loadStripe(config.STRIPE_PUBLISHABLE_KEY,
-    {stripeAccount:information.stripeAccount});
-  
 
 //      
 
   return (
-    <Elements stripe={stripePromise}>
-        <CheckoutForm createCustomer={(data) => props.createCustomer(data)}/>
-    </Elements>
+    <div>Stripe</div>
   );
 };
 export default withReducer('calendarApp', reducer)(Stripe);

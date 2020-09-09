@@ -59,11 +59,6 @@ function CustomerInfo(props) {
 
     };
 
-    const renderStripe = () => {
-        return (
-            <Stripe createCustomer={(data) => onSubmit(data)}/>
-        )
-    }
 
     const renderPayAtSite = () => {
         return (
